@@ -13,6 +13,7 @@ namespace Core.Service
         int Insert(Organizacao organizacao);
 
         Organizacao Get(int idOrganizacao);
+        IEnumerable<Organizacao> GetAll();
         void Delete(int idOrganizacao);
         void GetAgendaDisponivel();
         void Validate();
