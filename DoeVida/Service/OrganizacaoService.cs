@@ -31,7 +31,7 @@ namespace Service
 		/// Atualiza os dados da organização na base de dados
 		/// </summary>
 		/// <param name="organizacao">dados da organização</param>
-        void Edit(Organizacao organizacao)
+        public void Edit(Organizacao organizacao)
         {
             _context.Update(organizacao);
             _context.SaveChanges();
@@ -52,7 +52,7 @@ namespace Service
 		/// Consulta genérica aos dados da organizaçao
 		/// </summary>
 		/// <returns></returns>
-		private IQueryable<Organizacao> GetQuery()
+		public IQueryable<Organizacao> GetQuery()
         {
             //IQueryable<Organizacao> listaOrganizacao = _context.Organizacao;
             var query = from organizacao in _context.Organizacao
@@ -104,6 +104,11 @@ namespace Service
                         where organizacao.NomeOrganizacao.Contains(name)
                         select organizacao;
             return query;
+        }
+
+        public void Validate()
+        {
+            throw new NotImplementedException();
         }
     }
 }
