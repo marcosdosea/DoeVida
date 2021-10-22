@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace Core.Service
 
         int Insert(Organizacao organizacao);
 
+        IQueryable<Organizacao> GetQuery();
         Organizacao Get(int idOrganizacao);
         IEnumerable<Organizacao> GetAll();
+        IEnumerable<Organizacao> GetAllOrderByName();
+        IEnumerable<Organizacao> GetByNameContained(string name);
         void Delete(int idOrganizacao);
         void Validate();
     }
