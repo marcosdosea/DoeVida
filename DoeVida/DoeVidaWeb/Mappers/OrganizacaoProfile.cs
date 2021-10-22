@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core;
 using DoeVidaWeb.ViewModels;
 
 using System;
@@ -12,7 +13,7 @@ namespace DoeVidaWeb.Mappers
     {
         public OrganizacaoProfile()
         {
-            CreateMap<OrganizacaoModel, >
+            CreateMap<OrganizacaoModel, Organizacao>().ReverseMap();
         }
     }
 }

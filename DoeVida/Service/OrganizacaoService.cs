@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Service
 {
-    class OrganizacaoService : IOrganizacaoService
+    public class OrganizacaoService : IOrganizacaoService
     {
         private readonly DoeVidaDbContext _context;
         public OrganizacaoService(DoeVidaDbContext context)
