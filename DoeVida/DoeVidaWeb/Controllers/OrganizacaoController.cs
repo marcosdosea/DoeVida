@@ -28,7 +28,7 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Index()
         {
             var listOrganizacoes = _organizacaoService.GetAll();
-            var listOrganizacoesModel = _mapper.Map<List<OrganizacaoModel>>(listOrganizacoes);
+            var listOrganizacoesModel = _mapper.Map<List<OrganizacaoViewModel>>(listOrganizacoes);
             return View(listOrganizacoesModel);
         }
 
@@ -36,7 +36,7 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Details(int id)
         {
             Organizacao organizacao = _organizacaoService.Get(id);
-            OrganizacaoModel organizacaoModel = _mapper.Map<OrganizacaoModel>(organizacao);
+            OrganizacaoViewModel organizacaoModel = _mapper.Map<OrganizacaoViewModel>(organizacao);
             return View(organizacaoModel);
         }
 
@@ -49,7 +49,7 @@ namespace DoeVidaWeb.Controllers
         // POST: OrganizacaoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrganizacaoModel organizacaoModel)
+        public ActionResult Create(OrganizacaoViewModel organizacaoModel)
         {
             if (ModelState.IsValid)
             {
@@ -63,14 +63,14 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Edit(int id)
         {
             Organizacao organizacao = _organizacaoService.Get(id);
-            OrganizacaoModel organizacaoModel = _mapper.Map<OrganizacaoModel>(organizacao);
+            OrganizacaoViewModel organizacaoModel = _mapper.Map<OrganizacaoViewModel>(organizacao);
             return View(organizacaoModel);
         }
 
         // POST: OrganizacaoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, OrganizacaoModel organizacaoModel)
+        public ActionResult Edit(int id, OrganizacaoViewModel organizacaoModel)
         {
             if (ModelState.IsValid)
             {
@@ -84,14 +84,14 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Delete(int id)
         {
             Organizacao organizacao = _organizacaoService.Get(id);
-            OrganizacaoModel organizacaoModel = _mapper.Map<OrganizacaoModel>(organizacao);
+            OrganizacaoViewModel organizacaoModel = _mapper.Map<OrganizacaoViewModel>(organizacao);
             return View(organizacaoModel);
         }
 
         // POST: OrganizacaoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, OrganizacaoModel organizacaoModel)
+        public ActionResult Delete(int id, OrganizacaoViewModel organizacaoModel)
         {
             _organizacaoService.Delete(id);
             return RedirectToAction(nameof(Index));

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.ViewModels
 {
-    public class OrganizacaoModel
+    public class OrganizacaoViewModel
     {   
         [Display(Name="Código")]
+        [Key]
         public int IdOrganizacao { get; set; }
         
         [Required(ErrorMessage ="Campo requerido")]
@@ -20,17 +21,23 @@ namespace DoeVidaWeb.ViewModels
         [Required(ErrorMessage = "Campo requerido")]
         [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "Cep invalido.")]
         public string Cep { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Uf { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Cidade { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Bairro { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Logradouro { get; set; }
+     
         public string Complemento { get; set; }
 
         [Display(Name = "Numero de Endereço")]
         [Required(ErrorMessage = "Campo requerido")]
         public string NumeroEndereco { get; set; }
-
+        [Required(ErrorMessage = "Campo requerido")]
         public string Latitude { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Longitude { get; set; }
         [Required(ErrorMessage = "Campo requerido")]
         public string Cnpj { get; set; }

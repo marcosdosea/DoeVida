@@ -22,7 +22,7 @@ namespace Service
 		/// <returns>Retorna o Id da organizacao inserida</returns>
         public int Insert(Organizacao organizacao)
         {
-            _context.Add(organizacao);
+            _context.Organizacao.Add(organizacao);
             _context.SaveChanges();
             return organizacao.IdOrganizacao;
         }

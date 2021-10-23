@@ -13,7 +13,7 @@ namespace DoeVidaWeb.Mappers
     {
         public OrganizacaoProfile()
         {
-            CreateMap<OrganizacaoModel, Organizacao>().ReverseMap();
+            CreateMap<OrganizacaoViewModel, Organizacao>().ReverseMap();
         }
     }
 }
