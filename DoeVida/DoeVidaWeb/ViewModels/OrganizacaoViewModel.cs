@@ -13,8 +13,6 @@ namespace DoeVidaWeb.ViewModels
         public int IdOrganizacao { get; set; }
         
         [Required(ErrorMessage ="Campo requerido")]
-        [RegularExpression(@"(?i)[^a-záéíóúàèìòùâêîôûãõç\s]", ErrorMessage =
-            "Números e caracteres especiais (#, $, % ...) não são permitidos no nome.")]
         [StringLength(100, MinimumLength =5, ErrorMessage ="Nome da organização deve ter entre 5 - 100 caracteres.")]
         public string NomeOrganizacao { get; set; }
 
