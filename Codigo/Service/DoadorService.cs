@@ -56,7 +56,6 @@ namespace Service
 		/// <param name="pessoa">dados da organização</param>
         public void Edit(Pessoa pessoa)
         {
-            var _pessoa = _context.Pessoa.Find(idPessoa);
             _context.Update(pessoa);
             _context.SaveChanges();
         }
@@ -107,16 +106,6 @@ namespace Service
         }
 
         public void Validate()
-        {
-            throw new NotImplementedException();
-        }
-
-        IQueryable<Pessoa> IDoadorService.GetQuery()
-        {
-            throw new NotImplementedException();
-        }
-
-        Pessoa IDoadorService.Get(int idPessoa)
         {
             throw new NotImplementedException();
         }
