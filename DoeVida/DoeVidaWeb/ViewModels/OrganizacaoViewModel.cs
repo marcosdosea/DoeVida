@@ -17,7 +17,7 @@ namespace DoeVidaWeb.ViewModels
         public string NomeOrganizacao { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "Cep invalido.")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "CEP precisa de 8 digitos!")]
         public string Cep { get; set; }
         [Required(ErrorMessage = "Campo requerido")]
         public string Uf { get; set; }
