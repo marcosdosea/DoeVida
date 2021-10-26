@@ -9,7 +9,6 @@ namespace Core
         {
             Agendamento = new HashSet<Agendamento>();
             Comentario = new HashSet<Comentario>();
-            InverseIdPessoa1Navigation = new HashSet<Pessoa>();
             Solicitacao = new HashSet<Solicitacao>();
         }
 
@@ -30,12 +29,9 @@ namespace Core
         public string Uf { get; set; }
         public string Cidade { get; set; }
         public string Telefone { get; set; }
-        public int IdPessoa1 { get; set; }
 
-        public virtual Pessoa IdPessoa1Navigation { get; set; }
         public virtual ICollection<Agendamento> Agendamento { get; set; }
         public virtual ICollection<Comentario> Comentario { get; set; }
-        public virtual ICollection<Pessoa> InverseIdPessoa1Navigation { get; set; }
         public virtual ICollection<Solicitacao> Solicitacao { get; set; }
     }
 }
