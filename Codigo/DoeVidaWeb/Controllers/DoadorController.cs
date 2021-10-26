@@ -2,18 +2,13 @@
 using Core;
 using Core.Service;
 using DoeVidaWeb.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
     public class DoadorController : Controller
     {
-
         IDoadorService _doadorService;
         IMapper _mapper;
 

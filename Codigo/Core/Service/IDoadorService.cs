@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Service
 {
@@ -16,6 +13,7 @@ namespace Core.Service
         IEnumerable<Pessoa> GetAllOrderByName();
         IEnumerable<Pessoa> GetByNameContained(string name);
         void Delete(int idPessoa);
+
         void Validate();
     }
 }

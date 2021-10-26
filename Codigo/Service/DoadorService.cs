@@ -10,6 +10,7 @@ namespace Service
     public class DoadorService : IDoadorService
     {
         private readonly DoeVidaDbContext _context;
+
         public DoadorService(DoeVidaDbContext context)
         {
             _context = context;
@@ -109,5 +110,6 @@ namespace Service
         {
             throw new NotImplementedException();
         }
+
     }
 }
