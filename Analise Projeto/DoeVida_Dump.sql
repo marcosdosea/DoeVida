@@ -166,12 +166,9 @@ CREATE TABLE `pessoa` (
   `uf` varchar(2) NOT NULL,
   `cidade` varchar(45) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
-  `idPessoa1` int NOT NULL,
   PRIMARY KEY (`idPessoa`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`),
-  KEY `fk_Pessoa_Pessoa1_idx` (`idPessoa1`),
-  CONSTRAINT `fk_Pessoa_Pessoa1` FOREIGN KEY (`idPessoa1`) REFERENCES `pessoa` (`idPessoa`)
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-25 10:13:39
+-- Dump completed on 2021-10-27 14:47:52
