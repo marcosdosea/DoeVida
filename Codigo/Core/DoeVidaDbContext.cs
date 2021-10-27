@@ -251,9 +251,6 @@ namespace Core
                     .HasName("email_UNIQUE")
                     .IsUnique();
 
-                entity.HasIndex(e => e.IdPessoa1)
-                    .HasName("fk_Pessoa_Pessoa1_idx");
-
                 entity.Property(e => e.IdPessoa).HasColumnName("idPessoa");
 
                 entity.Property(e => e.Bairro)
@@ -294,8 +291,6 @@ namespace Core
                     .HasColumnName("email")
                     .HasMaxLength(100)
                     .IsUnicode(false);
-
-                entity.Property(e => e.IdPessoa1).HasColumnName("idPessoa1");
 
                 entity.Property(e => e.Latitude)
                     .HasColumnName("latitude")
@@ -346,12 +341,6 @@ namespace Core
                     .HasColumnName("uf")
                     .HasMaxLength(2)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.IdPessoa1Navigation)
-                    .WithMany(p => p.InverseIdPessoa1Navigation)
-                    .HasForeignKey(d => d.IdPessoa1)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Pessoa_Pessoa1");
             });
 
             modelBuilder.Entity<Solicitacao>(entity =>
