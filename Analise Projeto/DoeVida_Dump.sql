@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
--- Host: localhost    Database: doevida
+-- Host: 127.0.0.1    Database: doevida
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -95,7 +95,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`idItem`),
   KEY `fk_Item_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Item_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,6 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (2,'Celular','teste',253,1,'DISPONIVEL');
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,6 +127,7 @@ CREATE TABLE `organizacao` (
   `latitude` varchar(45) NOT NULL,
   `longitude` varchar(45) NOT NULL,
   `cnpj` varchar(15) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idOrganizacao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -138,7 +138,7 @@ CREATE TABLE `organizacao` (
 
 LOCK TABLES `organizacao` WRITE;
 /*!40000 ALTER TABLE `organizacao` DISABLE KEYS */;
-INSERT INTO `organizacao` VALUES (252,'UFS ITAAA','49500-000','SE','Itabaiana','Centro','Avenida','Organização','102','100','200','12534548544'),(253,'UFS ITA BR','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854425');
+INSERT INTO `organizacao` VALUES (252,'UFS ITAAA','49500-000','SE','Itabaiana','Centro','Avenida','Organização','102','100','200','12534548544',NULL),(253,'UFS ITA BR','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854425',NULL);
 /*!40000 ALTER TABLE `organizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`idPessoa`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-27 20:17:36
+-- Dump completed on 2021-10-29  8:14:08
