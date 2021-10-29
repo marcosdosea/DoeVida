@@ -5,5 +5,11 @@
   "library": "bootstrap@5.1.3",
   "destination": "wwwroot/lib/bootstrap/"
 }
+,
+{
+  "provider": "unpkg",
+  "library": "font-awesome-5-css@5.4.1",
+  "destination": "wwwroot/lib/font-awesome-5-css/"
+}
 ]
 }
