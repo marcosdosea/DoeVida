@@ -1,101 +1,44 @@
 ﻿@model IEnumerable<DoeVidaWeb.ViewModels.OrganizacaoViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Organização";
 }
 
-<h1>Index</h1>
+<div id="main">
+    <div id="header-action">
+        <div id="search">
+            <input placeholder="Digite o nome da organização que deseja buscar"
+                   type="text" name="search" id="input-search" />
+            <i class="fas fa-search"></i>
+        </div>
+        <a asp-action="Create" id="button-new">Nova organização</a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOrganizacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeOrganizacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cep)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Logradouro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Complemento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroEndereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cnpj)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrganizacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeOrganizacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Logradouro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Complemento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroEndereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cnpj)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.IdOrganizacao }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdOrganizacao }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdOrganizacao })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeOrganizacao)
+                </th>
+               
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeOrganizacao)
+                    </td>
+                    
+                    <td id="actions">
+                        <a class="icon-action" href="Doador/Details/@item.IdOrganizacao"><i class="fas fa-eye icon-action"></i></a>
+                        <a class="icon-action" href="Doador/Edit/@item.IdOrganizacao"><i class="fas fa-edit icon-action"></i></a>
+                        <a class="icon-action" href="Doador/Delete/@item.IdOrganizacao"><i class="fas fa-trash-alt icon-action"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
