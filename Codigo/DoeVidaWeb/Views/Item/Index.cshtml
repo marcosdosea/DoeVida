@@ -3,26 +3,22 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div id="header-action">
+        <div id="search">
+            <input placeholder="Digite o nome que deseja buscar"
+                   type="text" name="search" id="input-search" />
+            <i class="fas fa-search"></i>
+        </div>
+        <a asp-action="Create" id="button-new">Novo Item</a>
+    </div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.IdOrganizacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOrganizacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantidade)
@@ -30,23 +26,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th></th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @Html.DisplayFor(modelItem => item.IdOrganizacao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrganizacao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantidade)
@@ -54,10 +44,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit",new {id = item.IdItem}) |
-                @Html.ActionLink("Details", "Details",new {id =item.IdItem}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.IdItem})
+            <td id="actions">
+               <a class="icon-action" href="Item/Details/@item.IdItem"><i class="fas fa-eye icon-action"></i></a>
+               <a class="icon-action" href="Item/Edit/@item.IdItem"><i class="fas fa-edit icon-action"></i></a>
+               <a class="icon-action" href="Item/Delete/@item.IdItem"><i class="fas fa-trash-alt icon-action"></i></a>
             </td>
         </tr>
 }
