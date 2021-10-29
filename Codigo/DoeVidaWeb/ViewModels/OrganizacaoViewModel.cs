@@ -41,5 +41,8 @@ namespace DoeVidaWeb.ViewModels
         [Required(ErrorMessage = "Campo requerido")]
         public string Cnpj { get; set; }
 
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "O telefone deve conter 11 digítos")]
+        public string Telefone { get; set; }
+
     }
 }
