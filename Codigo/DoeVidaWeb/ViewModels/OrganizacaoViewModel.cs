@@ -11,7 +11,8 @@ namespace DoeVidaWeb.ViewModels
         [Display(Name="Código")]
         [Key]
         public int IdOrganizacao { get; set; }
-        
+
+        [Display(Name ="Organização")]
         [Required(ErrorMessage ="Campo requerido")]
         [StringLength(100, MinimumLength =5, ErrorMessage ="Nome da organização deve ter entre 5 - 100 caracteres.")]
         public string NomeOrganizacao { get; set; }
