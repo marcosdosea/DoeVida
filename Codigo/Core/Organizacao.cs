@@ -25,6 +25,7 @@ namespace Core
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Cnpj { get; set; }
+        public string Telefone { get; set; }
 
         public virtual ICollection<Agendamento> Agendamento { get; set; }
         public virtual ICollection<Item> Item { get; set; }

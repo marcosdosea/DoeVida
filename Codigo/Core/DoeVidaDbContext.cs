@@ -229,6 +229,11 @@ namespace Core
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Telefone)
+                    .HasColumnName("telefone")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Uf)
                     .IsRequired()
                     .HasColumnName("uf")
