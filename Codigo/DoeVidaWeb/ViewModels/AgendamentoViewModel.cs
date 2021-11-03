@@ -29,7 +29,8 @@ namespace DoeVidaWeb.ViewModels
         DataType(DataType.Time),
         Display(Name = "Horário"),
         DisplayFormat(DataFormatString = @"{0:hh\:mm\:ss}", ApplyFormatInEditMode = true),
-        Range(typeof(TimeSpan), "08:00", "15:00")]
+        ]
+        // Range(typeof(TimeSpan), "08:00", "15:00")
         public TimeSpan HorarioAgendamento { get; set; }
 
         [Required(ErrorMessage ="Campo requerido"),
