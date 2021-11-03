@@ -17,7 +17,7 @@ namespace Service
         }
 
         /// <summary>
-		/// Insere uma nova organização na base de dados
+		/// Insere um novo agendamento na base de dados
 		/// </summary>
 		/// <param name="agendamento">dados do agendamento</param>
 		/// <returns>Retorna o Id da agendamento inserida</returns>
@@ -38,16 +38,6 @@ namespace Service
             _context.SaveChanges();
         }
 
-        /// <summary>
-        /// Remove uma organização da base de dados
-        /// </summary>
-        /// <param name="idAgendamento">identificador do agendamento</param>
-        public void Delete(int idAgendamento)
-        {
-            var _agendamento = _context.Agendamento.Find(idAgendamento);
-            _context.Agendamento.Remove(_agendamento);
-            _context.SaveChanges();
-        }
 
         /// <summary>
 		/// Consulta genérica aos dados do agendamento
@@ -74,7 +64,7 @@ namespace Service
 		/// Obtém pelo identificador do agendamento
 		/// </summary>
 		/// <param name="idAgendamento"></param>
-		/// <returns>Retorna uma Agendamento</returns>
+		/// <returns>Retorna um Agendamento</returns>
         public Agendamento Get(int idAgendamento)
         {
             // todo: execption?
@@ -97,9 +87,9 @@ namespace Service
         }
 
         /// <summary>
-		/// Obter todos os agendamentos que contem o nome
+		/// Obter todos os agendamentos que contem o nome do Doador
 		/// </summary>
-        /// <param name="name">nome do agendamento</param>
+        /// <param name="name">nome do doador</param>
 		/// <returns></returns>
         public IEnumerable<Agendamento> GetByNameContained(string name)
         {
