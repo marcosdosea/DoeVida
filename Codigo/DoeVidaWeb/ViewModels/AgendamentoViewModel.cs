@@ -43,6 +43,8 @@ namespace DoeVidaWeb.ViewModels
         [Required(ErrorMessage = "Campo requerido")]
         public int IdOrganizacao { get; set; }
 
+        [Display(Name = "Nome")]
+        public string NomePessoa {get; set;}
         public virtual Organizacao IdOrganizacaoNavigation { get; set; }
         public virtual Pessoa IdPessoaNavigation { get; set; }
     }
