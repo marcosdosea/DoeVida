@@ -4,73 +4,48 @@
     ViewData["Title"] = "Agendamentos";
 }
 
-<h1>Index</h1>
+<div id="main">
+    <div id="header-action">
+        <div id="search">
+            <input placeholder="Digite o nome de um doador que deseja buscar"
+                   type="text" name="search" id="input-search" />
+            <i class="fas fa-search"></i>
+        </div>
+        <a asp-action="Create" id="button-new">Novo agendamento</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HorarioAgendamento)
+                </th>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAgendamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HorarioAgendamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPessoa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOrganizacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdAgendamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HorarioAgendamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPessoa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrganizacao)
-            </td>
-            <td id="actions">
-                <a class="icon-action" href="Agendamento/Details/@item.IdAgendamento"><i class="fas fa-eye icon-action"></i></a>
-                <a class="icon-action" href="Agendamento/Edit/@item.IdAgendamento"><i class="fas fa-edit icon-action"></i></a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPessoaNavigation.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HorarioAgendamento)
+                    </td>
+                    <td id="actions">
+                        <a class="icon-action" href="Agendamento/Details/@item.IdAgendamento"><i class="fas fa-eye icon-action"></i></a>
+                        <a class="icon-action" href="Agendamento/Edit/@item.IdAgendamento"><i class="fas fa-edit icon-action"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

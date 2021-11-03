@@ -46,8 +46,8 @@ namespace Service
 		public IQueryable<Agendamento> GetQuery()
         {
             //IQueryable<Agendamento> listaAgendamento = _context.Agendamento;
-            var query = from agendamento in _context.Agendamento
-                        select agendamento;
+            var query = from A in _context.Agendamento
+                        select A;
             return query;
         }
 
