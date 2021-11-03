@@ -8,7 +8,7 @@ using Core;
 
 namespace Service
 {
-    class AgendamentoService : IAgendamentoService
+    public class AgendamentoService : IAgendamentoService
     {
         private readonly DoeVidaDbContext _context;
         public AgendamentoService(DoeVidaDbContext context)
