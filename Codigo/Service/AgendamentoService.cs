@@ -43,11 +43,25 @@ namespace Service
 		/// Consulta genérica aos dados do agendamento
 		/// </summary>
 		/// <returns></returns>
-		public IQueryable<Agendamento> GetQuery()
+		public IQueryable<AgendamentoDTO> GetQuery()
         {
-            //IQueryable<Agendamento> listaAgendamento = _context.Agendamento;
             var query = from A in _context.Agendamento
-                        select A;
+                        join P in _context.Pessoa
+                        on A.IdPessoa equals P.IdPessoa
+                        // join O in _context.Organizacao
+                        // on A.IdOrganizacao equals O.IdOrganizacao
+                        select new AgendamentoDTO
+                        {
+                            IdAgendamento = A.IdAgendamento,
+                            Data = A.Data,
+                            Tipo = A.Tipo,
+                            Status = A.Status,
+                            HorarioAgendamento = A.HorarioAgendamento,
+                            Descricao = A.Descricao,
+                            IdPessoa = A.IdPessoa,
+                            IdOrganizacao = A.IdOrganizacao,
+                            NomePessoa = P.Nome
+                        };
             return query;
         }
 
@@ -55,7 +69,7 @@ namespace Service
         /// Obtém todos os Agendamentos
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Agendamento> GetAll()
+        public IEnumerable<AgendamentoDTO> GetAll()
         {
             return GetQuery();
         }

@@ -12,9 +12,9 @@ namespace Core.Service
 
         int Insert(Agendamento agendamento);
 
-        IQueryable<Agendamento> GetQuery();
+        IQueryable<AgendamentoDTO> GetQuery();
         Agendamento Get(int idAgendamento);
-        IEnumerable<Agendamento> GetAll();
+        IEnumerable<AgendamentoDTO> GetAll();
         IEnumerable<Agendamento> GetAllOrderByName();
         IEnumerable<Agendamento> GetByNameContained(string name);
         void Validate();

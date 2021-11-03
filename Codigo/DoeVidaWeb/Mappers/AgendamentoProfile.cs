@@ -12,7 +12,7 @@ namespace DoeVidaWeb.Mappers
     {
         public AgendamentoProfile()
         {
-            CreateMap<AgendamentoViewModel, Agendamento>().ReverseMap();
+            CreateMap<AgendamentoViewModel, AgendamentoDTO>().ReverseMap();
         }
     }
 }
