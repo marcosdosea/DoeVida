@@ -17,7 +17,6 @@ namespace Core.Service
         IEnumerable<Agendamento> GetAll();
         IEnumerable<Agendamento> GetAllOrderByName();
         IEnumerable<Agendamento> GetByNameContained(string name);
-        void Delete(int idAgendamento);
         void Validate();
 
         // todo: GetAgendaDisponivel
