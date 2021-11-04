@@ -15,14 +15,10 @@
     </div>
     <table class="table">
         <thead>
-            <tr>
+            <tr style="display: flex; justify-content: space-between">
                 <th>Nome</th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HorarioAgendamento)
-                </th>
+                
+                <th>Data de atendimento / Horário</th>
 
                 <th>Ações</th>
             </tr>
@@ -30,15 +26,17 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr style="display: flex; justify-content: space-between">
                     <td>
                         @Html.DisplayFor(modelItem => item.NomePessoa)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Data)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HorarioAgendamento)
+                    <td style="display: flex; flex-direction: row;">
+                        <span style="margin-right: 47px;">
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </span>
+                        <span>
+                            @Html.DisplayFor(modelItem => item.HorarioAgendamento)
+                        </span>
                     </td>
                     <td id="actions">
                         <a class="icon-action" href="Agendamento/Details/@item.IdAgendamento"><i class="fas fa-eye icon-action"></i></a>
