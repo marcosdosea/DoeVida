@@ -93,6 +93,14 @@ header {
     padding: 0 50px!important;
 }
 
+.title-dados {
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
 @media only screen and (max-width: 600px) {
     #header-action {
         flex-direction: column;

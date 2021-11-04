@@ -4,45 +4,95 @@
     ViewData["Title"] = "Index";
 }
 
-<div id="main">
-    <div id="header-action">
-        <div id="search">
-            <input placeholder="Digite o nome que deseja buscar"
-                   type="text" name="search" id="input-search" />
-            <i class="fas fa-search"></i>
+<div style="display: flex; flex-direction: row; width: 100%">
+
+    <div id="main">
+        <div id="header-action">
+            <div id="search">
+                <input placeholder="Digite o nome que deseja buscar"
+                       type="text" name="search" id="input-search" />
+                <i class="fas fa-search"></i>
+            </div>
+            <a asp-action="Create" id="button-new">Novo doador</a>
         </div>
-        <a asp-action="Create" id="button-new">Novo doador</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td id="actions">
+                            <a class="icon-action" onclick="ver('@item.IdPessoa')"><i class="fas fa-eye icon-action"></i></a>
+                            <a class="icon-action" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
+                            <a class="icon-action" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefone)
-                </th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefone)
-                    </td>
-                    <td id="actions">
-                        <a class="icon-action" href="Doador/Details/@item.IdPessoa"><i class="fas fa-eye icon-action"></i></a>
-                        <a class="icon-action" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
-                        <a class="icon-action" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div id="sider" style="margin-left: 34px; width: 35%; border-radius: 10px; background: var(--gray); height: 100vh; display: none">
+        <div style="background: var(--primary); height: 55px; display: flex; align-items: center;padding: 0 26px; justify-content:space-between;
+                border-radius: 10px 10px 0 0">
+            <span style="color: #fff">Dados do doadores</span>
+            <span style="color: #fff">x</span>
+        </div>
+        <div>
+            <span class="title-dados">Dados pessoais</span>
+            <span>Nome</span>
+            <span id="nome-dados"></span>
+            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                <div>
+                    <span>Telefone</span>
+                    <span id="telefone-dados"></span>
+                </div>
+                <div>
+                    <span>Data de nascimento</span>
+                    <span id="nascimento-dados"></span>
+                </div>
+            </div>
+            <span class="title-dados">Endereço</span>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    function ver(id) {
+        $.ajax({
+            type: "GET",
+            url: "Doador/Details/" + id,
+            data: {
+                
+            },
+            success: function (result, status, xhr) {
+                console.log(result);
+                document.getElementById('main').style.width = '65%';
+                document.getElementById('sider').style.display = 'block';
+                document.getElementById('nome-dados').innerText = result.nome;
+                document.getElementById('telefone-dados').innerText = result.telefone;
+            },
+            error: function (xhr, status, error) {
+                console.log(status);
+            }
+        });
+    }
+</script>
