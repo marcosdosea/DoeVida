@@ -13,6 +13,7 @@ namespace Core.Service
         int Insert(Agendamento agendamento);
 
         IQueryable<AgendamentoListDTO> GetQuery();
+        AgendamentoDetailsDTO GetForDetails(int idAgendamento);
         Agendamento Get(int idAgendamento);
         IEnumerable<AgendamentoListDTO> GetAll();
         IEnumerable<Agendamento> GetAllOrderByName();
