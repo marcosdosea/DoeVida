@@ -26,12 +26,12 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: DoadorController/Details/5
-        public ActionResult Details(int id)
+        public Pessoa Details(int id)
         {
             Pessoa doador = _doadorService.Get(id);
-            DoadorViewModel doadorModel = _mapper.Map<DoadorViewModel>(doador);
-            return View(doadorModel);
+            return doador;
         }
+
 
         // GET: DoadorController/Create
         public ActionResult Create()

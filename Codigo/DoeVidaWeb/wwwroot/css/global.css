@@ -6,6 +6,7 @@
 :root {
     --primary: #2763F5;
     --gray: #F7F8FA;
+    --white: #FFF;
     --dark-blue: #130F26;
     --border-radius-header: 8px;
 }
@@ -17,7 +18,6 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    margin-top: 30px;
 }
 
 #main {
@@ -91,6 +91,56 @@ header {
 
 .navbar > .container {
     padding: 0 50px!important;
+}
+
+.title-dados {
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.label {
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.container-info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+#sider {
+    margin-left: 34px;
+    width: 35%;
+    border-radius: 10px;
+    background: var(--gray);
+    padding-bottom: 30px;
+    display: none;
+}
+
+#container-info {
+    padding: 20px;
+}
+
+.container-title-dados {
+    margin: 15px 0;
+}
+
+.clicavel {
+    cursor: pointer;
+}
+
+#header-sider {
+    background: var(--primary);
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 0 26px;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
 }
 
 @media only screen and (max-width: 600px) {

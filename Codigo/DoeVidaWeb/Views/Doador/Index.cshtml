@@ -4,45 +4,144 @@
     ViewData["Title"] = "Index";
 }
 
-<div id="main">
-    <div id="header-action">
-        <div id="search">
-            <input placeholder="Digite o nome que deseja buscar"
-                   type="text" name="search" id="input-search" />
-            <i class="fas fa-search"></i>
+<div style="display: flex; flex-direction: row; width: 100%">
+
+    <div id="main">
+        <div id="header-action">
+            <div id="search">
+                <input placeholder="Digite o nome que deseja buscar"
+                       type="text" name="search" id="input-search" />
+                <i class="fas fa-search"></i>
+            </div>
+            <a asp-action="Create" id="button-new">Novo doador</a>
         </div>
-        <a asp-action="Create" id="button-new">Novo doador</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td id="actions">
+                            <a class="icon-action clicavel" onclick="ver('@item.IdPessoa')"><i class="fas fa-eye icon-action"></i></a>
+                            <a class="icon-action clicavel" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
+                            <a class="icon-action clicavel" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefone)
-                </th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefone)
-                    </td>
-                    <td id="actions">
-                        <a class="icon-action" href="Doador/Details/@item.IdPessoa"><i class="fas fa-eye icon-action"></i></a>
-                        <a class="icon-action" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
-                        <a class="icon-action" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div id="sider">
+        <div id="header-sider">
+            <span style="color: var(--white)">Dados do doadores</span>
+            <a style="color: var(--white);" class="clicavel" onclick="closeSider()">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <div id="container-info">
+            <div class="container-title-dados">
+                <span class="title-dados">Dados pessoais</span>
+            </div>
+            <div>
+                <div class="container-info-item">
+                    <span class="label">Nome</span>
+                    <span id="nome-dados"></span>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">Telefone</span>
+                        <span id="telefone-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Data de nascimento</span>
+                        <span id="nascimento-dados"></span>
+                    </div>
+                </div>
+                <div class="container-title-dados">
+                    <span class="title-dados">Endereço</span>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">CEP</span>
+                        <span id="cep-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Estado</span>
+                        <span id="estado-dados"></span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">Cidade</span>
+                        <span id="cidade-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Bairro</span>
+                        <span id="bairro-dados"></span>
+                    </div>
+                </div>
+                <div class="container-info-item">
+                    <span class="label">Rua</span>
+                    <span id="rua-dados"></span>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item" id="numero-dados"></div>
+                    <div class="container-info-item" id="complemento-dados"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+
+    function closeSider() {
+        document.getElementById('main').style.width = '100%';
+        document.getElementById('sider').style.display = 'none';
+    }
+
+    function ver(id) {
+        $.ajax({
+            type: "GET",
+            url: "Doador/Details/" + id,
+            data: {},
+            success: function (result, status, xhr) {
+                let data = new Date(result.dataNascimento);
+                let dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
+                let dataFormatada = dia + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+                document.getElementById('main').style.width = '65%';
+                document.getElementById('sider').style.display = 'block';
+                document.getElementById('nome-dados').innerText = result.nome;
+                document.getElementById('telefone-dados').innerText = result.telefone;
+                document.getElementById('nascimento-dados').innerText = dataFormatada;
+                document.getElementById('cep-dados').innerText = result.cep;
+                document.getElementById('estado-dados').innerText = result.uf;
+                document.getElementById('cidade-dados').innerText = result.cidade;
+                document.getElementById('bairro-dados').innerText = result.bairro;
+                document.getElementById('rua-dados').innerText = result.logradouro;
+            },
+            error: function (xhr, status, error) {
+                console.log(status);
+            }
+        });
+    }
+</script>
