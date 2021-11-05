@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Mappers
 {
-    public class AgendamentoProfile : Profile
+    public class AgendamentoListDTOProfile : Profile
     {
-        public AgendamentoProfile()
+        public AgendamentoListDTOProfile()
         {
-            CreateMap<AgendamentoViewModel, Agendamento>().ReverseMap();
+            CreateMap<AgendamentoListDTOViewModel, AgendamentoListDTO>().ReverseMap();
         }
     }
 }

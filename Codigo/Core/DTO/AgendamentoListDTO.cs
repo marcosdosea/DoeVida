@@ -1,7 +1,7 @@
 using System;
 namespace Core
 {
-	public class AgendamentoDTO
+	public class AgendamentoListDTO
 	{
 		public int IdAgendamento { get; set; }
         public DateTime Data { get; set; }

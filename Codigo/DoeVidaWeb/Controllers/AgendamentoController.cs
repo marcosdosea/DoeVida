@@ -27,7 +27,7 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Index()
         {
             var listAgendamentos = _agendamentoService.GetAll();
-            var listAgendamentosModel = _mapper.Map<List<AgendamentoViewModel>>(listAgendamentos);
+            var listAgendamentosModel = _mapper.Map<List<AgendamentoListDTOViewModel>>(listAgendamentos);
             return View(listAgendamentosModel);
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.ViewModels
 {
-    public class AgendamentoViewModel
+    public class AgendamentoListDTOViewModel
     {
         [Display(Name = "Código")]
         [Key]
@@ -42,5 +42,8 @@ namespace DoeVidaWeb.ViewModels
 
         [Required(ErrorMessage = "Campo requerido")]
         public int IdOrganizacao { get; set; }
+
+        [Display(Name = "Nome")]
+        public string NomePessoa {get; set;}
     }
 }
