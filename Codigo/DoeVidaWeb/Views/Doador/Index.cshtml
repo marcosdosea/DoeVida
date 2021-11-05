@@ -39,9 +39,9 @@
                             @Html.DisplayFor(modelItem => item.Telefone)
                         </td>
                         <td id="actions">
-                            <a class="icon-action" onclick="ver('@item.IdPessoa')"><i class="fas fa-eye icon-action"></i></a>
-                            <a class="icon-action" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
-                            <a class="icon-action" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
+                            <a class="icon-action clicavel" onclick="ver('@item.IdPessoa')"><i class="fas fa-eye icon-action"></i></a>
+                            <a class="icon-action clicavel" href="Doador/Edit/@item.IdPessoa"><i class="fas fa-edit icon-action"></i></a>
+                            <a class="icon-action clicavel" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
                         </td>
                     </tr>
                 }
@@ -49,46 +49,95 @@
         </table>
     </div>
 
-    <div id="sider" style="margin-left: 34px; width: 35%; border-radius: 10px; background: var(--gray); height: 100vh; display: none">
-        <div style="background: var(--primary); height: 55px; display: flex; align-items: center;padding: 0 26px; justify-content:space-between;
-                border-radius: 10px 10px 0 0">
-            <span style="color: #fff">Dados do doadores</span>
-            <span style="color: #fff">x</span>
+    <div id="sider">
+        <div id="header-sider">
+            <span style="color: var(--white)">Dados do doadores</span>
+            <a style="color: var(--white);" class="clicavel" onclick="closeSider()">
+                <i class="fas fa-times"></i>
+            </a>
         </div>
-        <div>
-            <span class="title-dados">Dados pessoais</span>
-            <span>Nome</span>
-            <span id="nome-dados"></span>
-            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                <div>
-                    <span>Telefone</span>
-                    <span id="telefone-dados"></span>
+        <div id="container-info">
+            <div class="container-title-dados">
+                <span class="title-dados">Dados pessoais</span>
+            </div>
+            <div>
+                <div class="container-info-item">
+                    <span class="label">Nome</span>
+                    <span id="nome-dados"></span>
                 </div>
-                <div>
-                    <span>Data de nascimento</span>
-                    <span id="nascimento-dados"></span>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">Telefone</span>
+                        <span id="telefone-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Data de nascimento</span>
+                        <span id="nascimento-dados"></span>
+                    </div>
+                </div>
+                <div class="container-title-dados">
+                    <span class="title-dados">Endereço</span>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">CEP</span>
+                        <span id="cep-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Estado</span>
+                        <span id="estado-dados"></span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item">
+                        <span class="label">Cidade</span>
+                        <span id="cidade-dados"></span>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Bairro</span>
+                        <span id="bairro-dados"></span>
+                    </div>
+                </div>
+                <div class="container-info-item">
+                    <span class="label">Rua</span>
+                    <span id="rua-dados"></span>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div class="container-info-item" id="numero-dados"></div>
+                    <div class="container-info-item" id="complemento-dados"></div>
                 </div>
             </div>
-            <span class="title-dados">Endereço</span>
         </div>
     </div>
 
 </div>
 
 <script>
+
+    function closeSider() {
+        document.getElementById('main').style.width = '100%';
+        document.getElementById('sider').style.display = 'none';
+    }
+
     function ver(id) {
         $.ajax({
             type: "GET",
             url: "Doador/Details/" + id,
-            data: {
-                
-            },
+            data: {},
             success: function (result, status, xhr) {
-                console.log(result);
+                let data = new Date(result.dataNascimento);
+                let dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
+                let dataFormatada = dia + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
                 document.getElementById('main').style.width = '65%';
                 document.getElementById('sider').style.display = 'block';
                 document.getElementById('nome-dados').innerText = result.nome;
                 document.getElementById('telefone-dados').innerText = result.telefone;
+                document.getElementById('nascimento-dados').innerText = dataFormatada;
+                document.getElementById('cep-dados').innerText = result.cep;
+                document.getElementById('estado-dados').innerText = result.uf;
+                document.getElementById('cidade-dados').innerText = result.cidade;
+                document.getElementById('bairro-dados').innerText = result.bairro;
+                document.getElementById('rua-dados').innerText = result.logradouro;
             },
             error: function (xhr, status, error) {
                 console.log(status);
