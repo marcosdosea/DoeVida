@@ -34,8 +34,8 @@ namespace DoeVidaWeb.Controllers
         // GET: AgendamentoController/Details/5
         public ActionResult Details(int id)
         {
-            Core.Agendamento agendamento = _agendamentoService.Get(id);
-            AgendamentoViewModel agendamentoModel = _mapper.Map<AgendamentoViewModel>(agendamento);
+            AgendamentoDetailsDTO agendamento = _agendamentoService.GetForDetails(id);
+            AgendamentoDetailsDTOViewModel agendamentoModel = _mapper.Map<AgendamentoDetailsDTOViewModel>(agendamento);
             return View(agendamentoModel);
         }
 
