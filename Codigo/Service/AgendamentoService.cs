@@ -38,12 +38,11 @@ namespace Service
             _context.SaveChanges();
         }
 
-
         /// <summary>
-		/// Consulta genérica aos dados do agendamento
-		/// </summary>
-		/// <returns></returns>
-		public IQueryable<AgendamentoListDTO> GetQuery()
+        /// Obtém todos os Agendamentos
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<AgendamentoListDTO> GetAll()
         {
             var query = from A in _context.Agendamento
                         select new AgendamentoListDTO
@@ -59,15 +58,6 @@ namespace Service
                             NomePessoa = A.IdPessoaNavigation.Nome
                         };
             return query;
-        }
-
-        /// <summary>
-        /// Obtém todos os Agendamentos
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<AgendamentoListDTO> GetAll()
-        {
-            return GetQuery();
         }
 
         /// <summary>
