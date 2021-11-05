@@ -46,10 +46,6 @@ namespace Service
 		public IQueryable<AgendamentoListDTO> GetQuery()
         {
             var query = from A in _context.Agendamento
-                        join P in _context.Pessoa
-                        on A.IdPessoa equals P.IdPessoa
-                        // join O in _context.Organizacao
-                        // on A.IdOrganizacao equals O.IdOrganizacao
                         select new AgendamentoListDTO
                         {
                             IdAgendamento = A.IdAgendamento,
@@ -60,7 +56,7 @@ namespace Service
                             Descricao = A.Descricao,
                             IdPessoa = A.IdPessoa,
                             IdOrganizacao = A.IdOrganizacao,
-                            NomePessoa = P.Nome
+                            NomePessoa = A.IdPessoaNavigation.Nome
                         };
             return query;
         }
@@ -95,10 +91,6 @@ namespace Service
         {
             // todo: execption?
             var query = from A in _context.Agendamento
-                        join P in _context.Pessoa
-                        on A.IdPessoa equals P.IdPessoa
-                        // join O in _context.Organizacao
-                        // on A.IdOrganizacao equals O.IdOrganizacao
                         select new AgendamentoDetailsDTO
                         {
                             IdAgendamento = A.IdAgendamento,
@@ -109,10 +101,10 @@ namespace Service
                             Descricao = A.Descricao,
                             IdPessoa = A.IdPessoa,
                             IdOrganizacao = A.IdOrganizacao,
-                            NomePessoa = P.Nome,
-                            Telefone = P.Telefone,
-                            DataNascimento = P.DataNascimento,
-                            Email = P.Email
+                            NomePessoa = A.IdPessoaNavigation.Nome,
+                            Telefone = A.IdPessoaNavigation.Telefone,
+                            DataNascimento = A.IdPessoaNavigation.DataNascimento,
+                            Email = A.IdPessoaNavigation.Email
                         };
             return query.FirstOrDefault();
         }
@@ -124,9 +116,7 @@ namespace Service
 		public IEnumerable<Agendamento> GetAllOrderByName()
         {
             var query = from A in _context.Agendamento
-                        join P in _context.Pessoa
-                        on A.IdPessoa equals P.IdPessoa
-                        orderby P.Nome
+                        orderby A.IdPessoaNavigation.Nome
                         select A;
             return query;
         }
@@ -139,9 +129,7 @@ namespace Service
         public IEnumerable<Agendamento> GetByNameContained(string name)
         {
             var query = from A in _context.Agendamento
-                        join P in _context.Pessoa
-                        on A.IdPessoa equals P.IdPessoa
-                        where P.Nome.Contains(name)
+                        where A.IdPessoaNavigation.Nome.Contains(name)
                         select A;
             return query;
         }
