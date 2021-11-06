@@ -15,54 +15,47 @@
             
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control" placeholder="Digite o seu nome"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cep" class="control-label"></label>
-                <input asp-for="Cep" class="form-control" />
+                <input asp-for="Cep" id="cep" class="form-control" size="10" maxlength="9"
+               onblur="pesquisacep(this.value)" onkeydown="pesquisacep(this.value)"
+                       onkeyup="pesquisacep(this.value)"/>
                 <span asp-validation-for="Cep" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Uf" class="control-label"></label>
-                <input asp-for="Uf" class="form-control" />
+                <input asp-for="Uf" id="uf" class="form-control" />
                 <span asp-validation-for="Uf" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cidade" class="control-label"></label>
-                <input asp-for="Cidade" class="form-control" />
+                <input asp-for="Cidade" id="cidade" class="form-control" />
                 <span asp-validation-for="Cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Bairro" class="control-label"></label>
-                <input asp-for="Bairro" class="form-control" />
+                <input asp-for="Bairro" id="bairro" class="form-control" />
                 <span asp-validation-for="Bairro" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Logradouro" class="control-label"></label>
-                <input asp-for="Logradouro" class="form-control" />
+                <input asp-for="Logradouro"id="rua" class="form-control" />
                 <span asp-validation-for="Logradouro" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Complemento" class="control-label"></label>
-                <input asp-for="Complemento" class="form-control" />
+                <input asp-for="Complemento" id="complemento" class="form-control" />
                 <span asp-validation-for="Complemento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumeroEndereco" class="control-label"></label>
-                <input asp-for="NumeroEndereco" class="form-control" />
+                <input asp-for="NumeroEndereco" id="numero" class="form-control" />
                 <span asp-validation-for="NumeroEndereco" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Latitude" class="control-label"></label>
-                <input asp-for="Latitude" class="form-control" />
-                <span asp-validation-for="Latitude" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Longitude" class="control-label"></label>
-                <input asp-for="Longitude" class="form-control" />
-                <span asp-validation-for="Longitude" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label"></label>
                 <input asp-for="Cpf" class="form-control" />
@@ -103,6 +96,79 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+
+
+
+    function pesquisacep(valor) {
+
+        if (valor.length < 8)
+            return;
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value = "...";
+                document.getElementById('bairro').value = "...";
+                document.getElementById('cidade').value = "...";
+                document.getElementById('uf').value = "...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    function limpa_formulário_cep() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('rua').value = ("");
+        document.getElementById('bairro').value = ("");
+        document.getElementById('cidade').value = ("");
+        document.getElementById('uf').value = ("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value = (conteudo.logradouro);
+            document.getElementById('bairro').value = (conteudo.bairro);
+            document.getElementById('cidade').value = (conteudo.localidade);
+            document.getElementById('uf').value = (conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

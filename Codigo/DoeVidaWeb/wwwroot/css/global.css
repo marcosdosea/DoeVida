@@ -93,6 +93,17 @@ header {
     padding: 0 50px!important;
 }
 
+input {
+    border: 1px solid #606060;
+    border-radius: 4px;
+    height: 45px;
+    background: transparent;
+}
+
+::placeholder {
+    color: #C8C8C8;
+}
+
 @media only screen and (max-width: 600px) {
     #header-action {
         flex-direction: column;
