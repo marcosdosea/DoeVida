@@ -176,3 +176,15 @@ header {
         margin-bottom: 17px;
     }
 }
+
+.button{
+    background: var(--primary);
+    height: 50px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
