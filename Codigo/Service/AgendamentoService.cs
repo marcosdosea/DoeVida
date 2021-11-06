@@ -73,33 +73,6 @@ namespace Service
         }
 
         /// <summary>
-		/// Obtém pelo identificador do agendamento
-		/// </summary>
-		/// <param name="idAgendamento"></param>
-		/// <returns>Retorna um Agendamento para vizualizar detalhes</returns>
-        public AgendamentoDetailsDTO GetForDetails(int idAgendamento)
-        {
-            // todo: execption?
-            var query = from A in _context.Agendamento
-                        select new AgendamentoDetailsDTO
-                        {
-                            IdAgendamento = A.IdAgendamento,
-                            Data = A.Data,
-                            Tipo = A.Tipo,
-                            Status = A.Status,
-                            HorarioAgendamento = A.HorarioAgendamento,
-                            Descricao = A.Descricao,
-                            IdPessoa = A.IdPessoa,
-                            IdOrganizacao = A.IdOrganizacao,
-                            NomePessoa = A.IdPessoaNavigation.Nome,
-                            Telefone = A.IdPessoaNavigation.Telefone,
-                            DataNascimento = A.IdPessoaNavigation.DataNascimento,
-                            Email = A.IdPessoaNavigation.Email
-                        };
-            return query.FirstOrDefault();
-        }
-
-        /// <summary>
 		/// Obter todos os agendamentos ordenando pelo nome do doador
 		/// </summary>
 		/// <returns></returns>

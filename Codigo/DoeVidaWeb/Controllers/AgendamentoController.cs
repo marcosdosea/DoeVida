@@ -31,14 +31,6 @@ namespace DoeVidaWeb.Controllers
             return View(listAgendamentosModel);
         }
 
-        // GET: AgendamentoController/Details/5
-        public ActionResult Details(int id)
-        {
-            AgendamentoDetailsDTO agendamento = _agendamentoService.GetForDetails(id);
-            AgendamentoDetailsDTOViewModel agendamentoModel = _mapper.Map<AgendamentoDetailsDTOViewModel>(agendamento);
-            return View(agendamentoModel);
-        }
-
         // GET: AgendamentoController/Create
         public ActionResult Create()
         {
@@ -78,6 +70,17 @@ namespace DoeVidaWeb.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-            
+
+        // POST: AgendamentoController/EditStatus/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditStatus(int id)
+        {
+            var _agendamento = _agendamentoService.Get(id);
+            _agendamento.Status = "ATENDIDO";
+            _agendamentoService.Edit(_agendamento);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

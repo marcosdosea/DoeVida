@@ -147,7 +147,21 @@ namespace DoeVidaWeb.Controllers.Tests
             };
 
         }
-        
+        private static Agendamento GetTargetAgendamento()
+        {
+            return new Agendamento
+            {
+                IdAgendamento = 1,
+                Data = DateTime.Parse("2021-11-4"),
+                Descricao = "Agendamento",
+                HorarioAgendamento = TimeSpan.Parse("6:12"),
+                IdOrganizacao = 253,
+                IdPessoa = 2,
+                Status = "Agendado",
+                Tipo = "Remoto",
+            };
+        }
+
         private AgendamentoController InitializateWithMapperListDTO()
         {
             var mockService = new Mock<IAgendamentoService>();
@@ -165,12 +179,30 @@ namespace DoeVidaWeb.Controllers.Tests
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new AgendamentoProfile())).CreateMapper();
 
+            mockService.Setup(service => service.Get(1))
+                .Returns(GetTargetAgendamento());
             mockService.Setup(service => service.Edit(It.IsAny<Agendamento>()))
                 .Verifiable();
             mockService.Setup(service => service.Insert(It.IsAny<Agendamento>()))
                 .Verifiable();
 
             return new AgendamentoController(mockService.Object, mapper);
+        }
+
+        [TestMethod()]
+        public void EditStatusTest()
+        {   
+            // Arrange
+            var _controller = InitializateWithMapperDefault();
+
+            // Act
+            var result = _controller.EditStatus(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
     }
 }

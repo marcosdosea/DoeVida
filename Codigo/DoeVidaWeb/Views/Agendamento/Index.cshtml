@@ -127,14 +127,13 @@
         document.getElementById('sider').style.display = 'none';
     }
 
-    function ver(id, schedule) {
-        console.log(typeof schedule)
+    function ver(id, scheduleId) {
         $.ajax({
             type: "GET",
             url: "Doador/Details/" + id,
             data: {},
             success: function (result, status, xhr) {
-                scheduleAux = schedule;
+                scheduleAux = scheduleId;
                 let data = new Date(result.dataNascimento);
                 let dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
                 let dataFormatada = dia + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
@@ -156,11 +155,10 @@
         });
     }
     function alterState() {
-        console.log(typeof scheduleAux)
         $.ajax({
             type: "POST",
-            url: "Agendamento/Edit/" + scheduleAux.IdAgendamento,
-            data: {agendamentoViewModel: {...scheduleAux, status: scheduleAux.status}},
+            url: "Agendamento/EditStatus/" + scheduleAux,
+            data: {},
             success: function (result, status, xhr) {
                 console.log(result)
                 alert('Success')
