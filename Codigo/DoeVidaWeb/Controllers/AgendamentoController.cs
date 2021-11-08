@@ -73,13 +73,13 @@ namespace DoeVidaWeb.Controllers
 
         // POST: AgendamentoController/EditStatus/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditStatus(int id)
+        public string EditStatus(int id)
         {
             var _agendamento = _agendamentoService.Get(id);
             _agendamento.Status = "ATENDIDO";
             _agendamentoService.Edit(_agendamento);
-            return RedirectToAction(nameof(Index));
+            Console.WriteLine(_agendamento);
+            return "Atendido com sucesso!";
         }
 
     }
