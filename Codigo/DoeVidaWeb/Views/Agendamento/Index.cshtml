@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Agendamentos";
 }
-
 <div style="display: flex; flex-direction: row; width: 100%">
 
     <div id="main">
@@ -123,10 +122,10 @@
         <div class="pagination-count">
             1
         </div>
-            <span class="pagination-txt-count">DE 12</span>
+            <span class="pagination-txt-count">DE @(ViewBag.totalPages)</span>
     </div>
-    <a asp-action="" style="margin-right: 10px;" class="pagination-btn"><i class="fas fa-chevron-left"></i> </a>
-    <a asp-action="" class="pagination-btn"><i class="fas fa-chevron-right"></i> </a>
+    <a href="./@(ViewBag.currentPage-1)" style="margin-right: 10px;" class="pagination-btn"><i class="fas fa-chevron-left"></i> </a>
+    <a href="./@(ViewBag.currentPage+1)" class="pagination-btn"><i class="fas fa-chevron-right"></i> </a>
 </div>
 
 <script>
