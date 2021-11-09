@@ -4,17 +4,18 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<span class="title">Cadastro de doador</span>
 
-<h4>DoadorViewModel</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 max-width">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
+            <span class="title-section">Dados pessoais</span>
+
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
+<<<<<<< Updated upstream
                 <input asp-for="Nome" class="form-control" placeholder="Digite o seu nome"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
@@ -24,12 +25,67 @@
                onblur="pesquisacep(this.value)" onkeydown="pesquisacep(this.value)"
                        onkeyup="pesquisacep(this.value)"/>
                 <span asp-validation-for="Cep" class="text-danger"></span>
+=======
+                <input asp-for="Nome" placeholder="Digite o nome do doador" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" placeholder="Digite o seu email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+
+                <div class="form-group max-width">
+                    <label asp-for="Cpf" class="control-label">CPF</label>
+                    <input asp-for="Cpf" placeholder="Digite o cpf do doador" class="form-control"
+                           onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc( this, mCPF )" />
+                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                </div>
+
+                <div class="form-group max-width" style="padding: 0 30px;">
+                    <label asp-for="DataNascimento" class="control-label">Data de nascimento</label>
+                    <input asp-for="DataNascimento" placeholder="Digite a data de nascimento" class="form-control" />
+                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                </div>
+
+                <div class="form-group max-width">
+                    <label asp-for="Telefone" class="control-label">Telefone</label>
+                    <input asp-for="Telefone" placeholder="Digite o seu telefone" class="form-control"
+                           id="telefone" maxlength="15" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <span class="title-section">Endereço</span>
+
+            <div class="form-horizontal">
+
+                <div class="form-group w-30">
+                    <label asp-for="Cep" class="control-label">CEP</label>
+                    <input asp-for="Cep" placeholder="Digite o seu cep" class="form-control" />
+                    <span asp-validation-for="Cep" class="text-danger"></span>
+                </div>
+
+                <div class="form-group class-60">
+                    <label asp-for="Logradouro" class="control-label"></label>
+                    <input asp-for="Logradouro" placeholder="Digite o nome da sua rua" class="form-control" />
+                    <span asp-validation-for="Logradouro" class="text-danger"></span>
+                </div>
+
+>>>>>>> Stashed changes
+            </div>
+
             <div class="form-group">
                 <label asp-for="Uf" class="control-label"></label>
                 <input asp-for="Uf" id="uf" class="form-control" />
                 <span asp-validation-for="Uf" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Cidade" class="control-label"></label>
                 <input asp-for="Cidade" id="cidade" class="form-control" />
@@ -55,6 +111,7 @@
                 <input asp-for="NumeroEndereco" id="numero" class="form-control" />
                 <span asp-validation-for="NumeroEndereco" class="text-danger"></span>
             </div>
+<<<<<<< Updated upstream
             
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label"></label>
@@ -71,21 +128,21 @@
                 <input asp-for="DataNascimento" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
+=======
+
+>>>>>>> Stashed changes
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Tipo" class="control-label"></label>
                 <input asp-for="Tipo" class="form-control" />
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -99,6 +156,7 @@
 
 <script>
 
+<<<<<<< Updated upstream
 
 
     function pesquisacep(valor) {
@@ -168,6 +226,91 @@
             alert("CEP não encontrado.");
         }
     }
+=======
+    function mascara(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout("execmascara()", 1)
+    }
+
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+
+    function mtel(v) {
+        v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+        v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        v = v.replace(/(\d)(\d{4})$/, "$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+        return v;
+    }
+
+    function id(el) {
+        return document.getElementById(el);
+    }
+
+    window.onload = function () {
+        id('telefone').onkeyup = function () {
+            mascara(this, mtel);
+        }
+    }
+
+    function is_cpf(c) {
+
+        if ((c = c.replace(/[^\d]/g, "")).length != 11)
+            return false
+
+        if (c == "00000000000")
+            return false;
+
+        var r;
+        var s = 0;
+
+        for (i = 1; i <= 9; i++)
+            s = s + parseInt(c[i - 1]) * (11 - i);
+
+        r = (s * 10) % 11;
+
+        if ((r == 10) || (r == 11))
+            r = 0;
+
+        if (r != parseInt(c[9]))
+            return false;
+
+        s = 0;
+
+        for (i = 1; i <= 10; i++)
+            s = s + parseInt(c[i - 1]) * (12 - i);
+
+        r = (s * 10) % 11;
+
+        if ((r == 10) || (r == 11))
+            r = 0;
+
+        if (r != parseInt(c[10]))
+            return false;
+
+        return true;
+    }
+
+    function fMasc(objeto, mascara) {
+        obj = objeto
+        masc = mascara
+        setTimeout("fMascEx()", 1)
+    }
+
+    function fMascEx() {
+        obj.value = masc(obj.value)
+    }
+
+    function mCPF(cpf) {
+        cpf = cpf.replace(/\D/g, "")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+        return cpf
+    }
+
+>>>>>>> Stashed changes
 </script>
 
 @section Scripts {
