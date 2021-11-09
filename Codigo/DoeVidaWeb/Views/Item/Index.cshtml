@@ -3,53 +3,126 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div id="header-action">
-        <div id="search">
-            <input placeholder="Digite o nome que deseja buscar"
-                   type="text" name="search" id="input-search" />
-            <i class="fas fa-search"></i>
+<div style="display: flex; flex-direction: row; width: 100%">
+   <div id="main">
+        <div id="header-action">
+            <div id="search">
+                <input placeholder="Digite o nome que deseja buscar"
+                       type="text" name="search" id="input-search" />
+                <i class="fas fa-search"></i>
+            </div>
+            <a asp-action="Create" id="button-new">Novo Item</a>
         </div>
-        <a asp-action="Create" id="button-new">Novo Item</a>
-    </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOrganizacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrganizacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td id="actions">
-               <a class="icon-action" href="Item/Details/@item.IdItem"><i class="fas fa-eye icon-action"></i></a>
-               <a class="icon-action" href="Item/Edit/@item.IdItem"><i class="fas fa-edit icon-action"></i></a>
-               <a class="icon-action" href="Item/Delete/@item.IdItem"><i class="fas fa-trash-alt icon-action"></i></a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdOrganizacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdOrganizacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td id="actions">
+                           <a class="icon-action clicavel" onclick="ver('@item.IdItem')"><i class="fas fa-eye icon-action"></i></a>
+                           <a class="icon-action clicavel" href="Item/Edit/@item.IdItem"><i class="fas fa-edit icon-action"></i></a>
+                           <a class="icon-action clicavel" href="Item/Delete/@item.IdItem"><i class="fas fa-trash-alt icon-action"></i></a>
+                        </td>
+                    </tr>
+            }
+            </tbody>
+        </table>
+   </div>
+        <div id="sider">
+            <div id="header-sider">
+                <span style="color: var(--white)">Dados do doadores</span>
+                <a style="color: var(--white);" class="clicavel" onclick="closeSider()">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <div id="container-info">
+                <div class="container-title-dados">
+                    <span class="title-dados">Dados do Item</span>
+                </div>
+                <div>
+                    <div class="container-info-item">
+                        <span class="label">Nome</span>
+                        <span id="nome-item"></span>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div class="container-info-item">
+                            <span class="label">Tipo</span>
+                            <span id="tipo-item"></span>
+                        </div>
+                    </div>
+                    <div class="container-title-dados">
+                        <span class="title-dados">Organização</span>
+                        <span id="nome-organizacao"></span>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div class="container-info-item">
+                            <span class="label">Quantidade</span>
+                            <span id="quantidade"></span>
+                        </div>
+                    </div>
+                    <div class="container-info-item">
+                        <span class="label">Status</span>
+                        <span id="status-item"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+  <script>
+
+    function closeSider() {
+        document.getElementById('main').style.width = '100%';
+        document.getElementById('sider').style.display = 'none';
+    }
+
+    function ver(id) {
+        $.ajax({
+            type: "GET",
+            url: "Item/Details/" + id,
+            data: {},
+            success: function (result, status, xhr) {
+                console.log(result);
+                document.getElementById('main').style.width = '65%';
+                document.getElementById('sider').style.display = 'block';
+                document.getElementById('nome-item').innerHTML = result.nome;
+                document.getElementById('tipo-item').innerHTML = result.tipo;
+                document.getElementById('nome-organizacao').innerHTML = result.idOrganizacao;
+                document.getElementById('quantidade').innerHTML = result.quantidade;
+                document.getElementById('status-item').innerHTML = result.status;
+            },
+            error: function (xhr, status, error) {
+                console.log(status);
+            }
+        });
+    }
+    </script>
