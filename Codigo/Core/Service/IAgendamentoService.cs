@@ -13,8 +13,10 @@ namespace Core.Service
         int Insert(Agendamento agendamento);
         Agendamento Get(int idAgendamento);
         IEnumerable<AgendamentoListDTO> GetAll();
+        IEnumerable<AgendamentoListDTO> GetFirstTen(int page);
         IEnumerable<Agendamento> GetAllOrderByName();
         IEnumerable<Agendamento> GetByNameContained(string name);
+        int GetCount();
         void Validate();
 
         // todo: GetAgendaDisponivel

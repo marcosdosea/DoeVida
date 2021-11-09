@@ -23,12 +23,20 @@ namespace DoeVidaWeb.Controllers
             _mapper = mapper;
         }
 
-        // GET: AgendamentoController
-        public ActionResult Index()
+        // GET: AgendamentoController/1
+        public ActionResult Index(int page=0)
         {
-            var listAgendamentos = _agendamentoService.GetAll();
+            var listAgendamentos = _agendamentoService.GetFirstTen(page);
             var listAgendamentosModel = _mapper.Map<List<AgendamentoListDTOViewModel>>(listAgendamentos);
             return View(listAgendamentosModel);
+        }
+
+        // POST: AgendamentoController/GetCountAll
+        [HttpPost]
+        public int GetCountAll()
+        {
+            var _agendamentoCount = _agendamentoService.GetCount();
+            return _agendamentoCount;
         }
 
         // GET: AgendamentoController/Create
@@ -78,7 +86,6 @@ namespace DoeVidaWeb.Controllers
             var _agendamento = _agendamentoService.Get(id);
             _agendamento.Status = "ATENDIDO";
             _agendamentoService.Edit(_agendamento);
-            Console.WriteLine(_agendamento);
             return "Atendido com sucesso!";
         }
 

@@ -118,6 +118,16 @@
     </div>
 
 </div>
+<div class="pagination-container">
+    <div class="pagination-count-container">
+        <div class="pagination-count">
+            1
+        </div>
+            <span class="pagination-txt-count">DE 12</span>
+    </div>
+    <a style="margin-right: 10px;" class="pagination-btn"><i class="fas fa-chevron-left"></i> </a>
+    <a class="pagination-btn"><i class="fas fa-chevron-right"></i> </a>
+</div>
 
 <script>
     var scheduleAux; 
@@ -160,8 +170,7 @@
             url: "Agendamento/EditStatus/" + scheduleAux,
             data: {},
             success: function (result, status, xhr) {
-                console.log(result)
-                alert('Success')
+                alert(result)
             },
             error: function (xhr, status, error) {
                 console.log('ERRO AJAX:',status);
