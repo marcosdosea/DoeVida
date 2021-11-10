@@ -22,13 +22,6 @@ namespace DoeVidaWeb.Controllers
             _agendamentoService = agendamentoService;
             _mapper = mapper;
         }
-        
-        // GET: AgendamentoController/
-        //public IActionResult Index()
-       // {
-            //ViewBag.currentPage = 0;
-          //  return View(GetAgendamentosList(0));
-        //}
 
 
         // GET: AgendamentoController/1
