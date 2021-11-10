@@ -140,6 +140,19 @@ input[type="submit"] {
     display:flex;
 }
 
+.button-outline{
+    border-color: var(--primary);
+    height: 50px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #59626D;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
+
+
 .pagination-container{
     display:flex;
     height: 70px;
