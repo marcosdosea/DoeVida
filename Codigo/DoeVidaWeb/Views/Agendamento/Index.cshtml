@@ -12,7 +12,7 @@
                     type="text" name="search" id="input-search" />
                 <i class="fas fa-search"></i>
             </div>
-            <a asp-action="Create" id="button-new">Novo agendamento</a>
+            <a asp-action="Create" id="button-new" data-bs-toggle="modal" data-bs-target="#exampleModal">Novo agendamento</a>
         </div>
         <table class="table">
             <thead>
@@ -124,8 +124,26 @@
         </div>
             <span class="pagination-txt-count">DE @(ViewBag.totalPages)</span>
     </div>
-    <a href="./@(ViewBag.currentPage-1)" style="margin-right: 10px;" class="pagination-btn"><i class="fas fa-chevron-left"></i> </a>
-    <a href="./@(ViewBag.currentPage+1)" class="pagination-btn"><i class="fas fa-chevron-right"></i> </a>
+    <a href="/@((ViewBag.currentPage == 0) ? "Agendamento/Index/" : "")@(ViewBag.currentPage - 1)" style="margin-right: 10px;" class="pagination-btn"><i class="fas fa-chevron-left"></i> </a>
+    <a href="/@((ViewBag.currentPage == 0) ? "Agendamento/Index/" : "")@(ViewBag.currentPage + 1)" class="pagination-btn"><i class="fas fa-chevron-right"></i> </a>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalCreate" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCreate">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
