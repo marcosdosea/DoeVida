@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core.Service
+{
+    public interface IAgendamentoService
+    {
+        void Edit(Agendamento agendamento);
+
+        int Insert(Agendamento agendamento);
+        Agendamento Get(int idAgendamento);
+        IEnumerable<AgendamentoListDTO> GetAll();
+        IEnumerable<AgendamentoListDTO> GetFirstTen(int page);
+        IEnumerable<Agendamento> GetAllOrderByName();
+        IEnumerable<Agendamento> GetByNameContained(string name);
+        int GetCount();
+        void Validate();
+
+        // todo: GetAgendaDisponivel
+    }
+}
