@@ -33,11 +33,10 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: ItemController/Details/5
-        public ActionResult Details(int id)
+        public Item Details(int id)
         {
             Item item = _itemService.Get(id);
-            ItemViewModel itemModel = _mapper.Map<ItemViewModel>(item);
-            return View(itemModel);
+            return item;
         }
 
         // GET: ItemController/Create

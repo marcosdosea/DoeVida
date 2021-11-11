@@ -11,11 +11,12 @@ namespace Core.Service
         void Edit(Agendamento agendamento);
 
         int Insert(Agendamento agendamento);
-        AgendamentoDetailsDTO GetForDetails(int idAgendamento);
         Agendamento Get(int idAgendamento);
         IEnumerable<AgendamentoListDTO> GetAll();
+        IEnumerable<AgendamentoListDTO> GetFirstTen(int page);
         IEnumerable<Agendamento> GetAllOrderByName();
         IEnumerable<Agendamento> GetByNameContained(string name);
+        int GetCount();
         void Validate();
 
         // todo: GetAgendaDisponivel

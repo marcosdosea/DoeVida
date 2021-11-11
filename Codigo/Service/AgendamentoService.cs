@@ -44,21 +44,54 @@ namespace Service
         /// <returns></returns>
         public IEnumerable<AgendamentoListDTO> GetAll()
         {
-            var query = from A in _context.Agendamento
+            var query = from Agendamento in _context.Agendamento
                         select new AgendamentoListDTO
                         {
-                            IdAgendamento = A.IdAgendamento,
-                            Data = A.Data,
-                            Tipo = A.Tipo,
-                            Status = A.Status,
-                            HorarioAgendamento = A.HorarioAgendamento,
-                            Descricao = A.Descricao,
-                            IdPessoa = A.IdPessoa,
-                            IdOrganizacao = A.IdOrganizacao,
-                            NomePessoa = A.IdPessoaNavigation.Nome
+                            IdAgendamento = Agendamento.IdAgendamento,
+                            Data = Agendamento.Data,
+                            Tipo = Agendamento.Tipo,
+                            Status = Agendamento.Status,
+                            HorarioAgendamento = Agendamento.HorarioAgendamento,
+                            Descricao = Agendamento.Descricao,
+                            IdPessoa = Agendamento.IdPessoa,
+                            IdOrganizacao = Agendamento.IdOrganizacao,
+                            NomePessoa = Agendamento.IdPessoaNavigation.Nome
                         };
             return query;
         }
+
+        /// <summary>
+        /// Obtér a quantidade de agendamentos.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount()
+        {
+            var query = (from Agendamento in _context.Agendamento
+                        select Agendamento.IdAgendamento).Count(); 
+            return query;
+        }
+
+        /// <summary>
+        /// Obtém 10 os Agendamentos
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<AgendamentoListDTO> GetFirstTen(int page)
+		{
+			var query = from Agendamento in _context.Agendamento
+                        select new AgendamentoListDTO
+                        {
+                            IdAgendamento = Agendamento.IdAgendamento,
+                            Data = Agendamento.Data,
+                            Tipo = Agendamento.Tipo,
+                            Status = Agendamento.Status,
+                            HorarioAgendamento = Agendamento.HorarioAgendamento,
+                            Descricao = Agendamento.Descricao,
+                            IdPessoa = Agendamento.IdPessoa,
+                            IdOrganizacao = Agendamento.IdOrganizacao,
+                            NomePessoa = Agendamento.IdPessoaNavigation.Nome
+                        };
+            return query.Take(10).Skip(page).ToList();
+		}
 
         /// <summary>
 		/// Obtém pelo identificador do agendamento
@@ -73,41 +106,14 @@ namespace Service
         }
 
         /// <summary>
-		/// Obtém pelo identificador do agendamento
-		/// </summary>
-		/// <param name="idAgendamento"></param>
-		/// <returns>Retorna um Agendamento para vizualizar detalhes</returns>
-        public AgendamentoDetailsDTO GetForDetails(int idAgendamento)
-        {
-            // todo: execption?
-            var query = from A in _context.Agendamento
-                        select new AgendamentoDetailsDTO
-                        {
-                            IdAgendamento = A.IdAgendamento,
-                            Data = A.Data,
-                            Tipo = A.Tipo,
-                            Status = A.Status,
-                            HorarioAgendamento = A.HorarioAgendamento,
-                            Descricao = A.Descricao,
-                            IdPessoa = A.IdPessoa,
-                            IdOrganizacao = A.IdOrganizacao,
-                            NomePessoa = A.IdPessoaNavigation.Nome,
-                            Telefone = A.IdPessoaNavigation.Telefone,
-                            DataNascimento = A.IdPessoaNavigation.DataNascimento,
-                            Email = A.IdPessoaNavigation.Email
-                        };
-            return query.FirstOrDefault();
-        }
-
-        /// <summary>
 		/// Obter todos os agendamentos ordenando pelo nome do doador
 		/// </summary>
 		/// <returns></returns>
 		public IEnumerable<Agendamento> GetAllOrderByName()
         {
-            var query = from A in _context.Agendamento
-                        orderby A.IdPessoaNavigation.Nome
-                        select A;
+            var query = from Agendamento in _context.Agendamento
+                        orderby Agendamento.IdPessoaNavigation.Nome
+                        select Agendamento;
             return query;
         }
 
@@ -118,9 +124,9 @@ namespace Service
 		/// <returns></returns>
         public IEnumerable<Agendamento> GetByNameContained(string name)
         {
-            var query = from A in _context.Agendamento
-                        where A.IdPessoaNavigation.Nome.Contains(name)
-                        select A;
+            var query = from Agendamento in _context.Agendamento
+                        where Agendamento.IdPessoaNavigation.Nome.Contains(name)
+                        select Agendamento;
             return query;
         }
 

@@ -23,20 +23,16 @@ namespace DoeVidaWeb.Controllers
             _mapper = mapper;
         }
 
-        // GET: AgendamentoController
-        public ActionResult Index()
-        {
-            var listAgendamentos = _agendamentoService.GetAll();
-            var listAgendamentosModel = _mapper.Map<List<AgendamentoListDTOViewModel>>(listAgendamentos);
-            return View(listAgendamentosModel);
-        }
-
-        // GET: AgendamentoController/Details/5
-        public ActionResult Details(int id)
-        {
-            AgendamentoDetailsDTO agendamento = _agendamentoService.GetForDetails(id);
-            AgendamentoDetailsDTOViewModel agendamentoModel = _mapper.Map<AgendamentoDetailsDTOViewModel>(agendamento);
-            return View(agendamentoModel);
+        // GET: AgendamentoController/1
+        
+        // id is pageCurrent
+        public ActionResult Index(int id)
+        {   
+            ViewBag.currentPage = id;
+            ViewBag.totalPages = GetTotalPages(_agendamentoService.GetCount());
+            var listAgendamentos = _agendamentoService.GetFirstTen(id);
+            var listAgendamentosViewModel = _mapper.Map<List<AgendamentoListDTOViewModel>>(listAgendamentos);
+            return View(listAgendamentosViewModel);
         }
 
         // GET: AgendamentoController/Create
@@ -78,6 +74,23 @@ namespace DoeVidaWeb.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-            
+
+        // POST: AgendamentoController/EditStatus/5
+        [HttpPost]
+        public string EditStatus(int id)
+        {
+            var _agendamento = _agendamentoService.Get(id);
+            _agendamento.Status = "ATENDIDO";
+            _agendamentoService.Edit(_agendamento);
+            return "Atendido com sucesso!";
+        }
+
+
+        private int GetTotalPages(int totalItens){
+            if (totalItens % 10 != 0){
+                return (totalItens / 10) + 1;
+            }
+            return totalItens / 10;
+        }
     }
 }
