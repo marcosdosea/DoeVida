@@ -23,7 +23,6 @@ namespace DoeVidaWeb.Controllers
             _mapper = mapper;
         }
 
-
         // GET: AgendamentoController/1
         
         // id is pageCurrent
@@ -93,6 +92,5 @@ namespace DoeVidaWeb.Controllers
             }
             return totalItens / 10;
         }
-
     }
 }

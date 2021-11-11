@@ -130,7 +130,7 @@ namespace Service
             return query;
         }
 
-                public void Validate()
+        public void Validate()
         {
             throw new NotImplementedException();
         }
