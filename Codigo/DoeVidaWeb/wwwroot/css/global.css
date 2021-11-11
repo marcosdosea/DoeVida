@@ -216,6 +216,12 @@ input[type="submit"] {
     font-weight: bold;
 }
 
+.form-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .form-horizontal {
     display: flex;
     flex-direction: row;
@@ -229,6 +235,13 @@ input[type="submit"] {
 
 .class-60 {
     width: 65% !important;
+}
+
+.modal-gp-input{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 100%;
 }
 
 .w-30 {
@@ -290,9 +303,15 @@ input[type="submit"] {
     margin: 10px 0;
 }
 
+
 .container-info-item {
     display: flex;
     flex-direction: column;
+}
+
+.container-center{
+    display: flex;
+    justify-content: center;
 }
 
 #sider {
