@@ -26,7 +26,7 @@ namespace DoeVidaWeb.Controllers.Tests
             // Arrange
             var _controller = InitializateWithMapperListDTO();
             // Act
-            var result = _controller.Index();
+            var result = _controller.Index(0);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
@@ -34,12 +34,6 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<AgendamentoListDTOViewModel>));
             List<AgendamentoListDTOViewModel> list = (List<AgendamentoListDTOViewModel>)viewResult.ViewData.Model;
             Assert.AreEqual(3, list.Count);
-        }
-
-        [TestMethod()]
-        public void DetailsTest()
-        {
-            Assert.Fail();
         }
 
 
@@ -79,8 +73,20 @@ namespace DoeVidaWeb.Controllers.Tests
 
         [TestMethod()]
         public void EditTest()
-        {
-            Assert.Fail();
+        {   
+            // Arrange
+            var _controller = InitializateWithMapperDefault();
+            var edited = GetNewAgendamento();
+            edited.Status = "Atendido";
+            // Act
+			var result = _controller.Edit(1, edited);
+
+			// Assert
+			Assert.IsInstanceOfType(result, typeof(ViewResult));
+			ViewResult viewResult = (ViewResult)result;
+			Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(AgendamentoViewModel));
+			AgendamentoViewModel agendamentoViewModel = (AgendamentoViewModel)viewResult.ViewData.Model;
+			Assert.AreEqual("Atendido", agendamentoViewModel.Status);
         }
 
         [TestMethod()]
@@ -199,10 +205,8 @@ namespace DoeVidaWeb.Controllers.Tests
             var result = _controller.EditStatus(1);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
-            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
-            Assert.IsNull(redirectToActionResult.ControllerName);
-            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+            Assert.IsInstanceOfType(result, typeof(String));
+            Assert.AreEqual("Atendido com sucesso!", result);
         }
     }
 }
