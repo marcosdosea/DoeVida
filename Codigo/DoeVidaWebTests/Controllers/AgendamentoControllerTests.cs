@@ -72,27 +72,35 @@ namespace DoeVidaWeb.Controllers.Tests
         }
 
         [TestMethod()]
-        public void EditTest()
+        public void EditTest_Get()
         {   
             // Arrange
             var _controller = InitializateWithMapperDefault();
-            var edited = GetNewAgendamento();
-            edited.Status = "Atendido";
             // Act
-			var result = _controller.Edit(1, edited);
+			var result = _controller.Edit(1);
 
 			// Assert
 			Assert.IsInstanceOfType(result, typeof(ViewResult));
 			ViewResult viewResult = (ViewResult)result;
 			Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(AgendamentoViewModel));
 			AgendamentoViewModel agendamentoViewModel = (AgendamentoViewModel)viewResult.ViewData.Model;
-			Assert.AreEqual("Atendido", agendamentoViewModel.Status);
+			Assert.AreEqual("Agendado", agendamentoViewModel.Status);
+            Assert.AreEqual(DateTime.Parse("2021-11-4"), agendamentoViewModel.Data);
         }
 
         [TestMethod()]
-        public void EditTest1()
+        public void EditTest_Post()
         {
-            Assert.Fail();
+            // Arrange
+            var _controller = InitializateWithMapperDefault();
+            // Act
+            var result = _controller.Edit(GetTargetAgendamentoViewModel().IdAgendamento, GetTargetAgendamentoViewModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
         private static IEnumerable<AgendamentoListDTO> GetTestAgendamento()
@@ -167,6 +175,20 @@ namespace DoeVidaWeb.Controllers.Tests
                 Tipo = "Remoto",
             };
         }
+        private static AgendamentoViewModel GetTargetAgendamentoViewModel()
+        {
+            return new AgendamentoViewModel
+            {
+                IdAgendamento = 1,
+                Data = DateTime.Parse("2021-11-4"),
+                Descricao = "Agendamento",
+                HorarioAgendamento = TimeSpan.Parse("6:12"),
+                IdOrganizacao = 253,
+                IdPessoa = 2,
+                Status = "Agendado",
+                Tipo = "Remoto",
+            };
+        }
 
         private AgendamentoController InitializateWithMapperListDTO()
         {
@@ -174,7 +196,7 @@ namespace DoeVidaWeb.Controllers.Tests
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new AgendamentoListDTOProfile())).CreateMapper();
 
-            mockService.Setup(service => service.GetAll())
+            mockService.Setup(service => service.GetFirstTen(0))
                 .Returns(GetTestAgendamento());
 
             return new AgendamentoController(mockService.Object, mapper);
