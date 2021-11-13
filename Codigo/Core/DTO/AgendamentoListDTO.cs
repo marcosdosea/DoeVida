@@ -1,9 +1,9 @@
 using System;
 namespace Core
 {
-	public class AgendamentoListDTO
-	{
-		public int IdAgendamento { get; set; }
+    public class AgendamentoListDTO
+    {
+        public int IdAgendamento { get; set; }
         public DateTime Data { get; set; }
         public string Tipo { get; set; }
         public string Status { get; set; }
@@ -12,6 +12,6 @@ namespace Core
         public int IdPessoa { get; set; }
         public int IdOrganizacao { get; set; }
 
-        public string NomePessoa {get; set;}
-	}
+        public string NomePessoa { get; set; }
+    }
 }
