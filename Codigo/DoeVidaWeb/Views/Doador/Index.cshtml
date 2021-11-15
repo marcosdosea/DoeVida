@@ -5,7 +5,6 @@
 }
 
 <div style="display: flex; flex-direction: row; width: 100%">
-
     <div id="main">
         <div id="header-action">
             <div id="search">
@@ -31,7 +30,9 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    if(item.Tipo == "DOADOR")
+                    {
+                        <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
@@ -44,6 +45,7 @@
                             <a class="icon-action clicavel" href="Doador/Delete/@item.IdPessoa"><i class="fas fa-trash-alt icon-action"></i></a>
                         </td>
                     </tr>
+                    }
                 }
             </tbody>
         </table>
@@ -114,12 +116,19 @@
 
 <script>
 
+    var windowWidth = window.innerWidth;
+
     function closeSider() {
+        if(windowWidth < 600){
+            document.getElementById('main').style.display = 'block';
+        }
         document.getElementById('main').style.width = '100%';
         document.getElementById('sider').style.display = 'none';
+
     }
 
     function ver(id) {
+
         $.ajax({
             type: "GET",
             url: "Doador/Details/" + id,
@@ -128,7 +137,13 @@
                 let data = new Date(result.dataNascimento);
                 let dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
                 let dataFormatada = dia + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
-                document.getElementById('main').style.width = '65%';
+                if(windowWidth < 600){
+                    document.getElementById('main').style.display = 'none';
+                    document.getElementById('sider').style.width = '100%';
+                    document.getElementById('sider').style.marginLeft = '20px';
+                    document.getElementById('sider').style.marginRight = '20px';
+                }
+                document.getElementById('main').style.width =  '65%';
                 document.getElementById('sider').style.display = 'block';
                 document.getElementById('nome-dados').innerText = result.nome;
                 document.getElementById('telefone-dados').innerText = result.telefone;
