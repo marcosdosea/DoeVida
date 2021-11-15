@@ -1,9 +1,5 @@
-﻿using Core;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DoeVidaWeb.ViewModels
 {
@@ -33,7 +29,7 @@ namespace DoeVidaWeb.ViewModels
         // Range(typeof(TimeSpan), "08:00", "15:00")
         public TimeSpan HorarioAgendamento { get; set; }
 
-        [Required(ErrorMessage ="Campo requerido"),
+        [Required(ErrorMessage = "Campo requerido"),
         StringLength(500, ErrorMessage = "Descrição excedeu 500 caracteres!")]
         public string Descricao { get; set; }
 
@@ -44,6 +40,6 @@ namespace DoeVidaWeb.ViewModels
         public int IdOrganizacao { get; set; }
 
         [Display(Name = "Nome")]
-        public string NomePessoa {get; set;}
+        public string NomePessoa { get; set; }
     }
 }

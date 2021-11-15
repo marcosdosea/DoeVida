@@ -2,12 +2,8 @@
 using Core;
 using Core.Service;
 using DoeVidaWeb.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
@@ -24,10 +20,10 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: AgendamentoController/1
-        
+
         // id is pageCurrent
         public ActionResult Index(int id)
-        {   
+        {
             ViewBag.currentPage = id;
             ViewBag.totalPages = GetTotalPages(_agendamentoService.GetCount());
             var listAgendamentos = _agendamentoService.GetFirstTen(id);
@@ -86,8 +82,10 @@ namespace DoeVidaWeb.Controllers
         }
 
 
-        private int GetTotalPages(int totalItens){
-            if (totalItens % 10 != 0){
+        private int GetTotalPages(int totalItens)
+        {
+            if (totalItens % 10 != 0)
+            {
                 return (totalItens / 10) + 1;
             }
             return totalItens / 10;

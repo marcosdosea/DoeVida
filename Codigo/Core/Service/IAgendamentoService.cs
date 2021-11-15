@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Core.Service
 {
@@ -14,8 +10,8 @@ namespace Core.Service
         Agendamento Get(int idAgendamento);
         IEnumerable<AgendamentoListDTO> GetAll();
         IEnumerable<AgendamentoListDTO> GetFirstTen(int page);
-        IEnumerable<Agendamento> GetAllOrderByName();
-        IEnumerable<Agendamento> GetByNameContained(string name);
+        IEnumerable<AgendamentoListDTO> GetAllOrderByName();
+        IEnumerable<AgendamentoListDTO> GetByNameContained(string name);
         int GetCount();
         void Validate();
 

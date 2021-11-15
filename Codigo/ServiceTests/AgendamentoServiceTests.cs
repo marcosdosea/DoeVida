@@ -57,9 +57,9 @@ namespace Service.Tests
                     IdAgendamento = 3,
                     Data = DateTime.Parse("2021-11-5"),
                     Descricao = "Agendamento",
-                    HorarioAgendamento = TimeSpan.Parse("6:12"),
+                    HorarioAgendamento = TimeSpan.Parse("6:30"),
                     IdOrganizacao = 253,
-                    IdPessoa = 2,
+                    IdPessoa = 3,
                     Status = "Agendado",
                     Tipo = "Remoto",
                 },
@@ -67,7 +67,8 @@ namespace Service.Tests
 
             _context.AddRange(agendamentos);
             _context.Add(new Pessoa() { IdPessoa = 2, Cpf = "12345678", Email = "test@test", Nome = "UserTest" });
-            _context.Add(new Organizacao() { IdOrganizacao = 253});
+            _context.Add(new Pessoa() { IdPessoa = 3, Cpf = "12385678", Email = "atest@test", Nome = "AUserTest" });
+            _context.Add(new Organizacao() { IdOrganizacao = 253 });
             _context.SaveChanges();
 
             _agendamentoService = new AgendamentoService(_context);
@@ -128,21 +129,37 @@ namespace Service.Tests
         }
 
         [TestMethod()]
+        public void GetCountTest()
+        {
+            var countAgendamento = _agendamentoService.GetCount();
+            Assert.IsNotNull(countAgendamento);
+            Assert.AreEqual(3, countAgendamento);
+        }
+
+        [TestMethod()]
         public void GetAllOrderByNameTest()
         {
-            Assert.Fail();
+            // Act
+            var listaAgendamento = _agendamentoService.GetAllOrderByName();
+            // Assert
+            Assert.IsInstanceOfType(listaAgendamento, typeof(IEnumerable<AgendamentoListDTO>));
+            Assert.IsNotNull(listaAgendamento);
+            Assert.AreEqual(3, listaAgendamento.Count());
+            Assert.AreEqual(3, listaAgendamento.First().IdAgendamento);
+            Assert.AreEqual(3, listaAgendamento.First().IdPessoa);
         }
 
         [TestMethod()]
         public void GetByNameContainedTest()
         {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ValidateTest()
-        {
-            Assert.Fail();
+            // Act
+            var listaAgendamento = _agendamentoService.GetByNameContained("AUser");
+            // Assert
+            Assert.IsInstanceOfType(listaAgendamento, typeof(IEnumerable<AgendamentoListDTO>));
+            Assert.IsNotNull(listaAgendamento);
+            Assert.AreEqual(1, listaAgendamento.Count());
+            Assert.AreEqual(3, listaAgendamento.First().IdAgendamento);
+            Assert.AreEqual(3, listaAgendamento.First().IdPessoa);
         }
     }
 }

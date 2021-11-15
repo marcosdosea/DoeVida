@@ -26,7 +26,7 @@ namespace DoeVidaWeb.Controllers.Tests
             // Arrange
             var _controller = InitializateWithMapperListDTO();
             // Act
-            var result = _controller.Index();
+            var result = _controller.Index(0);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
@@ -34,12 +34,6 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<AgendamentoListDTOViewModel>));
             List<AgendamentoListDTOViewModel> list = (List<AgendamentoListDTOViewModel>)viewResult.ViewData.Model;
             Assert.AreEqual(3, list.Count);
-        }
-
-        [TestMethod()]
-        public void DetailsTest()
-        {
-            Assert.Fail();
         }
 
 
@@ -78,15 +72,35 @@ namespace DoeVidaWeb.Controllers.Tests
         }
 
         [TestMethod()]
-        public void EditTest()
-        {
-            Assert.Fail();
+        public void EditTest_Get()
+        {   
+            // Arrange
+            var _controller = InitializateWithMapperDefault();
+            // Act
+			var result = _controller.Edit(1);
+
+			// Assert
+			Assert.IsInstanceOfType(result, typeof(ViewResult));
+			ViewResult viewResult = (ViewResult)result;
+			Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(AgendamentoViewModel));
+			AgendamentoViewModel agendamentoViewModel = (AgendamentoViewModel)viewResult.ViewData.Model;
+			Assert.AreEqual("Agendado", agendamentoViewModel.Status);
+            Assert.AreEqual(DateTime.Parse("2021-11-4"), agendamentoViewModel.Data);
         }
 
         [TestMethod()]
-        public void EditTest1()
+        public void EditTest_Post()
         {
-            Assert.Fail();
+            // Arrange
+            var _controller = InitializateWithMapperDefault();
+            // Act
+            var result = _controller.Edit(GetTargetAgendamentoViewModel().IdAgendamento, GetTargetAgendamentoViewModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
         private static IEnumerable<AgendamentoListDTO> GetTestAgendamento()
@@ -161,6 +175,20 @@ namespace DoeVidaWeb.Controllers.Tests
                 Tipo = "Remoto",
             };
         }
+        private static AgendamentoViewModel GetTargetAgendamentoViewModel()
+        {
+            return new AgendamentoViewModel
+            {
+                IdAgendamento = 1,
+                Data = DateTime.Parse("2021-11-4"),
+                Descricao = "Agendamento",
+                HorarioAgendamento = TimeSpan.Parse("6:12"),
+                IdOrganizacao = 253,
+                IdPessoa = 2,
+                Status = "Agendado",
+                Tipo = "Remoto",
+            };
+        }
 
         private AgendamentoController InitializateWithMapperListDTO()
         {
@@ -168,7 +196,7 @@ namespace DoeVidaWeb.Controllers.Tests
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new AgendamentoListDTOProfile())).CreateMapper();
 
-            mockService.Setup(service => service.GetAll())
+            mockService.Setup(service => service.GetFirstTen(0))
                 .Returns(GetTestAgendamento());
 
             return new AgendamentoController(mockService.Object, mapper);
@@ -199,10 +227,8 @@ namespace DoeVidaWeb.Controllers.Tests
             var result = _controller.EditStatus(1);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
-            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
-            Assert.IsNull(redirectToActionResult.ControllerName);
-            Assert.AreEqual("Index", redirectToActionResult.ActionName);
+            Assert.IsInstanceOfType(result, typeof(String));
+            Assert.AreEqual("Atendido com sucesso!", result);
         }
     }
 }
