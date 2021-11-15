@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DoeVidaWeb.ViewModels
 {
     public class OrganizacaoViewModel
-    {   
-        [Display(Name="Código")]
+    {
+        [Display(Name = "Código")]
         [Key]
         public int IdOrganizacao { get; set; }
 
-        [Display(Name ="Organização")]
-        [Required(ErrorMessage ="Campo requerido")]
-        [StringLength(100, MinimumLength =5, ErrorMessage ="Nome da organização deve ter entre 5 - 100 caracteres.")]
+        [Display(Name = "Organização")]
+        [Required(ErrorMessage = "Campo requerido")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Nome da organização deve ter entre 5 - 100 caracteres.")]
         public string NomeOrganizacao { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
@@ -28,7 +24,7 @@ namespace DoeVidaWeb.ViewModels
         public string Bairro { get; set; }
         [Required(ErrorMessage = "Campo requerido")]
         public string Logradouro { get; set; }
-     
+
         public string Complemento { get; set; }
 
         [Display(Name = "Numero de Endereço")]

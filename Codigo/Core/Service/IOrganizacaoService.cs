@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Service
 {
@@ -12,7 +9,6 @@ namespace Core.Service
 
         int Insert(Organizacao organizacao);
 
-        IQueryable<Organizacao> GetQuery();
         Organizacao Get(int idOrganizacao);
         IEnumerable<Organizacao> GetAll();
         IEnumerable<Organizacao> GetAllOrderByName();
