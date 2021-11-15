@@ -73,7 +73,7 @@ namespace DoeVidaWeb.Controllers.Tests
         public void CreateTest()
         {
             // Act
-            var result = controller.Create(getNewDoador());
+            var result = controller.Create(GetNewDoador());
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
@@ -82,7 +82,7 @@ namespace DoeVidaWeb.Controllers.Tests
         public void CreateTest_Valid()
         {
             // Act
-            var result = controller.Create(getNewDoador());
+            var result = controller.Create(GetNewDoador());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -98,7 +98,7 @@ namespace DoeVidaWeb.Controllers.Tests
             controller.ModelState.AddModelError("CPF", "Campo requerido");
 
             // Act
-            var result = controller.Create(getNewDoador());
+            var result = controller.Create(GetNewDoador());
 
             // Assert
             Assert.AreEqual(1, controller.ModelState.ErrorCount);
@@ -127,7 +127,7 @@ namespace DoeVidaWeb.Controllers.Tests
         public void EditTest_Post()
         {
             // Act
-            var result = controller.Edit(GetTargetOrganizacaoViewModel().IdPessoa, GetTargetOrganizacaoViewModel());
+            var result = controller.Edit(GetTargetDoadorViewModel().IdPessoa, GetTargetDoadorViewModel());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -156,7 +156,7 @@ namespace DoeVidaWeb.Controllers.Tests
         public void DeleteTest_Post()
         {
             // Act
-            var result = controller.Delete(GetTargetOrganizacaoViewModel().IdPessoa, GetTargetOrganizacaoViewModel());
+            var result = controller.Delete(GetTargetDoadorViewModel().IdPessoa, GetTargetDoadorViewModel());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -165,7 +165,7 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-        private static Pessoa getNewDoador()
+        private static Pessoa GetNewDoador()
         {
             return new Pessoa
             {
@@ -214,7 +214,7 @@ namespace DoeVidaWeb.Controllers.Tests
             };
         }
 
-        private static Pessoa GetTargetOrganizacaoViewModel()
+        private static Pessoa GetTargetDoadorViewModel()
         {
             return new Pessoa
             {
