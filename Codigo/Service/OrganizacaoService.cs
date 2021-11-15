@@ -3,7 +3,6 @@ using Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Service
 {
@@ -48,17 +47,6 @@ namespace Service
             _context.SaveChanges();
         }
 
-        /// <summary>
-		/// Consulta genérica aos dados da organizaçao
-		/// </summary>
-		/// <returns></returns>
-		public IQueryable<Organizacao> GetQuery()
-        {
-            //IQueryable<Organizacao> listaOrganizacao = _context.Organizacao;
-            var query = from organizacao in _context.Organizacao
-                        select organizacao;
-            return query;
-        }
 
         /// <summary>
         /// Obtém todas as Organizacoes
@@ -66,7 +54,9 @@ namespace Service
         /// <returns></returns>
         public IEnumerable<Organizacao> GetAll()
         {
-            return GetQuery();
+            var query = from organizacao in _context.Organizacao
+                        select organizacao;
+            return query;
         }
 
         /// <summary>
