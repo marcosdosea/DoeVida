@@ -43,7 +43,7 @@ a{
 }
 
 #input-search {
-    border: none;
+    border: none!important;
     background: transparent;
     height: 50px;
     width: 100%;
@@ -367,7 +367,7 @@ input[type="submit"] {
         width: 100%;
     }
 
-    main {
+    #main {
         padding: 0 20px;
         width: 100%;
     }
@@ -381,7 +381,7 @@ input[type="submit"] {
     .icon-action {
         font-size: 20px;
         margin: 0;
-        margin-bottom: 17px;
+        margin-bottom: 15px;
     }
 
     .form-horizontal {

@@ -4,119 +4,95 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<span class="title">Excluir doador</span>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>DoadorViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdPessoa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdPessoa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cep)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cep)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Uf)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Uf)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cidade)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cidade)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Bairro)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Bairro)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Logradouro)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Logradouro)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Complemento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Complemento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroEndereco)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroEndereco)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cpf)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cpf)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataNascimento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <div class="col-md-4 max-width">
+
+        <span class="title-section">Dados pessoais</span>
+
+        <div class="form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <p> @Html.DisplayFor(model => model.Nome)</p>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <p> @Html.DisplayFor(model => model.Email)</p>
+        </div>
+
+        <div class="form-horizontal">
+
+            <div class="form-group max-width">
+                <label asp-for="Cpf" class="control-label">CPF</label>
+                <p> @Html.DisplayFor(model => model.Cpf)</p>
+            </div>
+
+            <div class="form-group max-width p-30">
+                <label asp-for="DataNascimento" class="control-label">Data de nascimento</label>
+                <p> @Html.DisplayFor(model => model.DataNascimento)</p>
+            </div>
+
+            <div class="form-group max-width">
+                <label asp-for="Telefone" class="control-label">Telefone</label>
+                <p> @Html.DisplayFor(model => model.Telefone)</p>
+            </div>
+        </div>
+
+        <span class="title-section">Endereço</span>
+
+        <div class="form-horizontal">
+
+            <div class="form-group w-30">
+                <label asp-for="Cep" class="control-label">CEP</label>
+                <p> @Html.DisplayFor(model => model.Cep)</p>
+            </div>
+
+            <div class="form-group class-60">
+                <label asp-for="Logradouro" class="control-label"></label>
+                <p> @Html.DisplayFor(model => model.Logradouro)</p>
+            </div>
+
+        </div>
+
+        <div class="form-horizontal">
+
+            <div class="form-group max-width">
+                <label asp-for="Uf" class="control-label">Estado</label>
+                <p> @Html.DisplayFor(model => model.Uf)</p>
+            </div>
+
+            <div class="form-group max-width p-30">
+                <label asp-for="Cidade" class="control-label"></label>
+                <p> @Html.DisplayFor(model => model.Cidade)</p>
+            </div>
+            <div class="form-group max-width">
+                <label asp-for="Bairro" class="control-label"></label>
+                <p> @Html.DisplayFor(model => model.Bairro)</p>
+            </div>
+        </div>
+
+
+        <div class="form-horizontal">
+
+            <div class="form-group class-60">
+                <label asp-for="Complemento" class="control-label">Complemento</label>
+                <p> @Html.DisplayFor(model => model.Complemento)</p>
+            </div>
+
+
+            <div class="form-group class-30">
+                <label asp-for="NumeroEndereco" class="control-label">Número</label>
+                <p> @Html.DisplayFor(model => model.NumeroEndereco)</p>
+            </div>
+
+        </div>
+
+        <form asp-action="Delete">
+            <div class="form-group form-horizontal" style="margin: 30px 0;">
+                <a id="btn-back" asp-action="Index">Voltar</a>
+                <input type="submit" value="Excluir" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
