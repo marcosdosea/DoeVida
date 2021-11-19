@@ -58,7 +58,7 @@ namespace DoeVidaWeb
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -66,6 +66,7 @@ namespace DoeVidaWeb
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "Doador",
                     pattern: "{controller=Doador}/{action=Index}/{id?}");

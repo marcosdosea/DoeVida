@@ -18,8 +18,6 @@ namespace DoeVidaWeb.Controllers.Tests
     [TestClass()]
     public class AgendamentoControllerTests
     {
-        private static AgendamentoController controller;
-
         [TestMethod()]
         public void IndexTest()
         {

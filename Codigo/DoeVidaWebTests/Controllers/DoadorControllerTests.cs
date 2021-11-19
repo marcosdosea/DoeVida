@@ -60,23 +60,11 @@ namespace DoeVidaWeb.Controllers.Tests
             var result = controller.Details(1);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult));
-            ViewResult viewResult = (ViewResult)result;
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DoadorViewModel));
-            DoadorViewModel doadorViewModel = (DoadorViewModel)viewResult.ViewData.Model;
-            Assert.AreEqual("Daniel Gomes", doadorViewModel.Nome);
-            Assert.AreEqual("1824873212", doadorViewModel.Cpf);
+            Assert.IsInstanceOfType(result, typeof(Pessoa));
+            Assert.AreEqual("Daniel Gomes", result.Nome);
+            Assert.AreEqual("1824873212", result.Cpf);
         }
 
-
-        [TestMethod()]
-        public void CreateTest()
-        {
-            // Act
-            var result = controller.Create(GetNewDoador());
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult));
-        }
 
         [TestMethod()]
         public void CreateTest_Valid()
@@ -119,7 +107,7 @@ namespace DoeVidaWeb.Controllers.Tests
             ViewResult viewResult = (ViewResult)result;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DoadorViewModel));
             DoadorViewModel doadorViewModel = (DoadorViewModel)viewResult.ViewData.Model;
-            Assert.AreEqual("Paula Lemos", doadorViewModel.Nome);
+            Assert.AreEqual("Daniel Gomes", doadorViewModel.Nome);
             Assert.AreEqual("1824873212", doadorViewModel.Cpf);
         }
 
@@ -147,9 +135,9 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DoadorViewModel));
-            OrganizacaoViewModel doadorViewModel = (DoadorViewModel)viewResult.ViewData.Model;
-            Assert.AreEqual("Diogo Gama", doadorViewModel.NomeOrganizacao);
-            Assert.AreEqual("1824873212", doadorViewModel.Cnpj);
+            DoadorViewModel doadorViewModel = (DoadorViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual("Daniel Gomes", doadorViewModel.Nome);
+            Assert.AreEqual("1824873212", doadorViewModel.Cpf);
         }
 
         [TestMethod()]
@@ -165,9 +153,9 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-        private static Pessoa GetNewDoador()
+        private static DoadorViewModel GetNewDoador()
         {
-            return new Pessoa
+            return new DoadorViewModel
             {
                 IdPessoa = 4,
                 Nome = "Daniel Gomes",
@@ -214,9 +202,9 @@ namespace DoeVidaWeb.Controllers.Tests
             };
         }
 
-        private static Pessoa GetTargetDoadorViewModel()
+        private static DoadorViewModel GetTargetDoadorViewModel()
         {
-            return new Pessoa
+            return new DoadorViewModel
             {
                 IdPessoa = 1,
                 Nome = "Daniel Gomes",
