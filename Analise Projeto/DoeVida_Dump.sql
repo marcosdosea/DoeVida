@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `__efmigrationshistory`
+--
+
+DROP TABLE IF EXISTS `__efmigrationshistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `__efmigrationshistory` (
+  `MigrationId` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ProductVersion` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`MigrationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `__efmigrationshistory`
+--
+
+LOCK TABLES `__efmigrationshistory` WRITE;
+/*!40000 ALTER TABLE `__efmigrationshistory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `__efmigrationshistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `agendamento`
 --
 
@@ -36,7 +59,7 @@ CREATE TABLE `agendamento` (
   KEY `fk_Agendamento_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Pessoa` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +68,205 @@ CREATE TABLE `agendamento` (
 
 LOCK TABLES `agendamento` WRITE;
 /*!40000 ALTER TABLE `agendamento` DISABLE KEYS */;
+INSERT INTO `agendamento` VALUES (1,'2021-11-03','REMOTO','AGENDADO','15:00:00','Agendamento',2,253),(2,'2021-11-30','REMOTO','AGENDADO','10:51:00','Agendamento',2,253);
 /*!40000 ALTER TABLE `agendamento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetroleclaims`
+--
+
+DROP TABLE IF EXISTS `aspnetroleclaims`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetroleclaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `RoleId` varchar(767) NOT NULL,
+  `ClaimType` text,
+  `ClaimValue` text,
+  PRIMARY KEY (`Id`),
+  KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`),
+  CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetroleclaims`
+--
+
+LOCK TABLES `aspnetroleclaims` WRITE;
+/*!40000 ALTER TABLE `aspnetroleclaims` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetroleclaims` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetroles`
+--
+
+DROP TABLE IF EXISTS `aspnetroles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetroles` (
+  `Id` varchar(767) NOT NULL,
+  `Name` varchar(256) DEFAULT NULL,
+  `NormalizedName` varchar(256) DEFAULT NULL,
+  `ConcurrencyStamp` text,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `RoleNameIndex` (`NormalizedName`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetroles`
+--
+
+LOCK TABLES `aspnetroles` WRITE;
+/*!40000 ALTER TABLE `aspnetroles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetroles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetuserclaims`
+--
+
+DROP TABLE IF EXISTS `aspnetuserclaims`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetuserclaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `UserId` varchar(767) NOT NULL,
+  `ClaimType` text,
+  `ClaimValue` text,
+  PRIMARY KEY (`Id`),
+  KEY `IX_AspNetUserClaims_UserId` (`UserId`),
+  CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetuserclaims`
+--
+
+LOCK TABLES `aspnetuserclaims` WRITE;
+/*!40000 ALTER TABLE `aspnetuserclaims` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserclaims` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetuserlogins`
+--
+
+DROP TABLE IF EXISTS `aspnetuserlogins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetuserlogins` (
+  `LoginProvider` varchar(128) NOT NULL,
+  `ProviderKey` varchar(128) NOT NULL,
+  `ProviderDisplayName` text,
+  `UserId` varchar(767) NOT NULL,
+  PRIMARY KEY (`LoginProvider`,`ProviderKey`),
+  KEY `IX_AspNetUserLogins_UserId` (`UserId`),
+  CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetuserlogins`
+--
+
+LOCK TABLES `aspnetuserlogins` WRITE;
+/*!40000 ALTER TABLE `aspnetuserlogins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserlogins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetuserroles`
+--
+
+DROP TABLE IF EXISTS `aspnetuserroles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetuserroles` (
+  `UserId` varchar(767) NOT NULL,
+  `RoleId` varchar(767) NOT NULL,
+  PRIMARY KEY (`UserId`,`RoleId`),
+  KEY `IX_AspNetUserRoles_RoleId` (`RoleId`),
+  CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetuserroles`
+--
+
+LOCK TABLES `aspnetuserroles` WRITE;
+/*!40000 ALTER TABLE `aspnetuserroles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserroles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetusers`
+--
+
+DROP TABLE IF EXISTS `aspnetusers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetusers` (
+  `Id` varchar(767) NOT NULL,
+  `UserName` varchar(256) DEFAULT NULL,
+  `NormalizedUserName` varchar(256) DEFAULT NULL,
+  `Email` varchar(256) DEFAULT NULL,
+  `NormalizedEmail` varchar(256) DEFAULT NULL,
+  `EmailConfirmed` bit(1) NOT NULL,
+  `PasswordHash` text,
+  `SecurityStamp` text,
+  `ConcurrencyStamp` text,
+  `PhoneNumber` text,
+  `PhoneNumberConfirmed` bit(1) NOT NULL,
+  `TwoFactorEnabled` bit(1) NOT NULL,
+  `LockoutEnd` timestamp NULL DEFAULT NULL,
+  `LockoutEnabled` bit(1) NOT NULL,
+  `AccessFailedCount` int NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
+  KEY `EmailIndex` (`NormalizedEmail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetusers`
+--
+
+LOCK TABLES `aspnetusers` WRITE;
+/*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aspnetusertokens`
+--
+
+DROP TABLE IF EXISTS `aspnetusertokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aspnetusertokens` (
+  `UserId` varchar(767) NOT NULL,
+  `LoginProvider` varchar(128) NOT NULL,
+  `Name` varchar(128) NOT NULL,
+  `Value` text,
+  PRIMARY KEY (`UserId`,`LoginProvider`,`Name`),
+  CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aspnetusertokens`
+--
+
+LOCK TABLES `aspnetusertokens` WRITE;
+/*!40000 ALTER TABLE `aspnetusertokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetusertokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -95,7 +316,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`idItem`),
   KEY `fk_Item_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Item_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,6 +325,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (1,'Pote','Recipiente',253,10,'DISPONIVEL');
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +392,7 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`idPessoa`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +401,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
+INSERT INTO `pessoa` VALUES (2,'idylicaro.se@hotmail.com','Idyl Icaro dos Santos','07504975582','2000-02-12','ATIVO','DOADOR','100','200','49500000','Avenida','103','Centro','Casa','SE','Itabaiana','79999632212');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +502,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-29  8:14:08
+-- Dump completed on 2021-11-19 11:02:48
