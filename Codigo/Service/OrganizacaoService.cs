@@ -66,7 +66,7 @@ namespace Service
         {
             var query = from Organizacao in _context.Organizacao
                         select Organizacao;
-            return query.Take(10).Skip(page).ToList();
+            return query.Take(10).Skip(page * 9).ToList();
         }
 
         /// <summary>
