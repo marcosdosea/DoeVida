@@ -14,6 +14,7 @@ namespace Core.Service
         IEnumerable<Organizacao> GetAllOrderByName();
         IEnumerable<Organizacao> GetByNameContained(string name);
         void Delete(int idOrganizacao);
+        int GetCount();
         void Validate();
     }
 }

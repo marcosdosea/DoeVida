@@ -47,6 +47,27 @@ namespace Service
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Obtér a quantidade de organizacao.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount()
+        {
+            var query = (from Organizacao in _context.Organizacao
+                         select Organizacao.IdOrganizacao).Count();
+            return query;
+        }
+
+        /// <summary>
+        /// Obtém 10 os Organizacaos
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Organizacao> GetFirstTen(int page)
+        {
+            var query = from Organizacao in _context.Organizacao
+                        select Organizacao;
+            return query.Take(10).Skip(page).ToList();
+        }
 
         /// <summary>
         /// Obtém todas as Organizacoes
