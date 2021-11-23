@@ -88,7 +88,7 @@ namespace Service
                             IdOrganizacao = Agendamento.IdOrganizacao,
                             NomePessoa = Agendamento.IdPessoaNavigation.Nome
                         };
-            return query.Take(10).Skip(page).ToList();
+            return query.Take(10).Skip(page * 9).ToList();
         }
 
         /// <summary>
