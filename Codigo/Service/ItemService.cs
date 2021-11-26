@@ -60,7 +60,22 @@ namespace Service
             _context.Update(item);
             _context.SaveChanges();
         }
-
+        public IEnumerable<ItemListDTO> GetDTO(int id) 
+        {
+            var item = from Item in _context.Item
+                       where Item.IdItem.Equals(id)
+                        select new ItemListDTO
+                        {
+                            IdItem = Item.IdItem,
+                            IdOrganizacao = Item.IdOrganizacao,
+                            Nome = Item.Nome,
+                            Quantidade = Item.Quantidade,
+                            Status = Item.Status,
+                            Tipo = Item.Tipo,
+                            NomeOrganizacao = Item.IdOrganizacaoNavigation.NomeOrganizacao
+                        };
+            return item;
+        }
         /// <summary>
         /// Obtém todas os Iten
         /// </summary>

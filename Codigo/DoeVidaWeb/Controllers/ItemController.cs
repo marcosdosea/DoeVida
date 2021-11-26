@@ -4,6 +4,7 @@ using Core.Service;
 using DoeVidaWeb.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace DoeVidaWeb.Controllers
 {
     public class ItemController : Controller
     {
-
         IItemService _itemService;
         IMapper _mapper;
 
@@ -33,9 +33,11 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: ItemController/Details/5
-        public Item Details(int id)
+        public IEnumerable<ItemListDTO> Details(int id) 
         {
-            Item item = _itemService.Get(id);
+             var item = _itemService.GetDTO(id);
+
+
             return item;
         }
 
