@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
@@ -114,9 +115,10 @@ namespace DoeVidaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RegisterAsync(DoadorViewModel doadorModel)
         {
+            string returnUrl = null;
             if (ModelState.IsValid)
             {
-                
+                returnUrl ??= Url.Content("~/");
                 var user = new Usuario { UserName = doadorModel.Email, Email = doadorModel.Email };
                 var result = await _userManager.CreateAsync(user, doadorModel.Password);
                 if (result.Succeeded)
@@ -127,14 +129,23 @@ namespace DoeVidaWeb.Controllers
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code},
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-
+                    var htmlEmailConfirmationResult = HtmlEncoder.Default.Encode(callbackUrl);
                     doadorModel.IdUser = user.Id;
                     var doador = _mapper.Map<Pessoa>(doadorModel);
                     _doadorService.Insert(doador);
 
+                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    {
+                        return RedirectToPage("/Identity/Account/RegisterConfirmation", new { email = doadorModel.Email, returnUrl = returnUrl });
+                    }
+                    else
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
+                    }
                 }
 
             }

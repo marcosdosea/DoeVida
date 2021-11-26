@@ -16,15 +16,7 @@ namespace Core
         }
 
         public virtual DbSet<Agendamento> Agendamento { get; set; }
-        public virtual DbSet<Aspnetroleclaims> Aspnetroleclaims { get; set; }
-        public virtual DbSet<Aspnetroles> Aspnetroles { get; set; }
-        public virtual DbSet<Aspnetuserclaims> Aspnetuserclaims { get; set; }
-        public virtual DbSet<Aspnetuserlogins> Aspnetuserlogins { get; set; }
-        public virtual DbSet<Aspnetuserroles> Aspnetuserroles { get; set; }
-        public virtual DbSet<Aspnetusers> Aspnetusers { get; set; }
-        public virtual DbSet<Aspnetusertokens> Aspnetusertokens { get; set; }
         public virtual DbSet<Comentario> Comentario { get; set; }
-        public virtual DbSet<Efmigrationshistory> Efmigrationshistory { get; set; }
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Organizacao> Organizacao { get; set; }
         public virtual DbSet<Pessoa> Pessoa { get; set; }
@@ -97,173 +89,6 @@ namespace Core
                     .HasConstraintName("fk_Agendamento_Pessoa");
             });
 
-            modelBuilder.Entity<Aspnetroleclaims>(entity =>
-            {
-                entity.ToTable("aspnetroleclaims");
-
-                entity.HasIndex(e => e.RoleId)
-                    .HasName("IX_AspNetRoleClaims_RoleId");
-
-                entity.Property(e => e.RoleId)
-                    .IsRequired()
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Aspnetroleclaims)
-                    .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_AspNetRoleClaims_AspNetRoles_RoleId");
-            });
-
-            modelBuilder.Entity<Aspnetroles>(entity =>
-            {
-                entity.ToTable("aspnetroles");
-
-                entity.HasIndex(e => e.NormalizedName)
-                    .HasName("RoleNameIndex")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).IsUnicode(false);
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.NormalizedName)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Aspnetuserclaims>(entity =>
-            {
-                entity.ToTable("aspnetuserclaims");
-
-                entity.HasIndex(e => e.UserId)
-                    .HasName("IX_AspNetUserClaims_UserId");
-
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Aspnetuserclaims)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_AspNetUserClaims_AspNetUsers_UserId");
-            });
-
-            modelBuilder.Entity<Aspnetuserlogins>(entity =>
-            {
-                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey })
-                    .HasName("PRIMARY");
-
-                entity.ToTable("aspnetuserlogins");
-
-                entity.HasIndex(e => e.UserId)
-                    .HasName("IX_AspNetUserLogins_UserId");
-
-                entity.Property(e => e.LoginProvider)
-                    .HasMaxLength(128)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProviderKey)
-                    .HasMaxLength(128)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Aspnetuserlogins)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_AspNetUserLogins_AspNetUsers_UserId");
-            });
-
-            modelBuilder.Entity<Aspnetuserroles>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.RoleId })
-                    .HasName("PRIMARY");
-
-                entity.ToTable("aspnetuserroles");
-
-                entity.HasIndex(e => e.RoleId)
-                    .HasName("IX_AspNetUserRoles_RoleId");
-
-                entity.Property(e => e.UserId).IsUnicode(false);
-
-                entity.Property(e => e.RoleId).IsUnicode(false);
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Aspnetuserroles)
-                    .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_AspNetUserRoles_AspNetRoles_RoleId");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Aspnetuserroles)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_AspNetUserRoles_AspNetUsers_UserId");
-            });
-
-            modelBuilder.Entity<Aspnetusers>(entity =>
-            {
-                entity.ToTable("aspnetusers");
-
-                entity.HasIndex(e => e.NormalizedEmail)
-                    .HasName("EmailIndex");
-
-                entity.HasIndex(e => e.NormalizedUserName)
-                    .HasName("UserNameIndex")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).IsUnicode(false);
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.EmailConfirmed).HasColumnType("bit(1)");
-
-                entity.Property(e => e.LockoutEnabled).HasColumnType("bit(1)");
-
-                entity.Property(e => e.NormalizedEmail)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.NormalizedUserName)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PhoneNumberConfirmed).HasColumnType("bit(1)");
-
-                entity.Property(e => e.TwoFactorEnabled).HasColumnType("bit(1)");
-
-                entity.Property(e => e.UserName)
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Aspnetusertokens>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name })
-                    .HasName("PRIMARY");
-
-                entity.ToTable("aspnetusertokens");
-
-                entity.Property(e => e.UserId).IsUnicode(false);
-
-                entity.Property(e => e.LoginProvider)
-                    .HasMaxLength(128)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(128)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Aspnetusertokens)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_AspNetUserTokens_AspNetUsers_UserId");
-            });
-
             modelBuilder.Entity<Comentario>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
@@ -301,23 +126,6 @@ namespace Core
                     .HasForeignKey(d => d.IdSolicitacao)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Comentario_Solicitacao1");
-            });
-
-            modelBuilder.Entity<Efmigrationshistory>(entity =>
-            {
-                entity.HasKey(e => e.MigrationId)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("__efmigrationshistory");
-
-                entity.Property(e => e.MigrationId)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProductVersion)
-                    .IsRequired()
-                    .HasMaxLength(32)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Item>(entity =>
@@ -553,10 +361,6 @@ namespace Core
                     .HasMaxLength(2)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdUserNavigation)
-                    .WithOne(p => p.Pessoa)
-                    .HasForeignKey<Pessoa>(d => d.IdUser)
-                    .HasConstraintName("fk_pessoa_aspnetuser");
             });
 
             modelBuilder.Entity<Solicitacao>(entity =>
