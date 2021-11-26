@@ -19,5 +19,6 @@ namespace Core
 
         public virtual Organizacao IdOrganizacaoNavigation { get; set; }
         public virtual ICollection<Solicitacaoitem> Solicitacaoitem { get; set; }
+        public string NomeOrganizacao { get; set; }
     }
 }

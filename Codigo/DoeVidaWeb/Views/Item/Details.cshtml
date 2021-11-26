@@ -1,4 +1,4 @@
-﻿@model DoeVidaWeb.ViewModels.ItemViewModel
+﻿@model DoeVidaWeb.ViewModels.ItemListDTOViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -29,10 +29,10 @@
             @Html.DisplayFor(model => model.Tipo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdOrganizacao)
+            @Html.DisplayNameFor(model => model.NomeOrganizacao)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdOrganizacao)
+            @Html.DisplayFor(model => model.NomeOrganizacao)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Quantidade)

@@ -28,8 +28,8 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Index()
         {
             var listItens = _itemService.GetAll();
-            var listItensModel = _mapper.Map<List<ItemViewModel>>(listItens);
-            return View(listItensModel);
+            var listItensDTOModel = _mapper.Map<List<ItemListDTOViewModel>>(listItens);
+            return View(listItensDTOModel);
         }
 
         // GET: ItemController/Details/5
@@ -61,7 +61,7 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Edit(int id)
         {
             Item item = _itemService.Get(id);
-            ItemViewModel itemModel = _mapper.Map<ItemViewModel>(item);
+            ItemListDTOViewModel itemModel = _mapper.Map<ItemListDTOViewModel>(item);
             return View(itemModel);
         }
 

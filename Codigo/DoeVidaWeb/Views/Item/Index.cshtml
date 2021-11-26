@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DoeVidaWeb.ViewModels.ItemViewModel>
+﻿@model IEnumerable<DoeVidaWeb.ViewModels.ItemListDTOViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.IdOrganizacao)
+                        @Html.DisplayNameFor(model => model.NomeOrganizacao)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Tipo)
@@ -35,7 +35,7 @@
             @foreach (var item in Model) {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IdOrganizacao)
+                            @Html.DisplayFor(modelItem => item.NomeOrganizacao)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Tipo)
