@@ -1,0 +1,135 @@
+﻿@model DoeVidaWeb.ViewModels.DoadorRegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-4 max-width">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <span class="title-section">Dados pessoais</span>
+
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" placeholder="Digite o nome do doador" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="form-group class-60">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" placeholder="Digite o email do doador" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="form-group max-width">
+                    <label asp-for="Password" class="control-label">Password</label>
+                    <input asp-for="Password" placeholder="Digite a senha do doador" class="form-control"
+                            minlength="6" maxlength="100" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group max-width">
+                    <label asp-for="ConfirmPassword" class="control-label">ConfirmPassword</label>
+                    <input asp-for="ConfirmPassword" placeholder="Digite novamente a senha do doador" class="form-control"
+                            minlength="6" maxlength="100" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+
+                <div class="form-group max-width">
+                    <label asp-for="Cpf" class="control-label">CPF</label>
+                    <input asp-for="Cpf" placeholder="Digite o cpf do doador" class="form-control"
+                           onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc( this, mCPF )" />
+                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                </div>
+
+                <div class="form-group max-width p-30">
+                    <label asp-for="DataNascimento" class="control-label">Data de nascimento</label>
+                    <input asp-for="DataNascimento" class="form-control" />
+                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                </div>
+
+                <div class="form-group max-width">
+                    <label asp-for="Telefone" class="control-label">Telefone</label>
+                    <input asp-for="Telefone" placeholder="Digite o telefone do doador" class="form-control"
+                           id="telefone" maxlength="15" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <span class="title-section">Endereço</span>
+
+            <div class="form-horizontal">
+
+                <div class="form-group w-30">
+                    <label asp-for="Cep" class="control-label">CEP</label>
+                    <input asp-for="Cep" placeholder="Digite o cep do doador" class="form-control" value="" size="8" maxlength="8"
+               onkeyup="pesquisacep(this.value);" />
+                    <span asp-validation-for="Cep" class="text-danger"></span>
+                </div>
+
+                <div class="form-group class-60">
+                    <label asp-for="Logradouro" class="control-label"></label>
+                    <input asp-for="Logradouro" id="rua" placeholder="Digite o nome da sua rua" class="form-control" />
+                    <span asp-validation-for="Logradouro" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <input asp-for="Tipo" type="hidden" value="DOADOR" />
+            <input asp-for="Status" type="hidden" value="ATIVO" />
+
+            <div class="form-horizontal">
+
+                <div class="form-group max-width">
+                    <label asp-for="Uf" class="control-label">Estado</label>
+                    <input asp-for="Uf" placeholder="nome do estado" id="uf" class="form-control" />
+                    <span asp-validation-for="Uf" class="text-danger"></span>
+                </div>
+
+                <div class="form-group max-width p-30">
+                    <label asp-for="Cidade" class="control-label"></label>
+                    <input asp-for="Cidade" placeholder="nome da cidade" id="cidade" class="form-control" />
+                    <span asp-validation-for="Cidade" class="text-danger"></span>
+                </div>
+                <div class="form-group max-width">
+                    <label asp-for="Bairro" class="control-label"></label>
+                    <input asp-for="Bairro" id="bairro" placeholder="nome do bairro" class="form-control" />
+                    <span asp-validation-for="Bairro" class="text-danger"></span>
+                </div>
+            </div>
+
+            
+            <div class="form-horizontal">
+
+                <div class="form-group class-60">
+                    <label asp-for="Complemento" class="control-label">Complemento</label>
+                    <input asp-for="Complemento" placeholder="complemento" id="complemento" class="form-control" />
+                    <span asp-validation-for="Complemento" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group class-30">
+                    <label asp-for="NumeroEndereco" class="control-label">Número</label>
+                    <input asp-for="NumeroEndereco" placeholder="número" id="numero" class="form-control" />
+                    <span asp-validation-for="NumeroEndereco" class="text-danger"></span>
+                </div> 
+
+            </div>
+            <div class="form-group form-horizontal" style="margin: 30px 0;">
+                <a id="btn-back" asp-action="Index">Voltar</a>
+                <input type="submit" value="Cadastar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

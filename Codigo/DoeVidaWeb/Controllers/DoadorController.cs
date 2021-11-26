@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Core;
 using Core.Service;
+using DoeVidaWeb.Areas.Identity.Data;
 using DoeVidaWeb.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
@@ -11,11 +14,19 @@ namespace DoeVidaWeb.Controllers
     {
         IDoadorService _doadorService;
         IMapper _mapper;
+        private readonly SignInManager<Usuario> _signInManager;
+        private readonly UserManager<Usuario> _userManager;
 
-        public DoadorController(IDoadorService doadorService, IMapper mapper)
+        public DoadorController(
+            IDoadorService doadorService,
+            IMapper mapper,
+            UserManager<Usuario> userManager,
+            SignInManager<Usuario> signInManager)
         {
             _doadorService = doadorService;
             _mapper = mapper;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public ActionResult Index()
@@ -87,6 +98,31 @@ namespace DoeVidaWeb.Controllers
         public ActionResult Delete(int id, DoadorViewModel doadorModel)
         {
             _doadorService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: DoadorController/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: DoadorController/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterAsync(DoadorViewModel doadorModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var doador = _mapper.Map<Pessoa>(doadorModel);
+                var user = new Usuario { UserName = doadorModel.Email, Email = doadorModel.Email };
+                var result = await _userManager.CreateAsync(user, doadorModel.Password);
+                if (result.Succeeded)
+                {
+                    _doadorService.Insert(doador);
+                }
+
+            }
             return RedirectToAction(nameof(Index));
         }
     }

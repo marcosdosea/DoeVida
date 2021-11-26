@@ -13,7 +13,10 @@ namespace DoeVidaWeb.Mappers
     {
         public DoadorProfile()
         {
-            CreateMap<DoadorViewModel, Pessoa>().ReverseMap();
+            CreateMap<DoadorViewModel, Pessoa>()
+                .ForSourceMember( x => x.Password, y => y.DoNotValidate())
+                .ForSourceMember( x => x.ConfirmPassword, y => y.DoNotValidate())
+                .ReverseMap();
         }
     }
 }
