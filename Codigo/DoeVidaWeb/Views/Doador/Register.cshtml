@@ -45,7 +45,7 @@
                 <div class="form-group max-width">
                     <label asp-for="Cpf" class="control-label">CPF</label>
                     <input asp-for="Cpf" placeholder="Digite o cpf do doador" class="form-control"
-                           onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc( this, mCPF )" />
+                           maxlength="14" />
                     <span asp-validation-for="Cpf" class="text-danger"></span>
                 </div>
 
@@ -70,7 +70,7 @@
                 <div class="form-group w-30">
                     <label asp-for="Cep" class="control-label">CEP</label>
                     <input asp-for="Cep" placeholder="Digite o cep do doador" class="form-control" value="" size="8" maxlength="8"
-               onkeyup="pesquisacep(this.value);" />
+               onkeyup="search_cep(this.value);" />
                     <span asp-validation-for="Cep" class="text-danger"></span>
                 </div>
 

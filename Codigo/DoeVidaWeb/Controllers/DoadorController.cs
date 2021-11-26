@@ -5,7 +5,9 @@ using DoeVidaWeb.Areas.Identity.Data;
 using DoeVidaWeb.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
@@ -114,12 +116,25 @@ namespace DoeVidaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var doador = _mapper.Map<Pessoa>(doadorModel);
+                
                 var user = new Usuario { UserName = doadorModel.Email, Email = doadorModel.Email };
                 var result = await _userManager.CreateAsync(user, doadorModel.Password);
                 if (result.Succeeded)
-                {
+                {   
+                    //result = await _userManager.AddToRoleAsync(user, "Doador");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = user.Id, code = code},
+                        protocol: Request.Scheme);
+
+
+                    doadorModel.IdUser = user.Id;
+                    var doador = _mapper.Map<Pessoa>(doadorModel);
                     _doadorService.Insert(doador);
+
                 }
 
             }

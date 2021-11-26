@@ -59,7 +59,7 @@ CREATE TABLE `agendamento` (
   KEY `fk_Agendamento_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Pessoa` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,6 @@ CREATE TABLE `agendamento` (
 
 LOCK TABLES `agendamento` WRITE;
 /*!40000 ALTER TABLE `agendamento` DISABLE KEYS */;
-INSERT INTO `agendamento` VALUES (1,'2021-11-03','REMOTO','AGENDADO','15:00:00','Agendamento',2,253),(2,'2021-11-30','REMOTO','AGENDADO','10:51:00','Agendamento',2,253);
 /*!40000 ALTER TABLE `agendamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,10 +388,14 @@ CREATE TABLE `pessoa` (
   `uf` varchar(2) NOT NULL,
   `cidade` varchar(45) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
+  `idUser` varchar(767) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idPessoa`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`),
+  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
+  KEY `fk_pessoa_apsnetusers_idx` (`idUser`),
+  CONSTRAINT `fk_pessoa_aspnetuser` FOREIGN KEY (`idUser`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,7 +404,6 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (2,'idylicaro.se@hotmail.com','Idyl Icaro dos Santos','07504975582','2000-02-12','ATIVO','DOADOR','100','200','49500000','Avenida','103','Centro','Casa','SE','Itabaiana','79999632212');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,4 +504,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-19 11:02:48
+-- Dump completed on 2021-11-26 16:13:20
