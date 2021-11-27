@@ -21,8 +21,10 @@ namespace DoeVidaWeb.Controllers
 
 
         // GET: OrganizacaoController
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewBag.currentPage = id;
+            ViewBag.totalPages = GetTotalPages(_organizacaoService.GetCount());
             var listOrganizacoes = _organizacaoService.GetAll();
             var listOrganizacoesModel = _mapper.Map<List<OrganizacaoViewModel>>(listOrganizacoes);
             return View(listOrganizacoesModel);
@@ -91,6 +93,14 @@ namespace DoeVidaWeb.Controllers
         {
             _organizacaoService.Delete(id);
             return RedirectToAction(nameof(Index));
+        }
+        private int GetTotalPages(int totalItens)
+        {
+            if (totalItens % 10 != 0)
+            {
+                return (totalItens / 10) + 1;
+            }
+            return totalItens / 10;
         }
     }
 }

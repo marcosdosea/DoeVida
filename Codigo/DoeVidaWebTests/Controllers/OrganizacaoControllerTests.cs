@@ -41,7 +41,7 @@ namespace DoeVidaWeb.Controllers.Tests
         public void IndexTest()
         {
             // Act
-            var result = controller.Index();
+            var result = controller.Index(0);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));

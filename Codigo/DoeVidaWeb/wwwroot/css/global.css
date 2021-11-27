@@ -417,3 +417,11 @@ input[type="submit"] {
         margin-bottom: 30px;
     }
 }
+
+a.disabled {
+    pointer-events: none;
+} 
+
+div.disabled {
+    display: none;
+}

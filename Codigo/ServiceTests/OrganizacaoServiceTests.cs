@@ -133,6 +133,17 @@ namespace Service.Tests
             Assert.AreEqual(null, organizacao);
         }
 
+        [TestMethod()]
+        public void GetFirstTenTest()
+        {
+            // Act
+            var listaOrganizacao = _organizacaoService.GetFirstTen(0);
+            // Assert
+            Assert.IsInstanceOfType(listaOrganizacao, typeof(IEnumerable<Organizacao>));
+            Assert.IsNotNull(listaOrganizacao);
+            Assert.AreEqual(listaOrganizacao.Count() <= 10, true);
+            Assert.AreEqual(1, listaOrganizacao.First().IdOrganizacao);
+        }
 
         [TestMethod()]
         public void GetAllTest()
@@ -156,7 +167,13 @@ namespace Service.Tests
             Assert.AreEqual("1824873211", organizacao.Cnpj);
         }
 
-
+        [TestMethod()]
+        public void GetCountTest()
+        {
+            var countOrganizacao = _organizacaoService.GetCount();
+            Assert.IsNotNull(countOrganizacao);
+            Assert.AreEqual(3, countOrganizacao);
+        }
 
         [TestMethod()]
         public void GetAllOrderByNameTest()

@@ -47,4 +47,17 @@
             }
         </tbody>
     </table>
+
+    </div>
+    <div class="pagination-container @(ViewBag.totalPages <= 1 ? "disabled" : "")">
+        <div class="pagination-count-container">
+            <div class="pagination-count">
+                @(ViewBag.currentPage + 1)
+            </div>
+                <span class="pagination-txt-count">DE @(ViewBag.totalPages)</span>
+        </div>
+
+        <a href="/@((ViewBag.currentPage == 0) ? "Organizacao/Index/" : "")@(ViewBag.currentPage - 1)" style="margin-right: 10px;" class="pagination-btn @(ViewBag.currentPage == 0 ? "disabled" : "")"><i class="fas fa-chevron-left"></i> </a>
+        <a href="/@((ViewBag.currentPage == 0) ? "Organizacao/Index/" : "")@(ViewBag.currentPage + 1)" class="pagination-btn @(ViewBag.totalPages == (ViewBag.currentPage + 1) ? "disabled" : "")"><i class="fas fa-chevron-right"></i> </a>
+    </div>
 </div>
