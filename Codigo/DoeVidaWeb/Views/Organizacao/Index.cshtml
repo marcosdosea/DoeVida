@@ -49,7 +49,7 @@
     </table>
 
     </div>
-    <div class="pagination-container @(ViewBag.totalPages == 1 ? "disabled" : "")">
+    <div class="pagination-container @(ViewBag.totalPages <= 1 ? "disabled" : "")">
         <div class="pagination-count-container">
             <div class="pagination-count">
                 @(ViewBag.currentPage + 1)
