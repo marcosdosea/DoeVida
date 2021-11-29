@@ -14,7 +14,8 @@ namespace Core.Service
 
         IQueryable<Item> GetQuery();
         Item Get(int idItem);
-        IEnumerable<Item> GetAll();
+        IEnumerable<ItemListDTO> GetAll();
+        IEnumerable<ItemListDTO> GetDTO(int idItem);
         IEnumerable<Item> GetAllOrderByName();
         IEnumerable<Item> GetByNameContained(string name);
         void Delete(int idItem);
