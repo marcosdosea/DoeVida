@@ -15,7 +15,6 @@ namespace DoeVidaWeb.Mappers
         {
             CreateMap<DoadorViewModel, Pessoa>()
                 .ForSourceMember( x => x.Password, y => y.DoNotValidate())
-                .ForSourceMember( x => x.ConfirmPassword, y => y.DoNotValidate())
                 .ReverseMap();
         }
     }

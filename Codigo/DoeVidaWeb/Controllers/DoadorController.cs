@@ -125,6 +125,7 @@ namespace DoeVidaWeb.Controllers
                 {   
                     //result = await _userManager.AddToRoleAsync(user, "Doador");
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    await _userManager.ConfirmEmailAsync(user, code);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
