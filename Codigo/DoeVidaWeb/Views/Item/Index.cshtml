@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DoeVidaWeb.ViewModels.ItemViewModel>
+﻿@model IEnumerable<DoeVidaWeb.ViewModels.ItemListDTOViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.IdOrganizacao)
+                        @Html.DisplayNameFor(model => model.NomeOrganizacao)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Tipo)
@@ -33,9 +33,10 @@
             </thead>
             <tbody>
             @foreach (var item in Model) {
+                    <span>{@item.IdItem}</span>
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IdOrganizacao)
+                            @Html.DisplayFor(modelItem => item.NomeOrganizacao)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Tipo)
@@ -106,17 +107,19 @@
     }
 
     function ver(id) {
+        console.log(id);
         $.ajax({
             type: "GET",
             url: "Item/Details/" + id,
             data: {},
             success: function (result, status, xhr) {
-                console.log(result);
+                console.log(result[0]);
+                result = result[0];
                 document.getElementById('main').style.width = '65%';
                 document.getElementById('sider').style.display = 'block';
                 document.getElementById('nome-item').innerHTML = result.nome;
                 document.getElementById('tipo-item').innerHTML = result.tipo;
-                document.getElementById('nome-organizacao').innerHTML = result.idOrganizacao;
+                document.getElementById('nome-organizacao').innerHTML = result.nomeOrganizacao;
                 document.getElementById('quantidade').innerHTML = result.quantidade;
                 document.getElementById('status-item').innerHTML = result.status;
             },
