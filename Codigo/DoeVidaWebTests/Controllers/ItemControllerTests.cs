@@ -25,7 +25,7 @@ namespace DoeVidaWeb.Controllers.Tests
                 cfg.AddProfile(new ItemProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                .Returns(GetTestItem());
+                .Returns((IEnumerable<ItemListDTO>)GetTestItem());
 
             mockService.Setup(service => service.Get(1))
                 .Returns(GetTargetItem());

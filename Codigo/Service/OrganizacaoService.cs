@@ -62,11 +62,11 @@ namespace Service
         /// Obtém 10 os Organizacaos
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Organizacao> GetFirstTen(int page)
+        public IEnumerable<Organizacao> GetTakePage(int page, int take)
         {
             var query = from Organizacao in _context.Organizacao
                         select Organizacao;
-            return query.Take(10).Skip(page * 9).ToList();
+            return query.Take(take).Skip(page * (take-1)).ToList();
         }
 
         /// <summary>

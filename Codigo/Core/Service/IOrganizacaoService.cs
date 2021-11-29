@@ -10,7 +10,7 @@ namespace Core.Service
         int Insert(Organizacao organizacao);
 
         Organizacao Get(int idOrganizacao);
-        public IEnumerable<Organizacao> GetFirstTen(int page);
+        public IEnumerable<Organizacao> GetTakePage(int page, int take);
         IEnumerable<Organizacao> GetAll();
         IEnumerable<Organizacao> GetAllOrderByName();
         IEnumerable<Organizacao> GetByNameContained(string name);

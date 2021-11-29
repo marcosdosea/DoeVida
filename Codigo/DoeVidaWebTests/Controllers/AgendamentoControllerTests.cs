@@ -194,7 +194,7 @@ namespace DoeVidaWeb.Controllers.Tests
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new AgendamentoListDTOProfile())).CreateMapper();
 
-            mockService.Setup(service => service.GetFirstTen(0))
+            mockService.Setup(service => service.GetTakePage(0,10))
                 .Returns(GetTestAgendamento());
 
             return new AgendamentoController(mockService.Object, mapper);
