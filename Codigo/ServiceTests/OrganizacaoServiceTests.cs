@@ -137,7 +137,7 @@ namespace Service.Tests
         public void GetFirstTenTest()
         {
             // Act
-            var listaOrganizacao = _organizacaoService.GetFirstTen(0);
+            var listaOrganizacao = _organizacaoService.GetTakePage(0,10);
             // Assert
             Assert.IsInstanceOfType(listaOrganizacao, typeof(IEnumerable<Organizacao>));
             Assert.IsNotNull(listaOrganizacao);

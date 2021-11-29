@@ -73,7 +73,7 @@ namespace Service
         /// Obtém 10 os Agendamentos
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<AgendamentoListDTO> GetFirstTen(int page)
+        public IEnumerable<AgendamentoListDTO> GetTakePage(int page, int take)
         {
             var query = from Agendamento in _context.Agendamento
                         select new AgendamentoListDTO
@@ -88,7 +88,7 @@ namespace Service
                             IdOrganizacao = Agendamento.IdOrganizacao,
                             NomePessoa = Agendamento.IdPessoaNavigation.Nome
                         };
-            return query.Take(10).Skip(page * 9).ToList();
+            return query.Take(take).Skip(page * (take-1)).ToList();
         }
 
         /// <summary>

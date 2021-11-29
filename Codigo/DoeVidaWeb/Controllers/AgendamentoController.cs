@@ -26,7 +26,7 @@ namespace DoeVidaWeb.Controllers
         {
             ViewBag.currentPage = id;
             ViewBag.totalPages = GetTotalPages(_agendamentoService.GetCount());
-            var listAgendamentos = _agendamentoService.GetFirstTen(id);
+            var listAgendamentos = _agendamentoService.GetTakePage(id,10);
             var listAgendamentosViewModel = _mapper.Map<List<AgendamentoListDTOViewModel>>(listAgendamentos);
             return View(listAgendamentosViewModel);
         }
