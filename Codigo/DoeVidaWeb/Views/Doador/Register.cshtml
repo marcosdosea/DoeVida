@@ -1,10 +1,14 @@
 ﻿@model DoeVidaWeb.ViewModels.DoadorViewModel
 
 @{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
     ViewData["Title"] = "Register";
 }
 
 <div class="row">
+    <div style="display: flex;justify-content: center;margin: 50px 0px;">
+        <img src="~/assets/logo.svg" alt="logo"/>
+    </div>
     <div class="col-md-4 max-width">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
