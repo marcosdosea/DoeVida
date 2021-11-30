@@ -141,6 +141,10 @@ input[type="submit"] {
     display:flex;
 }
 
+.pr {
+    padding-right: 20px!important;
+}
+
 .button-outline{
     border-color: var(--primary);
     height: 50px;
@@ -244,10 +248,14 @@ input[type="submit"] {
     align-content: flex-start;
     width: 100%;
 }
-
+-
 .w-30 {
     width: 35%;
     padding-right: 30px;
+}
+
+.w-50 {
+    width: 50%!important
 }
 
 .max-width {
@@ -346,6 +354,7 @@ input[type="submit"] {
     border-radius: 10px 10px 0 0;
 }
 
+
 @media only screen and (max-width: 600px) {
 
     .navbar > .container {
@@ -358,9 +367,17 @@ input[type="submit"] {
         padding-bottom: 20px;
     }
 
+    .w-30 {
+        width: 100%!important;
+    }
+
     #button-new {
         width: 100%;
         margin-top: 20px;
+    }
+
+    .w-50 {
+        width: 100% !important
     }
 
     #search {

@@ -37,7 +37,7 @@ namespace DoeVidaWeb.Controllers.Tests
             mockService.Setup(service => service.Insert(It.IsAny<Pessoa>()))
                 .Verifiable();
 
-            controller = new DoadorController(mockService.Object, mapper);
+            controller = new DoadorController(mockService.Object, mapper, null, null);
         }
 
 

@@ -29,6 +29,7 @@ namespace Core
         public string Uf { get; set; }
         public string Cidade { get; set; }
         public string Telefone { get; set; }
+        public string IdUser { get; set; }
 
         public virtual ICollection<Agendamento> Agendamento { get; set; }
         public virtual ICollection<Comentario> Comentario { get; set; }

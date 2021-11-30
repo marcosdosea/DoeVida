@@ -26,6 +26,11 @@ namespace Core
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=DoeVida");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -256,6 +261,10 @@ namespace Core
                     .HasName("email_UNIQUE")
                     .IsUnique();
 
+                entity.HasIndex(e => e.IdUser)
+                    .HasName("idUser_UNIQUE")
+                    .IsUnique();
+
                 entity.Property(e => e.IdPessoa).HasColumnName("idPessoa");
 
                 entity.Property(e => e.Bairro)
@@ -295,6 +304,11 @@ namespace Core
                     .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdUser)
+                    .IsRequired()
+                    .HasColumnName("idUser")
                     .IsUnicode(false);
 
                 entity.Property(e => e.Latitude)
@@ -346,6 +360,7 @@ namespace Core
                     .HasColumnName("uf")
                     .HasMaxLength(2)
                     .IsUnicode(false);
+
             });
 
             modelBuilder.Entity<Solicitacao>(entity =>

@@ -59,7 +59,7 @@ CREATE TABLE `agendamento` (
   KEY `fk_Agendamento_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`),
   CONSTRAINT `fk_Agendamento_Pessoa` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,6 @@ CREATE TABLE `agendamento` (
 
 LOCK TABLES `agendamento` WRITE;
 /*!40000 ALTER TABLE `agendamento` DISABLE KEYS */;
-INSERT INTO `agendamento` VALUES (1,'2021-11-03','REMOTO','AGENDADO','15:00:00','Agendamento',2,253),(2,'2021-11-30','REMOTO','AGENDADO','10:51:00','Agendamento',2,253);
 /*!40000 ALTER TABLE `agendamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,6 +121,7 @@ CREATE TABLE `aspnetroles` (
 
 LOCK TABLES `aspnetroles` WRITE;
 /*!40000 ALTER TABLE `aspnetroles` DISABLE KEYS */;
+INSERT INTO `aspnetroles` VALUES ('1','DOADOR','DOADOR',NULL),('2','SERVIDOR','SERVIDOR',NULL),('3','MOTORISTA','MOTORISTA',NULL),('4','ADMINISTRADOR','ADMINISTRADOR',NULL);
 /*!40000 ALTER TABLE `aspnetroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,6 +240,7 @@ CREATE TABLE `aspnetusers` (
 
 LOCK TABLES `aspnetusers` WRITE;
 /*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
+INSERT INTO `aspnetusers` VALUES ('772f2b77-0a88-4476-8781-f68235ebdd6c','idylicaro.se@gmail.com','IDYLICARO.SE@GMAIL.COM','idylicaro.se@gmail.com','IDYLICARO.SE@GMAIL.COM',_binary '','AQAAAAEAACcQAAAAEGfcCjGW+xEho2u8z1mjEZ7KNrFi5GTAfLOjQb32WTSrW3NJJS9c7TaZWS7YUEM4WA==','AVQM3ZHRYXCNHDWJLI2SKAKXDXZ44C2C','e10d7ecc-174f-4e46-8691-a0ec63835aac',NULL,_binary '\0',_binary '\0',NULL,_binary '',0);
 /*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,10 +390,14 @@ CREATE TABLE `pessoa` (
   `uf` varchar(2) NOT NULL,
   `cidade` varchar(45) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
+  `idUser` varchar(767) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`idPessoa`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`),
+  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
+  KEY `fk_pessoa_apsnetusers_idx` (`idUser`),
+  CONSTRAINT `fk_pessoa_aspnetuser` FOREIGN KEY (`idUser`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,7 +406,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (2,'idylicaro.se@hotmail.com','Idyl Icaro dos Santos','07504975582','2000-02-12','ATIVO','DOADOR','100','200','49500000','Avenida','103','Centro','Casa','SE','Itabaiana','79999632212');
+INSERT INTO `pessoa` VALUES (10,'idylicaro.se@gmail.com','Idyl Icaro dos Santos','07504975567','2000-12-22','ATIVO','DOADOR',NULL,NULL,'49500329','Rua Francisco Bragança','1034','São Cristóvão','Casa','SE','Itabaiana','(79) 99963-2212','772f2b77-0a88-4476-8781-f68235ebdd6c');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,4 +507,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-19 11:02:48
+-- Dump completed on 2021-11-29 15:09:50
