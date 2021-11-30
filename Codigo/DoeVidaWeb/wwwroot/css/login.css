@@ -1,0 +1,74 @@
+﻿body {
+    margin: 0!important;
+}
+
+#memphis {
+    background: linear-gradient(-270deg, #0055C2 0%, #33EAFE 100%);
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#memphins-div {
+    width: 70%;
+}
+
+#memphins-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+#container-login {
+    background: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+#logo {
+    width: 100px;
+}
+
+form {
+    width: 100%;
+    padding: 0 20%;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    margin: 30px 0;
+}
+
+#register {
+    display: flex;
+    justify-content: center;
+}
+
+#remember-password {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+    #memphins-div {
+        display: none;
+    }
+
+
+    #container-login {
+        background: #fff;
+        width: 100%;
+        position:absolute;
+        padding-top: 50px;
+    }
+
+    form {
+        padding: 0 10%;
+    }
+}
