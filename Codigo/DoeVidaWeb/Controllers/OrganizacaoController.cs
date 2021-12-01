@@ -25,7 +25,7 @@ namespace DoeVidaWeb.Controllers
         {
             ViewBag.currentPage = id;
             ViewBag.totalPages = GetTotalPages(_organizacaoService.GetCount());
-            var listOrganizacoes = _organizacaoService.GetAll();
+            var listOrganizacoes = _organizacaoService.GetTakePage(id, 10);
             var listOrganizacoesModel = _mapper.Map<List<OrganizacaoViewModel>>(listOrganizacoes);
             return View(listOrganizacoesModel);
         }
