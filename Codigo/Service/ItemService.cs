@@ -50,7 +50,32 @@ namespace Service
             var _item = _context.Item.Find(idItem);
             return _item;
         }
+        /// <summary>
+        /// Obtér a quantidade de Itens.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount()
+        {
+            var query = (from Item in _context.Item
+                         select Item.IdItem).Count();
+            return query;
+        }
 
+        public IEnumerable<ItemListDTO> GetTakePage(int page, int take)
+        {
+            var query = from Item in _context.Item
+                        select new ItemListDTO
+                        {
+                            IdItem = Item.IdItem,
+                            IdOrganizacao = Item.IdOrganizacao,
+                            Nome = Item.Nome,
+                            Quantidade = Item.Quantidade,
+                            Status = Item.Status,
+                            Tipo = Item.Tipo,
+                            NomeOrganizacao = Item.IdOrganizacaoNavigation.NomeOrganizacao
+                        };
+            return query.Take(take).Skip(page * (take - 1)).ToList();
+        }
         /// <summary>
 		/// Atualiza os dados do Item na Base de Dados
 		/// </summary>

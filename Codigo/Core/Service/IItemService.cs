@@ -20,5 +20,7 @@ namespace Core.Service
         IEnumerable<Item> GetByNameContained(string name);
         void Delete(int idItem);
         void Validate();
+        int GetCount();
+        IEnumerable<ItemListDTO> GetTakePage(int id, int v);
     }
 }

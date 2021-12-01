@@ -25,11 +25,13 @@ namespace DoeVidaWeb.Controllers
 
 
         // GET: ItemController
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var listItens = _itemService.GetAll();
-            var listItensDTOModel = _mapper.Map<List<ItemListDTOViewModel>>(listItens);
-            return View(listItensDTOModel);
+            ViewBag.currentPage = id;
+            ViewBag.totalPages = GetTotalPages(_itemService.GetCount());
+            var listItens = _itemService.GetTakePage(id, 10);
+            var listItensViewModel = _mapper.Map<List<ItemListDTOViewModel>>(listItens);
+            return View(listItensViewModel);
         }
 
         // GET: ItemController/Details/5
@@ -95,6 +97,14 @@ namespace DoeVidaWeb.Controllers
         {
             _itemService.Delete(id);
             return RedirectToAction(nameof(Index));
+        }
+        public int GetTotalPages(int totalItens)
+        {
+            if (totalItens % 10 != 0)
+            {
+                return (totalItens / 10) + 1;
+            }
+            return totalItens / 10;
         }
     }
 }
