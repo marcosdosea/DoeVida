@@ -106,6 +106,19 @@ namespace Service
             return query;
         }
 
+        /// <summary>
+		/// Obtém pelo cpf da pessoa
+		/// </summary>
+		/// <param name="cpf"></param>
+		/// <returns>Retorna uma Pessoa</returns>
+        public Pessoa GetByCPF(string cpf)
+        {
+            var query = from pessoa in _context.Pessoa
+                        where pessoa.Cpf.Equals(cpf)
+                        select pessoa;
+            return query.First();
+        }
+
         public void Validate()
         {
             throw new NotImplementedException();

@@ -14,6 +14,7 @@ namespace Core.Service
         IEnumerable<Pessoa> GetByNameContained(string name);
         void Delete(int idPessoa);
 
+        Pessoa GetByCPF(string cpf);
         void Validate();
     }
 }

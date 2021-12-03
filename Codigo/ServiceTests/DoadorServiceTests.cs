@@ -197,5 +197,17 @@ namespace Service.Tests
             Assert.AreEqual(1, listDoador.First().IdPessoa);
         }
 
+        [TestMethod()]
+        public void GetByCPFTest()
+        {
+            // Act
+            var doador = _doadorService.GetByCPF("1824873211");
+            // Assert
+            Assert.IsInstanceOfType(doador, typeof(Pessoa));
+            Assert.IsNotNull(doador);
+            Assert.AreEqual(1, doador.IdPessoa);
+            Assert.AreEqual("Daniel Gomes", doador.Nome);
+        }
+
     }
 }
