@@ -152,5 +152,14 @@ namespace DoeVidaWeb.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+        // POST: DoadorController/GetNameByCpf
+        [HttpPost]
+        public string GetNameByCpf(string cpf)
+        {
+            var _doador = _doadorService.GetByCPF(cpf);
+            return _doador.Nome;
+        }
+
     }
+    
 }

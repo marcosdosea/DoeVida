@@ -11,11 +11,13 @@ namespace DoeVidaWeb.Controllers
     {
 
         IAgendamentoService _agendamentoService;
+        IDoadorService _doadorService;
         IMapper _mapper;
 
-        public AgendamentoController(IAgendamentoService agendamentoService, IMapper mapper)
+        public AgendamentoController(IAgendamentoService agendamentoService,IDoadorService doadorService, IMapper mapper)
         {
             _agendamentoService = agendamentoService;
+            _doadorService = doadorService;
             _mapper = mapper;
         }
 

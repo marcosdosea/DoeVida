@@ -1,0 +1,4 @@
+# Derivando da imagem oficial do MySQL
+FROM mysql:latest
+# Adicionando os scripts SQL para serem executados na criação do banco
+COPY ./DoeVida_Dump.sql /docker-entrypoint-initdb.d/
