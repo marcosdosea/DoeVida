@@ -14,7 +14,7 @@
                 <i class="fas fa-search"></i>
             </div>
             @* <a asp-action="Create" id="button-new">Novo agendamento</a> *@
-            <a asp-action="Create" id="button-new" data-bs-toggle="modal" data-bs-target="#exampleModal" >Novo agendamento</a>
+            <a asp-action="Create" id="button-new" data-bs-toggle="modal" data-bs-target="#createModal" >Novo agendamento</a>
         </div>
         <table class="table">
             <thead>
@@ -131,7 +131,7 @@
         <a href="/@((ViewBag.currentPage == 0) ? "Agendamento/Index/" : "")@(ViewBag.currentPage + 1)" class="pagination-btn @(ViewBag.totalPages == (ViewBag.currentPage + 1) ? "disabled" : "")"><i class="fas fa-chevron-right"></i> </a>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalCreate" aria-hidden="true">
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="modalCreate" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content main" style="padding: 30px 30px;" >
         <div class="container-center">
@@ -148,7 +148,7 @@
             </div>
             <div class="form-group max-width">
                 <label class="control-label">Nome</label>
-                <input id="nome-input" class="form-control" type="text" placeholder="Nome do doador">
+                <input disabled id="nome-input" class="form-control" type="text" placeholder="Nome do doador">
             </div>
             <div class="form-horizontal" style="margin-bottom: 42px;">
                 <div class="form-group form-vertical max-width" style="margin-right: 25px">
@@ -227,7 +227,6 @@
             data: {cpf},
             success: function (result, status, xhr) {
                 document.getElementById('nome-input').value = result;
-                document.getElementById('nome-input').disabled = true;
             },
             error: function (xhr, status, error) {
                 console.log('ERRO AJAX:',status);
