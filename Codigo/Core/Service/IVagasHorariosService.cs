@@ -13,7 +13,7 @@ namespace Core.Service
         IEnumerable<Vagashorarios> GetAllOrderByName();
         int GetCount();
         void Validate();
-        void Delete(int v);
+        void Delete(int id);
 
         // todo: GetAgendaDisponivel
     }

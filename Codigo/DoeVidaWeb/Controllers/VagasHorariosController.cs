@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core;
 using Core.Service;
+using DoeVidaWeb.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,7 +26,7 @@ namespace DoeVidaWeb.Controllers
             ViewBag.currentPage = id;
             ViewBag.totalPages = GetTotalPages(_vagasHorariosService.GetCount());
             var listVagashorarios = _vagasHorariosService.GetTakePage(id, 10);
-            var listVagashorariosViewModel = _mapper.Map<List<Vagashorarios>>(listVagashorarios);
+            var listVagashorariosViewModel = _mapper.Map<List<VagasHorariosViewModel>>(listVagashorarios);
             return View(listVagashorariosViewModel);
         }
 
@@ -33,7 +34,9 @@ namespace DoeVidaWeb.Controllers
         // GET: VagasHorarios/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Vagashorarios vagasHorarios = _vagasHorariosService.Get(id);
+            VagasHorariosViewModel vagasHorariosModel = _mapper.Map<VagasHorariosViewModel>(vagasHorarios);
+            return View(vagasHorariosModel);
         }
 
         // GET: VagasHorarios/Create
@@ -45,58 +48,52 @@ namespace DoeVidaWeb.Controllers
         // POST: VagasHorarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(VagasHorariosViewModel vagasHorariosModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var vagasHorarios = _mapper.Map<Vagashorarios>(vagasHorariosModel);
+                _vagasHorariosService.Insert(vagasHorarios);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: VagasHorarios/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Vagashorarios vagasHorarios = _vagasHorariosService.Get(id);
+            VagasHorariosViewModel vagasHorariosModel = _mapper.Map<VagasHorariosViewModel>(vagasHorarios);
+            return View(vagasHorariosModel);
         }
 
         // POST: VagasHorarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, VagasHorariosViewModel vagasHorariosModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var vagasHorarios = _mapper.Map<Vagashorarios>(vagasHorariosModel);
+                _vagasHorariosService.Edit(vagasHorarios);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: VagasHorarios/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Vagashorarios vagasHorarios = _vagasHorariosService.Get(id);
+            VagasHorariosViewModel vagasHorariosModel = _mapper.Map<VagasHorariosViewModel>(vagasHorarios);
+            return View(vagasHorariosModel);
         }
 
         // POST: VagasHorarios/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, VagasHorariosViewModel vagasHorariosModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _vagasHorariosService.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
 
         private int GetTotalPages(int totalItens)

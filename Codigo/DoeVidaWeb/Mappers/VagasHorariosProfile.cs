@@ -2,16 +2,11 @@
 using Core;
 using DoeVidaWeb.ViewModels;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace DoeVidaWeb.Mappers
 {
-    public class VagasHorarios : Profile
+    public class VagasHorariosProfile : Profile
     {
-        public VagasHorarios()
+        public VagasHorariosProfile()
         {
             CreateMap<VagasHorariosViewModel, Vagashorarios>().ReverseMap();
         }
