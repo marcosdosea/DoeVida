@@ -48,6 +48,17 @@ namespace Service
         }
 
         /// <summary>
+        /// Remove uma Vagashorarios da base de dados
+        /// </summary>
+        /// <param name="idVagashorarios">identificador da organização</param>
+        public void Delete(int idVagashorarios)
+        {
+            var _vagasHorarios = _context.Vagashorarios.Find(idVagashorarios);
+            _context.Vagashorarios.Remove(_vagasHorarios);
+            _context.SaveChanges();
+        }
+
+        /// <summary>
         /// Obtér a quantidade de Vagashorarios.
         /// </summary>
         /// <returns></returns>

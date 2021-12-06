@@ -35,6 +35,7 @@ namespace DoeVidaWeb
             services.AddTransient<IDoadorService, DoadorService>();
             services.AddTransient<IItemService, ItemService>();
             services.AddTransient<IAgendamentoService, AgendamentoService>();
+            services.AddTransient<IVagasHorariosService, VagasHorariosService>();
             // dependency injection Mappers
             services.AddAutoMapper(typeof(Startup).Assembly);
 
