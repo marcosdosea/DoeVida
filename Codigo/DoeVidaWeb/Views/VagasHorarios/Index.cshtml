@@ -4,62 +4,102 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div style="display: flex; flex-direction: row; width: 100%">
+    <div id="main">
+        <div id="header-action">
+            <div id="search">
+                <input placeholder="Digite o dia que deseja buscar"
+                       type="text" name="search" id="input-search" />
+                <i class="fas fa-search"></i>
+            </div>
+            @*<a asp-action="Create" id="button-new">Novo Horário</a>*@
+            <a asp-action="Create" id="button-new" data-bs-toggle="modal" data-bs-target="#createModal" >Novo horário</a>
+        </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdVagasHorarios)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiaSemana)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraFinal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroVagas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOrganizacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVagasHorarios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaSemana)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraFinal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroVagas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdOrganizacao)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiaSemana)
+                    </th>
+                    <th>Horário</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumeroVagas)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaSemana)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HoraInicio)
+                            -
+                            @Html.DisplayFor(modelItem => item.HoraFinal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroVagas)
+                        </td>
+                        <td id="actions">
+                            <a class="icon-action clicavel" href="VagasHorarios/Details/@item.IdVagasHorarios"><i class="fas fa-eye icon-action"></i></a>
+                            <a class="icon-action clicavel" href="VagasHorarios/Edit/@item.IdVagasHorarios"><i class="fas fa-edit icon-action"></i></a>
+                            <a class="icon-action clicavel" href="VagasHorarios/Delete/@item.IdVagasHorarios"><i class="fas fa-trash-alt icon-action"></i></a>
+                        </td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="pagination-container @(ViewBag.totalPages <= 1 ? "disabled" : "")">
+        <div class="pagination-count-container">
+            <div class="pagination-count">
+                @(ViewBag.currentPage + 1)
+            </div>
+                <span class="pagination-txt-count">DE @(ViewBag.totalPages)</span>
+        </div>
+
+        <a href="@("/VagasHorarios/Index/"+(ViewBag.currentPage - 1).ToString())" style="margin-right: 10px;" class="pagination-btn @(ViewBag.currentPage == 0 ? "disabled" : "")"><i class="fas fa-chevron-left"></i> </a>
+        <a href="/@((ViewBag.currentPage == 0) ? "VagasHorarios/Index/" : "")@(ViewBag.currentPage + 1)" class="pagination-btn @(ViewBag.totalPages == (ViewBag.currentPage + 1) ? "disabled" : "")"><i class="fas fa-chevron-right"></i> </a>
+    </div>
+
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="modalCreate" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content main" style="padding: 30px 30px;" >
+        <div class="container-center">
+            <h5 class="modal-title" id="modalCreate">Cadastro de vagas</h5>
+        </div>
+        <div class="modal-body">
+            <div class="form-group max-width">
+                <label class="control-label">Dia da semana</label>
+                <input class="form-control" type="text" placeholder="Selecione um dia da semana">
+            </div>
+            <div class="form-group max-width">
+                <label class="control-label">Quantidade de vagas</label>
+                <input class="form-control" type="text" placeholder="Informe a quantidade de vagas">
+            </div>
+            <div class="form-horizontal" style="margin-bottom: 42px;">
+                <div class="form-group form-vertical max-width" style="margin-right: 25px">
+                    <label class="control-label">Horário inicio</label>
+                    <select name="" id=""></select>
+                </div>
+                <div class="form-group form-vertical max-width">
+                    <label class="control-label">Horário fim</label>
+                    <select name="" id=""></select>
+                </div>
+            </div>
+            <div class="form-horizontal">
+                <button type="button" class="button-outline" data-bs-dismiss="modal" style="margin-right: 25px;">Cancelar</button>
+                <button type="button" class="button" data-bs-dismiss="modal">Cadastrar</button>
+            </div>  
+        </div>
+      
+    </div>
+  </div>
+</div>
