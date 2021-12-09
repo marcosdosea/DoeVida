@@ -15,6 +15,12 @@ a{
     --border-radius-header: 8px;
 }
 
+.pr-30 {
+    margin-left: 0!important;
+    padding-right: 30px;
+    width: 35%!important;
+}
+
 #header-action {
     height: 89px;
     background: var(--gray);
