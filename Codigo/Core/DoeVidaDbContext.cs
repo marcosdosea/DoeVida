@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -20,6 +20,7 @@ namespace Core
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Organizacao> Organizacao { get; set; }
         public virtual DbSet<Pessoa> Pessoa { get; set; }
+        public virtual DbSet<Pessoaorganizacao> Pessoaorganizacao { get; set; }
         public virtual DbSet<Solicitacao> Solicitacao { get; set; }
         public virtual DbSet<Solicitacaoitem> Solicitacaoitem { get; set; }
         public virtual DbSet<Vagashorarios> Vagashorarios { get; set; }
@@ -361,6 +362,34 @@ namespace Core
                     .HasMaxLength(2)
                     .IsUnicode(false);
 
+            modelBuilder.Entity<Pessoaorganizacao>(entity =>
+            {
+                entity.HasKey(e => e.IdPessoaOrganizacao)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("pessoaorganizacao");
+
+                entity.HasIndex(e => e.IdOrganizacao)
+                    .HasName("fk_organizacao_idx");
+
+                entity.HasIndex(e => e.IdPessoa)
+                    .HasName("fk_idPessoa_idx");
+
+                entity.Property(e => e.IdPessoaOrganizacao).HasColumnName("idPessoaOrganizacao");
+
+                entity.Property(e => e.IdOrganizacao).HasColumnName("idOrganizacao");
+
+                entity.Property(e => e.IdPessoa).HasColumnName("idPessoa");
+
+                entity.HasOne(d => d.IdOrganizacaoNavigation)
+                    .WithMany(p => p.Pessoaorganizacao)
+                    .HasForeignKey(d => d.IdOrganizacao)
+                    .HasConstraintName("fk_organizacao");
+
+                entity.HasOne(d => d.IdPessoaNavigation)
+                    .WithMany(p => p.Pessoaorganizacao)
+                    .HasForeignKey(d => d.IdPessoa)
+                    .HasConstraintName("fk_idPessoa");
             });
 
             modelBuilder.Entity<Solicitacao>(entity =>

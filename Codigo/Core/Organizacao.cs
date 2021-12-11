@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Core
 {
@@ -8,6 +9,7 @@ namespace Core
         {
             Agendamento = new HashSet<Agendamento>();
             Item = new HashSet<Item>();
+            Pessoaorganizacao = new HashSet<Pessoaorganizacao>();
             Solicitacao = new HashSet<Solicitacao>();
             Vagashorarios = new HashSet<Vagashorarios>();
         }
@@ -28,6 +30,7 @@ namespace Core
 
         public virtual ICollection<Agendamento> Agendamento { get; set; }
         public virtual ICollection<Item> Item { get; set; }
+        public virtual ICollection<Pessoaorganizacao> Pessoaorganizacao { get; set; }
         public virtual ICollection<Solicitacao> Solicitacao { get; set; }
         public virtual ICollection<Vagashorarios> Vagashorarios { get; set; }
     }

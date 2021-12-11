@@ -317,7 +317,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`idItem`),
   KEY `fk_Item_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_Item_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +326,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Pote','Recipiente',253,10,'DISPONIVEL');
+INSERT INTO `item` VALUES (1,'Pote','Recipiente',253,10,'DISPONIVEL'),(2,'Pote1','Recipiente',253,10,'DISPONIVEL'),(3,'Pote2','Recipiente',253,10,'DISPONIVEL'),(4,'Pote3','Recipiente',253,10,'DISPONIVEL'),(5,'Pote4','Recipiente',253,10,'DISPONIVEL'),(6,'Pote5','Recipiente',253,10,'DISPONIVEL'),(7,'Pote6','Recipiente',253,10,'DISPONIVEL'),(8,'Pote7','Recipiente',253,10,'DISPONIVEL'),(9,'Pote8','Recipiente',253,10,'DISPONIVEL'),(10,'Pote9','Recipiente',253,10,'DISPONIVEL'),(11,'Pote10','Recipiente',253,10,'DISPONIVEL');
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ CREATE TABLE `organizacao` (
   `cnpj` varchar(15) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idOrganizacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `organizacao` (
 
 LOCK TABLES `organizacao` WRITE;
 /*!40000 ALTER TABLE `organizacao` DISABLE KEYS */;
-INSERT INTO `organizacao` VALUES (252,'UFS ITAAA','49500-000','SE','Itabaiana','Centro','Avenida','Organização','102','100','200','12534548544',NULL),(253,'UFS ITA BR','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854425',NULL);
+INSERT INTO `organizacao` VALUES (252,'UFS ITAAA','49500-000','SE','Itabaiana','Centro','Avenida','Organização','102','100','200','12534548544',NULL),(253,'UFS ITA BR','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854425',NULL),(254,'UFS ITA BR2','49500-000','SE','Itabaiana','Centro','Avenida','Organização','104','100','200','1253454854426',NULL),(255,'UFS ITA BR3','49500-000','SE','Itabaiana','Centro','Avenida','Organização','105','100','200','1253454854427',NULL),(256,'UFS ITA BR4','49500-000','SE','Itabaiana','Centro','Avenida','Organização','106','100','200','1253454854428',NULL),(257,'UFS ITA BR5','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854429',NULL),(258,'UFS ITA BR6','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854415',NULL),(259,'UFS ITA BR7','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854435',NULL),(260,'UFS ITA BR8','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854445',NULL),(261,'UFS ITA BR9','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854455',NULL),(262,'UFS ITA BR10','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854465',NULL),(263,'UFS ITA BR11','49500-000','SE','Itabaiana','Centro','Avenida','Organização','103','100','200','1253454854475',NULL);
 /*!40000 ALTER TABLE `organizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,6 +408,34 @@ LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
 INSERT INTO `pessoa` VALUES (10,'idylicaro.se@gmail.com','Idyl Icaro dos Santos','07504975567','2000-12-22','ATIVO','DOADOR',NULL,NULL,'49500329','Rua Francisco Bragança','1034','São Cristóvão','Casa','SE','Itabaiana','(79) 99963-2212','772f2b77-0a88-4476-8781-f68235ebdd6c');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pessoaorganizacao`
+--
+
+DROP TABLE IF EXISTS `pessoaorganizacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pessoaorganizacao` (
+  `idPessoaOrganizacao` int NOT NULL AUTO_INCREMENT,
+  `idPessoa` int DEFAULT NULL,
+  `idOrganizacao` int DEFAULT NULL,
+  PRIMARY KEY (`idPessoaOrganizacao`),
+  KEY `fk_idPessoa_idx` (`idPessoa`),
+  KEY `fk_organizacao_idx` (`idOrganizacao`),
+  CONSTRAINT `fk_idPessoa` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
+  CONSTRAINT `fk_organizacao` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pessoaorganizacao`
+--
+
+LOCK TABLES `pessoaorganizacao` WRITE;
+/*!40000 ALTER TABLE `pessoaorganizacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pessoaorganizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -486,7 +514,7 @@ CREATE TABLE `vagashorarios` (
   PRIMARY KEY (`idVagasHorarios`),
   KEY `fk_VagasHorarios_Organizacao1_idx` (`idOrganizacao`),
   CONSTRAINT `fk_VagasHorarios_Organizacao1` FOREIGN KEY (`idOrganizacao`) REFERENCES `organizacao` (`idOrganizacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -495,6 +523,7 @@ CREATE TABLE `vagashorarios` (
 
 LOCK TABLES `vagashorarios` WRITE;
 /*!40000 ALTER TABLE `vagashorarios` DISABLE KEYS */;
+INSERT INTO `vagashorarios` VALUES (1,'SEGUNDA-FEIRA','12:00:00','15:00:00',10,253),(2,'SEGUNDA-FEIRA','12:00:00','15:00:00',10,253),(3,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(4,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(5,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(6,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(7,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(8,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(9,'SEGUNDA-FEIRA','12:00:00','15:00:00',1,253),(10,'SEGUNDA-FEIRA','12:00:00','15:00:00',12,253),(11,'SEGUNDA-FEIRA','12:00:00','15:00:00',12,253);
 /*!40000 ALTER TABLE `vagashorarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -507,4 +536,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-29 15:09:50
+-- Dump completed on 2021-12-11  9:57:22
