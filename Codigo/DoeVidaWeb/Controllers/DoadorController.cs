@@ -3,6 +3,7 @@ using Core;
 using Core.Service;
 using DoeVidaWeb.Areas.Identity.Data;
 using DoeVidaWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
+    [Authorize(Roles = "SERVIDOR")]
     public class DoadorController : Controller
     {
         IDoadorService _doadorService;
