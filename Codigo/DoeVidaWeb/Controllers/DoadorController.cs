@@ -148,15 +148,17 @@ namespace DoeVidaWeb.Controllers
                     var doador = _mapper.Map<Pessoa>(doadorModel);
                     _doadorService.Insert(doador);
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    /*if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("/Identity/Account/RegisterConfirmation", new { email = doadorModel.Email, returnUrl = returnUrl });
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
                     }
+                    */
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //return LocalRedirect(returnUrl);
+                    return RedirectToPage("/Home");
                 }
 
             }
