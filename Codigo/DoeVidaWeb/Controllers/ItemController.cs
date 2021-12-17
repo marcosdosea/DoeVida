@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
+    [Authorize(Roles = "SERVIDOR")]
     public class ItemController : Controller
     {
         IItemService _itemService;
