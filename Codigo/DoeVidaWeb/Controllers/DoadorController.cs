@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DoeVidaWeb.Controllers
 {
-    [Authorize(Roles = "SERVIDOR")]
+    
     public class DoadorController : Controller
     {
         IDoadorService _doadorService;
@@ -34,6 +34,7 @@ namespace DoeVidaWeb.Controllers
             _signInManager = signInManager;
         }
 
+        [Authorize(Roles = "SERVIDOR")]
         public ActionResult Index()
         {
             var listDoador = _doadorService.GetAll();
@@ -42,6 +43,7 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: DoadorController/Details/5
+        [Authorize(Roles = "SERVIDOR")]
         public Pessoa Details(int id)
         {
             Pessoa doador = _doadorService.Get(id);
@@ -50,12 +52,14 @@ namespace DoeVidaWeb.Controllers
 
 
         // GET: DoadorController/Create
+        [Authorize(Roles = "SERVIDOR")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: DoadorController/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DoadorViewModel doadorModel)
@@ -69,6 +73,7 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: DoadorController/Edit/5
+        [Authorize(Roles = "SERVIDOR")]
         public ActionResult Edit(int id)
         {
             Pessoa doador = _doadorService.Get(id);
@@ -77,6 +82,7 @@ namespace DoeVidaWeb.Controllers
         }
 
         // POST: DoadorController/Edit/5
+        [Authorize(Roles = "SERVIDOR")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, DoadorViewModel doadorModel)
@@ -90,6 +96,7 @@ namespace DoeVidaWeb.Controllers
         }
 
         // GET: DoadorController/Delete/5
+        [Authorize(Roles = "SERVIDOR")]
         public ActionResult Delete(int id)
         {
             Pessoa doador = _doadorService.Get(id);
@@ -98,6 +105,7 @@ namespace DoeVidaWeb.Controllers
         }
 
         // POST: DoadorController/Delete/5
+        [Authorize(Roles = "SERVIDOR")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, DoadorViewModel doadorModel)
@@ -125,7 +133,7 @@ namespace DoeVidaWeb.Controllers
                 var result = await _userManager.CreateAsync(user, doadorModel.Password);
                 if (result.Succeeded)
                 {   
-                    //result = await _userManager.AddToRoleAsync(user, "Doador");
+                    result = await _userManager.AddToRoleAsync(user, "Doador");
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     await _userManager.ConfirmEmailAsync(user, code);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
