@@ -20,6 +20,7 @@ namespace DoeVidaWeb.Areas.Identity
                         context.Configuration.GetConnectionString("DoeVidaDatabase")));
 
                 services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<IdentityContext>();
             });
         }
