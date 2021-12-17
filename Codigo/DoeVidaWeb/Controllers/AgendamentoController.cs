@@ -2,11 +2,13 @@
 using Core;
 using Core.Service;
 using DoeVidaWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace DoeVidaWeb.Controllers
 {
+    [Authorize(Roles = "SERVIDOR")]
     public class AgendamentoController : Controller
     {
 
