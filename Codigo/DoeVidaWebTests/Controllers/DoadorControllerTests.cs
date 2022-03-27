@@ -67,10 +67,10 @@ namespace DoeVidaWeb.Controllers.Tests
 
 
         [TestMethod()]
-        public void CreateTest_Valid()
+        public async void CreateTest_Valid()
         {
             // Act
-            var result = controller.CreateAsync(GetNewDoador());
+            var result = await controller.CreateAsync(GetNewDoador());
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -80,13 +80,13 @@ namespace DoeVidaWeb.Controllers.Tests
         }
 
         [TestMethod()]
-        public void CreateTest_InValid()
+        public async void CreateTest_InValid()
         {
             // Arrange
             controller.ModelState.AddModelError("CPF", "Campo requerido");
 
             // Act
-            var result = controller.CreateAsync(GetNewDoador());
+            var result = await controller.CreateAsync(GetNewDoador());
 
             // Assert
             Assert.AreEqual(1, controller.ModelState.ErrorCount);
