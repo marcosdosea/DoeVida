@@ -24,7 +24,7 @@ namespace DoeVidaWeb.Controllers.Tests
             IMapper mapper = new MapperConfiguration(cfg =>
                 cfg.AddProfile(new OrganizacaoProfile())).CreateMapper();
 
-            mockService.Setup(service => service.GetAll())
+            mockService.Setup(service => service.GetTakePage(0, 10))
                 .Returns(GetTestOrganizacao());
 
             mockService.Setup(service => service.Get(1))
