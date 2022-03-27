@@ -202,6 +202,7 @@ CREATE TABLE `aspnetuserroles` (
 
 LOCK TABLES `aspnetuserroles` WRITE;
 /*!40000 ALTER TABLE `aspnetuserroles` DISABLE KEYS */;
+INSERT INTO `aspnetuserroles` VALUES ('000e40b9-8ee1-4bc8-b938-346ba92168a9','1'),('18876451-22b9-4e5c-a3f1-49fc98495a2e','1'),('41e7a9d4-391c-43c2-bcae-d2b4e5ff17a9','1'),('05c007fc-b8f5-4843-b599-cd58f57950e2','2'),('772f2b77-0a88-4476-8781-f68235ebdd6c','2');
 /*!40000 ALTER TABLE `aspnetuserroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +241,7 @@ CREATE TABLE `aspnetusers` (
 
 LOCK TABLES `aspnetusers` WRITE;
 /*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
-INSERT INTO `aspnetusers` VALUES ('772f2b77-0a88-4476-8781-f68235ebdd6c','idylicaro.se@gmail.com','IDYLICARO.SE@GMAIL.COM','idylicaro.se@gmail.com','IDYLICARO.SE@GMAIL.COM',_binary '','AQAAAAEAACcQAAAAEGfcCjGW+xEho2u8z1mjEZ7KNrFi5GTAfLOjQb32WTSrW3NJJS9c7TaZWS7YUEM4WA==','AVQM3ZHRYXCNHDWJLI2SKAKXDXZ44C2C','e10d7ecc-174f-4e46-8691-a0ec63835aac',NULL,_binary '\0',_binary '\0',NULL,_binary '',0);
+INSERT INTO `aspnetusers` VALUES ('000e40b9-8ee1-4bc8-b938-346ba92168a9','uriel@ufs.br','URIEL@UFS.BR','uriel@ufs.br','URIEL@UFS.BR',_binary '','AQAAAAEAACcQAAAAEPJdvewwWvREAU46kZvkqBivWd3wqnZDOCFs0wUZY25ic2F5BvhR4r98HIRBOZoSkA==','ETUGPQAGUMDPD5SGTB2ZZHZ4QT6UZYC3','95d572a7-967c-4559-af70-fca95ce72186',NULL,_binary '\0',_binary '\0',NULL,_binary '',0),('05c007fc-b8f5-4843-b599-cd58f57950e2','ana@ufs.br','ANA@UFS.BR','ana@ufs.br','ANA@UFS.BR',_binary '','AQAAAAEAACcQAAAAEN7MlJJI6/a4b7bEBka+4W0ihc+W3uCWdUXTjGh61dLt7W7jj9Nx2xauoI/ui/QboQ==','BMAFVODMTM3QMO5QSM44GJ34PI7NSERS','f5c7adff-35a7-47de-b228-6511051e6ed8',NULL,_binary '\0',_binary '\0',NULL,_binary '',0),('18876451-22b9-4e5c-a3f1-49fc98495a2e','igor@ufs.br','IGOR@UFS.BR','igor@ufs.br','IGOR@UFS.BR',_binary '','AQAAAAEAACcQAAAAEB6c7Z3rsG7P/a1bWfdwChOiEtaGV+eXyb/ejmnFPsSFI7AGDj6LnCaOEIXTPxdcqg==','7SYIBMGOIN5C4QUIJFQZ674DJHWFO2DB','3cf3b8c5-eab3-4f4a-9de9-3e74d1024e73',NULL,_binary '\0',_binary '\0',NULL,_binary '',0),('41e7a9d4-391c-43c2-bcae-d2b4e5ff17a9','ariel@ufs.br','ARIEL@UFS.BR','ariel@ufs.br','ARIEL@UFS.BR',_binary '','AQAAAAEAACcQAAAAEL5+Ltq8JeVri+b7C5i3IlL5pq6CWqz8TuQV9gOSib4qmmBqXpkXimmxvUiZnfqR7A==','BEMCB3WCKOSN2RTB7F4JIYPZPK6TPMRL','bcb63173-6bcc-4509-b5ed-ff863f37cca4',NULL,_binary '\0',_binary '\0',NULL,_binary '',0),('772f2b77-0a88-4476-8781-f68235ebdd6c','idylicaro@ufs.br','IDYLICARO@UFS.BR','idylicaro@ufs.br','IDYLICARO@UFS.BR',_binary '','AQAAAAEAACcQAAAAEGfcCjGW+xEho2u8z1mjEZ7KNrFi5GTAfLOjQb32WTSrW3NJJS9c7TaZWS7YUEM4WA==','AVQM3ZHRYXCNHDWJLI2SKAKXDXZ44C2C','e10d7ecc-174f-4e46-8691-a0ec63835aac',NULL,_binary '\0',_binary '\0',NULL,_binary '',0);
 /*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,7 +398,7 @@ CREATE TABLE `pessoa` (
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   KEY `fk_pessoa_apsnetusers_idx` (`idUser`),
   CONSTRAINT `fk_pessoa_aspnetuser` FOREIGN KEY (`idUser`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -406,7 +407,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (10,'idylicaro.se@gmail.com','Idyl Icaro dos Santos','07504975567','2000-12-22','ATIVO','DOADOR',NULL,NULL,'49500329','Rua Francisco Bragança','1034','São Cristóvão','Casa','SE','Itabaiana','(79) 99963-2212','772f2b77-0a88-4476-8781-f68235ebdd6c');
+INSERT INTO `pessoa` VALUES (10,'idylicaro@ufs.br','Idyl Icaro dos Santos','07504975567','2000-12-22','ATIVO','SERVIDOR',NULL,NULL,'49500329','Rua Francisco Bragança','1034','São Cristóvão','Casa','SE','Itabaiana','(79) 99963-2212','772f2b77-0a88-4476-8781-f68235ebdd6c'),(12,'igor@ufs.br','Igor Santos Reis','64598060557','2000-12-22','ATIVO','DOADOR',NULL,NULL,'49500028','Rua Vinte e Oito de Agosto','3100','Centro','Casa','SE','Itabaiana','(79) 99961-2215','18876451-22b9-4e5c-a3f1-49fc98495a2e'),(13,'ariel@ufs.br','Ariel Santos Reis','03703035552','2005-12-22','ATIVO','DOADOR',NULL,NULL,'49500028','Rua Vinte e Oito de Agosto','3500','Centro','Casa','SE','Itabaiana','(79) 99971-2215','41e7a9d4-391c-43c2-bcae-d2b4e5ff17a9'),(14,'uriel@ufs.br','Uriel Santos Reis','30850102545','2001-12-22','ATIVO','DOADOR',NULL,NULL,'49500028','Rua Vinte e Oito de Agosto','3020','Centro','Casa','SE','Itabaiana','(79) 99961-2415','000e40b9-8ee1-4bc8-b938-346ba92168a9'),(15,'ana@ufs.br','Ana Laura Lima','42809832919','1978-10-22','ATIVO','SERVIDOR',NULL,NULL,'49500028','Rua Vinte e Oito de Agosto','3025','Centro','Casa','SE','Itabaiana','(79) 99980-2415','05c007fc-b8f5-4843-b599-cd58f57950e2');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,4 +508,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-29 15:09:50
+-- Dump completed on 2022-03-27 12:35:33
