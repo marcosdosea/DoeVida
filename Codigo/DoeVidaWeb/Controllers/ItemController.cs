@@ -2,6 +2,7 @@
 using Core;
 using Core.Service;
 using DoeVidaWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service;
