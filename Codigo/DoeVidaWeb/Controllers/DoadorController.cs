@@ -62,12 +62,30 @@ namespace DoeVidaWeb.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DoadorViewModel doadorModel)
+        public async Task<ActionResult> CreateAsync(DoadorViewModel doadorModel)
         {
+            string returnUrl = null;
             if (ModelState.IsValid)
             {
-                var doador = _mapper.Map<Pessoa>(doadorModel);
-                _doadorService.Insert(doador);
+                var user = new Usuario { UserName = doadorModel.Email, Email = doadorModel.Email };
+                var result = await _userManager.CreateAsync(user, doadorModel.Password);
+                if (result.Succeeded)
+                {
+                    result = await _userManager.AddToRoleAsync(user, "Doador");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    await _userManager.ConfirmEmailAsync(user, code);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                        protocol: Request.Scheme);
+
+                    var htmlEmailConfirmationResult = HtmlEncoder.Default.Encode(callbackUrl);
+                    doadorModel.IdUser = user.Id;
+                    var doador = _mapper.Map<Pessoa>(doadorModel);
+                    _doadorService.Insert(doador);
+                }
             }
             return RedirectToAction(nameof(Index));
         }
