@@ -37,25 +37,25 @@ namespace Service.Tests
                     IdOrganizacao = 253,
                     Quantidade =    2,
                     Status = "DISPONIVEL",
-                    Tipo =  "TESTE"
+                    Tipo =  "TESTE1"
                 },
                  new Item
                 {
                     IdItem = 2,
-                    Nome = "Recipiente Tipo A",
+                    Nome = "Recipiente Tipo B",
                     IdOrganizacao = 253,
-                    Quantidade =    2,
+                    Quantidade =    10,
                     Status = "DISPONIVEL",
-                    Tipo =  "TESTE"
+                    Tipo =  "TESTE2"
                 },
                  new Item
                 {
                     IdItem = 3,
-                    Nome = "Recipiente Tipo A",
+                    Nome = "Recipiente Tipo C",
                     IdOrganizacao = 253,
-                    Quantidade =    2,
+                    Quantidade =    5,
                     Status = "DISPONIVEL",
-                    Tipo =  "TESTE"
+                    Tipo =  "TESTE3"
                 }
                 };
 
@@ -76,7 +76,7 @@ namespace Service.Tests
                 IdOrganizacao = 253,
                 Quantidade = 2,
                 Status = "DISPONIVEL",
-                Tipo = "TESTE"
+                Tipo = "TESTE1"
             });
             // Assert
             Assert.AreEqual(4, _itemService.GetAll().Count());
@@ -152,6 +152,17 @@ namespace Service.Tests
             Assert.IsNotNull(ListaItem);
             Assert.AreEqual(1, ListaItem.Count());
             Assert.AreEqual(3, ListaItem.First().IdOrganizacao);
+        }
+        
+        [TestMethod()]
+        public void GetDTOById()
+        {
+            var ListaItem = _itemService.GetDTO(1);
+
+            Assert.IsInstanceOfType(ListaItem, typeof(IEnumerable<Item>));
+            Assert.IsNotNull(ListaItem);
+            Assert.AreEqual(1, ListaItem.Count());
+            Assert.AreEqual(2, ListaItem.First().IdOrganizacao);
         }
 
     }
