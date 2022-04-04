@@ -65,6 +65,18 @@ namespace DoeVidaWeb.Controllers.Tests
             Assert.AreEqual("1824873212", result.Cpf);
         }
 
+        [TestMethod()]
+        public void DetailsTestInvalidUser()
+        {
+            // Act
+            var result = controller.Details(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(Pessoa));
+            Assert.AreNotEqual("Ana Fonts", result.Nome);
+            Assert.AreNotEqual("1824873212", result.Cpf);
+        }
+
 
         [TestMethod()]
         public async void CreateTest_Valid()
