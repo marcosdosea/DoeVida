@@ -129,6 +129,36 @@ namespace Service.Tests
             var doador = _doadorService.Get(5);
             Assert.AreEqual("1824873214", doador.Cpf);
         }
+        
+        [TestMethod()]
+        public void InsertTestInvalidUser()
+        {
+            // Act
+            _doadorService.Insert(new Pessoa
+            {
+                IdPessoa = 5,
+                Nome = "Daniel Gomes",
+                Cep = "49500000",
+                Telefone = "79999221212",
+                Bairro = "Centro",
+                Cidade = "Itabaiana",
+                Cpf = "1824873214",
+                Complemento = "Pessoa",
+                Latitude = "100",
+                Longitude = "100",
+                Logradouro = "Av. ",
+                NumeroEndereco = "0",
+                Uf = "SE",
+                DataNascimento = DateTime.Parse("2021-11-4"),
+                Email = "teste@email.com",
+                Status = "ATIVO",
+                Tipo = "DOADOR"
+            });
+            // Assert
+            Assert.AreEqual(4, _doadorService.GetAll().Count());
+            var doador = _doadorService.Get(5);
+            Assert.AreEqual("1824873214", doador.Cpf);
+        }
 
         [TestMethod()]
         public void DeleteTest()
