@@ -1,0 +1,1348 @@
+{
+  "id": "817bbb47-3721-464d-9014-d0972fd669d1",
+  "version": "2.0",
+  "name": "DoeVida",
+  "url": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+  "tests": [{
+    "id": "3efd9ce7-9b2a-4312-a649-7d7a70bf4dee",
+    "name": "DV-1 : Autenticar Usuário Válido",
+    "commands": [{
+      "id": "d622c308-9d72-4600-a2ce-dd0ce2920550",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8305d0ed-76ad-45c7-a765-8d2ca10dc2bd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "22c5cc1a-abfe-48fc-89fa-0ea98c9d5536",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bf520e3-3c4c-4fe2-a7c4-bf4fc8af1215",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "450b454c-2f35-4768-b437-a2ceb54c2f73",
+      "comment": "",
+      "command": "click",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "456af654-0812-4126-933f-bec028893b69",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "88344b4d-4520-41b0-ba6a-d6b6dedefb1f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51c943a3-4ba8-4da2-ae2d-49c72cf6a75a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f62ccf43-d69f-44f3-ae5a-bcad9a264adf",
+    "name": "DV-2 : Autenticar Usuário Inválido",
+    "commands": [{
+      "id": "d77df46f-485e-4ba4-a834-1fe0da47dbd8",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5e1c2d91-0fda-4989-84b7-b349e55a63a7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dd675eba-8d03-40a2-aac4-d7db0204518b",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c23159b-6681-4749-8569-bc83e78330a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "817d7f2c-cc55-43ff-b86c-d785ba121168",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "123456@"
+    }, {
+      "id": "c46b6f1f-bbad-4ae0-bc1a-59a3ca8ab218",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa118d2d-ad5e-4d90-b273-3c14b19939eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=ul",
+      "targets": [
+        ["css=ul", "css:finder"],
+        ["xpath=//form[@id='account']/div/ul", "xpath:idRelative"],
+        ["xpath=//ul", "xpath:position"],
+        ["xpath=//ul[contains(.,'Invalid login attempt.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2dec0eec-e426-4599-8e2d-5fe95ea2056a",
+      "comment": "o resultado esperado era Dados inválidos",
+      "command": "assertText",
+      "target": "css=li",
+      "targets": [
+        ["css=li", "css:finder"],
+        ["xpath=//form[@id='account']/div/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Invalid login attempt.')]", "xpath:innerText"]
+      ],
+      "value": "Invalid login attempt."
+    }]
+  }, {
+    "id": "9e8852e4-ee0a-4b59-9c7e-0541f87e5609",
+    "name": " DV-3 : Inserir Doador Válido",
+    "commands": [{
+      "id": "9adf9a76-98cd-442d-b0ad-7a987980060e",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "24db2c93-f8d0-4f38-bd4e-608a9ee6126f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5c34580c-91d7-4342-b145-c8965b36b597",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f3266b1-d443-45cd-a630-5f89228a98bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "c2646042-c4d5-4c3d-9a24-35fabe361210",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "80809d9a-130e-422f-aa9c-06ba4c999d67",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "87e1fcba-607c-4d6f-ac0f-f1a1eb1f1511",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "598b83a6-d447-459c-9d71-87205946b420",
+      "comment": "",
+      "command": "click",
+      "target": "id=button-new",
+      "targets": [
+        ["id=button-new", "id"],
+        ["linkText=Novo doador", "linkText"],
+        ["css=#button-new", "css:finder"],
+        ["xpath=//a[contains(text(),'Novo doador')]", "xpath:link"],
+        ["xpath=//a[@id='button-new']", "xpath:attributes"],
+        ["xpath=//div[@id='header-action']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Doador/Create')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Novo doador')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2342f5f9-7f8a-456d-b664-c392ae52936c",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "davi@pet.org.com"
+    }, {
+      "id": "c4895d11-96b8-4645-88e9-5fde2f2cc5ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Pet123456@"
+    }, {
+      "id": "be82e4ab-13a9-41f3-8486-6a7745533f86",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9bcf728-1813-4781-914b-937a7f187fc8",
+      "comment": "",
+      "command": "type",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Fernanda Santos Reis"
+    }, {
+      "id": "cab79725-27ed-4b4f-a4f1-ff62b9beb597",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "fer@ufs.br"
+    }, {
+      "id": "5495d6bf-a507-4b9d-a7c6-63317cfab93f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "bc3bc694-a6d3-461a-9775-d3e7d7b051f9",
+      "comment": "",
+      "command": "type",
+      "target": "id=Cpf",
+      "targets": [
+        ["id=Cpf", "id"],
+        ["name=Cpf", "name"],
+        ["css=#Cpf", "css:finder"],
+        ["xpath=//input[@id='Cpf']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "42628609576"
+    }, {
+      "id": "57461adb-4864-4711-ba23-3aa92c9121d0",
+      "comment": "",
+      "command": "type",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "0002-02-12"
+    }, {
+      "id": "f4b7727b-80d8-4d32-a3d3-114c22df738b",
+      "comment": "",
+      "command": "click",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "115124d0-add6-4c0b-a13c-4328057cc2cd",
+      "comment": "",
+      "command": "click",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdbc3b4a-3939-4141-b400-6dc4598c7c6d",
+      "comment": "",
+      "command": "click",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7fcb0da-89e6-4a9f-8a55-df6a28917f11",
+      "comment": "",
+      "command": "type",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "0020-02-12"
+    }, {
+      "id": "085bfb89-36bc-4d2d-9912-c5a0c7905585",
+      "comment": "",
+      "command": "type",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "0200-02-12"
+    }, {
+      "id": "cff54d2c-5100-4b30-8a11-551bd895bb18",
+      "comment": "",
+      "command": "type",
+      "target": "id=DataNascimento",
+      "targets": [
+        ["id=DataNascimento", "id"],
+        ["name=DataNascimento", "name"],
+        ["css=#DataNascimento", "css:finder"],
+        ["xpath=//input[@id='DataNascimento']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "2000-02-12"
+    }, {
+      "id": "2c845b09-0799-4d75-85bc-8053612506b1",
+      "comment": "",
+      "command": "click",
+      "target": "id=telefone",
+      "targets": [
+        ["id=telefone", "id"],
+        ["name=Telefone", "name"],
+        ["css=#telefone", "css:finder"],
+        ["xpath=//input[@id='telefone']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "965813c2-c60b-4b87-9cce-9a8823561e03",
+      "comment": "",
+      "command": "type",
+      "target": "id=telefone",
+      "targets": [
+        ["id=telefone", "id"],
+        ["name=Telefone", "name"],
+        ["css=#telefone", "css:finder"],
+        ["xpath=//input[@id='telefone']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "(79) 9965-2215"
+    }, {
+      "id": "8008b31f-5d42-4132-99a0-7f518deec30a",
+      "comment": "",
+      "command": "type",
+      "target": "id=Cep",
+      "targets": [
+        ["id=Cep", "id"],
+        ["name=Cep", "name"],
+        ["css=#Cep", "css:finder"],
+        ["xpath=//input[@id='Cep']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "49500028"
+    }, {
+      "id": "3f79b1b7-5ba3-40f6-83ea-440537161913",
+      "comment": "",
+      "command": "click",
+      "target": "id=complemento",
+      "targets": [
+        ["id=complemento", "id"],
+        ["name=Complemento", "name"],
+        ["css=#complemento", "css:finder"],
+        ["xpath=//input[@id='complemento']", "xpath:attributes"],
+        ["xpath=//div[6]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf56f136-800e-472e-83cc-ef116dddb54a",
+      "comment": "",
+      "command": "type",
+      "target": "id=complemento",
+      "targets": [
+        ["id=complemento", "id"],
+        ["name=Complemento", "name"],
+        ["css=#complemento", "css:finder"],
+        ["xpath=//input[@id='complemento']", "xpath:attributes"],
+        ["xpath=//div[6]/div/input", "xpath:position"]
+      ],
+      "value": "Casa"
+    }, {
+      "id": "1abbe5b1-6953-4f52-a417-bcf750f157b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=numero",
+      "targets": [
+        ["id=numero", "id"],
+        ["name=NumeroEndereco", "name"],
+        ["css=#numero", "css:finder"],
+        ["xpath=//input[@id='numero']", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": "300"
+    }, {
+      "id": "4e0f01b6-69d5-40e8-9b94-2ebecb00b4e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//input[@value='Cadastar']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "7fe0c4fe-cbf0-40bc-b792-5ee84dd31e41",
+    "name": " DV-4 : Inserir Doador Inválido",
+    "commands": [{
+      "id": "1c916a7d-9306-4438-8a44-9c4c4355d67d",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2af603e7-f2b2-43b5-a212-95db637672d5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56621a6f-2261-46c3-b37c-92b790c9e883",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d54a5861-ef40-4cd9-bd53-f4f4a57f0470",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "mail@test.com"
+    }, {
+      "id": "f5718cda-08cb-4239-b691-5abd71ca52a5",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Test123@"
+    }, {
+      "id": "edeb2e37-6e69-4a8e-8562-195ff2303f3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e3b9988-810b-4e74-bafd-2fde383c186a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=li",
+      "targets": [
+        ["css=li", "css:finder"],
+        ["xpath=//form[@id='account']/div/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Invalid login attempt.')]", "xpath:innerText"]
+      ],
+      "value": "Invalid login attempt."
+    }]
+  }, {
+    "id": "4669c78a-2ffe-4bee-9aea-b2697239148f",
+    "name": " DV-5 : Alterar Doador com dados validos",
+    "commands": [{
+      "id": "c3553757-12e3-4aa9-a8e8-8eaf93acfbb2",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82a6088e-7c89-4c2a-a9fb-0ca6ec7f3b6e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "80f9f67e-d6bc-4166-81e6-dea2bf4a0e40",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "264a9f20-6e68-46b4-80ab-626047b6da31",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "00a476bc-a837-4632-85fe-386ab7442d59",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "2ae98438-bea3-4c12-8cd4-1690202fc9e4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a183893c-d2ec-46bf-ab2d-c8f4f9e6373b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45e6fd37-077c-4bde-80a1-db0a89e9bb69",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ae5c590-a3d8-4cd9-81a5-d8a968bcd370",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "645980060557"
+    }]
+  }, {
+    "id": "cf22af97-a44e-4052-91e3-38763ec4b70f",
+    "name": " DV-6 : Alterar Doador com dados Inválidos",
+    "commands": [{
+      "id": "e5e4db6c-d63c-4d08-978f-6bff911b2cfc",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a785c242-b701-45e5-b6a3-24c57f0a2d69",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3e3992b9-e2ca-415a-a83f-225ebf4e96ed",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52f3b25f-ce82-4432-a70e-45100f1b40eb",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "3a226d62-aa98-45dc-a6e2-3191eb6eafb0",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "f15bb8d5-c8b4-4f17-a87c-4a69da2f5192",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2a86bb0-fbe3-49eb-8921-5b181433d493",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "458ad668-510c-4684-8c03-28260811e306",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c724ada-279a-4a82-95c0-560222939d58",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "64598060557"
+    }]
+  }, {
+    "id": "1238b294-9094-4edc-95a8-e51837801fb6",
+    "name": " DV-9 : Consultar Dados do Doador com dados válidos",
+    "commands": [{
+      "id": "13d684cf-f095-44ec-abcf-9a89a2108800",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c56835a5-402f-421d-8bd9-6f9af6d00fbb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3be95421-1832-472c-b614-a2441d5f9354",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31fd9996-5e5a-4d29-823d-5644f6c6b100",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "883e77ec-2c31-45bf-89c9-47285cd0a22b",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "05011f95-59cf-4697-a114-a4a88f3f55d2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ab0ddc7-637e-46bb-9508-859e0842bc3f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bb55388-93ab-440a-92de-6aa364d0ef60",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e98a7563-b909-4811-a8fe-413e7cc47bea",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "30850102545"
+    }]
+  }, {
+    "id": "f70ca0a4-ebae-4f7c-be5d-24b17b443493",
+    "name": " DV-12 : Consultar Dados do Doador com dados Inválidos",
+    "commands": [{
+      "id": "b3a44de1-8999-4611-a659-5ebf8f931871",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9688d0e-bdee-43b5-84f7-a20c9c61e2d6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9db09ad-982e-47ac-b2bb-cbd7f0374c72",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bec4dde4-c8a2-4be2-8231-28d087ee7fe2",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "d3ff6b03-4219-4cd3-8cba-3ea576f55acb",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "34778440-93e3-4ece-83bf-4754be9860f9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "98a049e2-2f4b-471a-9ebd-6c02920f67d0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a14e1d25-368f-47de-b605-bd33ea25476a",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "70273541-40d3-4141-a5b5-63ddbe3fb781",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "24802551584"
+    }]
+  }, {
+    "id": "0436f601-1612-4f4a-b1e9-611370cbff86",
+    "name": " DV-7 : Remover Doador com dados válidos",
+    "commands": [{
+      "id": "874903f7-b2da-43bc-b65f-4cd7c6606af3",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51658449-2915-4849-bd7c-de6efeb1ef0d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be3961bd-5685-4a53-bf41-737ff74712e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "111d35d9-7dcb-405b-809d-3e27a07a1ac4",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "fea00ea6-c2ff-4f14-892a-c79de64e8e97",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "be73941e-d9bc-40e3-8c9f-005f619e2702",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7627f5b8-77b5-461c-89df-a4135df98d36",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a059fed5-292e-45d7-84a2-225644dca4fb",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "56049861-fce4-4c23-b26e-ff47d5ac7e86",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "03703035552"
+    }]
+  }, {
+    "id": "8db327e2-883e-462a-9224-5619f50f8c42",
+    "name": " DV-11 : Remover Doador com dados Inválidos",
+    "commands": [{
+      "id": "42fdd3c7-023d-40be-8ed7-41e787939ebe",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6b280897-6bb0-49e3-b15b-8937b824b777",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f262b46-0d54-4eac-8685-63b87bf5e2d7",
+      "comment": "",
+      "command": "click",
+      "target": "id=account",
+      "targets": [
+        ["id=account", "id"],
+        ["css=#account", "css:finder"],
+        ["xpath=//form[@id='account']", "xpath:attributes"],
+        ["xpath=//div[@id='container-login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e7dcf59-c9d2-4778-9428-d36adbd79322",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "idylicaro@ufs.br"
+    }, {
+      "id": "9beec033-53e6-4c51-9083-0a179f2c12f6",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Ufs123456@"
+    }, {
+      "id": "79d2540f-2462-42e4-9e33-ccf6088dccd1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "af68c309-8785-4693-8719-e1252a394fe6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Doadores",
+      "targets": [
+        ["linkText=Doadores", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Doadores')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Doador')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Doadores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "76660051-7d43-4c9a-9db6-a922e66d09cc",
+      "comment": "",
+      "command": "click",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a5e967c-d1d2-4cc2-a091-b4c2f18c3f6c",
+      "comment": "",
+      "command": "type",
+      "target": "id=input-search",
+      "targets": [
+        ["id=input-search", "id"],
+        ["name=search", "name"],
+        ["css=#input-search", "css:finder"],
+        ["xpath=//input[@id='input-search']", "xpath:attributes"],
+        ["xpath=//div[@id='search']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "42628609576"
+    }]
+  }],
+  "suites": [{
+    "id": "0d1f5e82-3c0a-47aa-952c-3fc71a43fb41",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3efd9ce7-9b2a-4312-a649-7d7a70bf4dee"]
+  }],
+  "urls": ["https://localhost:44366/Identity/Account/Login?ReturnUrl=%2F"],
+  "plugins": []
+}
